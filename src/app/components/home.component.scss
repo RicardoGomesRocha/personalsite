@@ -1,0 +1,80 @@
+.home-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .background-image {
+    background: url(../../assets/images/introduction-wallpaper.jfif);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .content {
+    margin-top: -100vh;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    .content-inner {
+      padding: 60px;
+      background-color: #ffffffd4;
+      margin: 40px;
+      max-width: 700px;
+
+      .profile-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        .image {
+          margin-right: 60px;
+
+          img {
+            border-radius: 100%;
+            width: 100px;
+            height: 100px;
+            box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.56)
+          }
+        }
+
+        .description {
+          .text {}
+
+          .other-websites {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .item {
+              cursor: pointer;
+              height: 50px;
+              margin: 10px;
+
+              &:hover {
+                box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.47);
+                background-color: white;
+                transition: 0.2s ease all;
+
+              }
+
+              img {
+                height: 50px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+
+}
