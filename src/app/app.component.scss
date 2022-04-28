@@ -1,0 +1,15 @@
+.photo-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c9c9c9;
+
+    img {
+        border: 1px solid black;
+        border-radius: 100%;
+        width: 30vw;
+
+    }
+}
