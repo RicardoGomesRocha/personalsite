@@ -1,12 +1,4 @@
 <div class="intro">
-  <div class="menu-wrapper">
-    <button mat-button>Home</button>
-    <menu class="menu">
-      <li><button mat-button>Portfolio</button></li>
-      <li><button mat-button>Contact Me</button></li>
-    </menu>
-  </div>
-
   <div
     class="photo-wrapper"
     id="photoWrapper"
@@ -15,6 +7,13 @@
     <img src="./assets/ricardo-photo.jpg" [style.width]="photoSize" />
   </div>
   <div class="background-image"></div>
+  <div class="menu-wrapper">
+    <button mat-flat-button color="primary">Home</button>
+    <menu class="menu">
+      <li><button mat-flat-button color="primary">Portfolio</button></li>
+      <li><button mat-flat-button color="primary">Contact Me</button></li>
+    </menu>
+  </div>
 </div>
 
 <div>

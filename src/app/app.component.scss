@@ -1,5 +1,7 @@
+@import '../colors.scss';
+
 .intro {
-    background-color: #8e8ed7;
+    background-color: $primary-color;
 
     .menu-wrapper {
         display: flex;
@@ -33,10 +35,9 @@
 
 
         img {
-            border: 1px solid black;
             border-radius: 100%;
             width: 30vw;
-
+            box-shadow: 10px 6px 0px 0px darken($primary-color, 15%);
         }
     }
 
