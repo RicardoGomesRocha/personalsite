@@ -6,7 +6,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  defaultVwSize = 30;
+  defaultVwSize = 20;
 
   units = `vw`;
 
@@ -15,6 +15,8 @@ export class AppComponent {
   photoWrapperSize = `100vh`;
 
   scrollTop = 0;
+
+  rotationAngle = 0;
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
   onScroll(event: Event) {
@@ -27,5 +29,10 @@ export class AppComponent {
     const newSizeWrapper = ((windowSize + this.scrollTop) * 100) / windowSize;
     this.photoSize = `${newSize}${this.units}`;
     this.photoWrapperSize = `${newSizeWrapper}vh`;
+    this.rotationAngle = 360 - (newSize * 360) / this.defaultVwSize;
+  }
+
+  getTransformAngle(): string {
+    return `rotate(${this.rotationAngle}deg)`;
   }
 }

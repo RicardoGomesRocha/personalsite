@@ -5,6 +5,14 @@
     [style.height]="photoWrapperSize"
   >
     <img src="./assets/ricardo-photo.jpg" [style.width]="photoSize" />
+    <div
+      class="photo-background-wrapper"
+      [style.width]="photoSize"
+      [style.height]="photoSize"
+      [style.transform]="getTransformAngle()"
+    >
+      <div class="photo-background"></div>
+    </div>
   </div>
   <div class="background-image"></div>
   <div class="menu-wrapper">
