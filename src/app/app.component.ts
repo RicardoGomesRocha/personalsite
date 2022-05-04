@@ -18,6 +18,10 @@ export class AppComponent {
 
   rotationAngle = 0;
 
+  defaultPhotoMargin = this.defaultVwSize / 40;
+
+  photoMargins = `${this.defaultPhotoMargin / 40}vw`;
+
   @HostListener('window:scroll', ['$event']) // for window scroll events
   onScroll(event: Event) {
     const target = event.target as Document;
@@ -30,6 +34,13 @@ export class AppComponent {
     this.photoSize = `${newSize}${this.units}`;
     this.photoWrapperSize = `${newSizeWrapper}vh`;
     this.rotationAngle = 360 - (newSize * 360) / this.defaultVwSize;
+
+    const percentageToFinish = (this.rotationAngle * 100) / 360;
+    console.log(this.photoMargins);
+    this.photoMargins = `${
+      this.defaultPhotoMargin -
+      (percentageToFinish * this.defaultPhotoMargin) / 100
+    }vw`;
   }
 
   getTransformAngle(): string {

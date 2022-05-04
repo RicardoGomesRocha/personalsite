@@ -11,7 +11,11 @@
       [style.height]="photoSize"
       [style.transform]="getTransformAngle()"
     >
-      <div class="photo-background"></div>
+      <div
+        class="photo-background"
+        [style.margin-top]="photoMargins"
+        [style.margin-left]="photoMargins"
+      ></div>
     </div>
   </div>
   <div class="background-image"></div>
