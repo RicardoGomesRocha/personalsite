@@ -57,6 +57,119 @@
             }
         }
 
+        .dinosaur {
+            @keyframes dinosaurAnimation {
+                0% {
+                    top: -0vw;
+                }
+
+                10% {
+                    top: -0vw;
+                }
+
+                12% {
+                    top: -4vw;
+                }
+
+                20% {
+                    top: -4vw;
+                    transform: rotateY(0deg);
+                }
+
+                21% {
+                    top: -4vw;
+                    transform: rotateY(180deg);
+                }
+
+                23% {
+                    top: -4vw;
+                    transform: rotateY(180deg);
+                }
+
+                24% {
+                    transform: rotateY(0deg);
+                    top: -4vw;
+                }
+
+                30% {
+                    top: -4vw;
+                }
+
+                33% {
+                    top: -0vw;
+                }
+
+                45% {
+                    top: -0vw
+                }
+
+                50% {
+                    top: -4vw
+                }
+
+                52% {
+                    top: -4vw;
+                    transform: rotateY(0deg);
+                }
+
+                53% {
+                    top: -4vw;
+                    transform: rotateY(180deg);
+                }
+
+                54% {
+                    transform: rotateY(0deg);
+                    top: -4vw;
+                }
+
+                60% {
+                    transform: rotateY(0deg);
+                    top: -4vw;
+                }
+
+                61% {
+                    top: -4vw;
+                    transform: rotateY(0deg);
+                }
+
+                62% {
+                    top: -4vw;
+                    transform: rotateY(180deg);
+                }
+
+                63% {
+                    transform: rotateY(0deg);
+                    top: -4vw;
+                }
+
+                75% {
+                    top: -4vw
+                }
+
+                78% {
+                    top: -8vw
+                }
+
+                85% {
+                    top: -8vw
+                }
+
+                88% {
+                    top: -0vw
+                }
+
+                100% {
+                    top: -0vw
+                }
+            }
+
+            animation: dinosaurAnimation 15s infinite;
+            top: -0vw;
+            left: 5.5vw;
+            position: absolute;
+            width: 10vw;
+        }
+
         z-index: 2;
     }
 
