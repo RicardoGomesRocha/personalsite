@@ -45,10 +45,11 @@
 
         .photo-background-wrapper {
             position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             .photo-background {
-                margin-top: 10px;
-                margin-left: 10px;
                 background-color: darken($primary-color, 15%);
                 border-radius: 100%;
                 width: 100%;
@@ -68,31 +69,31 @@
                 }
 
                 12% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                 }
 
                 20% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                     transform: rotateY(0deg);
                 }
 
                 21% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                     transform: rotateY(180deg);
                 }
 
                 23% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                     transform: rotateY(180deg);
                 }
 
                 24% {
                     transform: rotateY(0deg);
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                 }
 
                 30% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                 }
 
                 33% {
@@ -104,54 +105,54 @@
                 }
 
                 50% {
-                    top: -4vw
+                    top: var(--dinosaur-margin-top-mid)
                 }
 
                 52% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                     transform: rotateY(0deg);
                 }
 
                 53% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                     transform: rotateY(180deg);
                 }
 
                 54% {
                     transform: rotateY(0deg);
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                 }
 
                 60% {
                     transform: rotateY(0deg);
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                 }
 
                 61% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                     transform: rotateY(0deg);
                 }
 
                 62% {
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                     transform: rotateY(180deg);
                 }
 
                 63% {
                     transform: rotateY(0deg);
-                    top: -4vw;
+                    top: var(--dinosaur-margin-top-mid);
                 }
 
                 75% {
-                    top: -4vw
+                    top: var(--dinosaur-margin-top-mid)
                 }
 
                 78% {
-                    top: -8vw
+                    top: var(--dinosaur-margin-top-max)
                 }
 
                 85% {
-                    top: -8vw
+                    top: var(--dinosaur-margin-top-max)
                 }
 
                 88% {
@@ -165,9 +166,9 @@
 
             animation: dinosaurAnimation 15s infinite;
             top: -0vw;
-            left: 5.5vw;
             position: absolute;
             width: 10vw;
+
         }
 
         z-index: 2;
@@ -195,7 +196,6 @@
             max-width: 30px;
             max-height: 30px;
             text-shadow: 1px 1px darken($primary-darker-color, 15%);
-            ;
 
             &.visible {
                 opacity: 0.15;
@@ -203,5 +203,10 @@
 
 
         }
+    }
+
+    .portfolio-text {
+        color: white;
+        font-size: 2.5vw;
     }
 }
