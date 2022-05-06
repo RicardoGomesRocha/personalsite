@@ -23,15 +23,15 @@
       />
     </div>
   </div>
-  <div class="background-image" #backgroundElement>
-    <div *ngFor="let item of backgroundDivs; let i = index">
-      {{ backgroundDivs[i] }}
-    </div>
+  <div class="background-wrapper">
+    <div class="background-image"></div>
   </div>
   <div class="menu-wrapper">
     <button mat-flat-button color="primary">Home</button>
     <menu class="menu">
-      <li><button mat-flat-button color="primary">Portfolio</button></li>
+      <li>
+        <button mat-flat-button color="primary">Portfolio</button>
+      </li>
       <li><button mat-flat-button color="primary">Contact Me</button></li>
     </menu>
   </div>
@@ -46,6 +46,7 @@
   <br />gggggg <br />ggg
 </div>
 <div>
+  <i class="ei ei-arrow_up"></i>
   asdasdasdas <br />
   adsd <br />asd <br />ggg <br />ggggg <br />gggggg <br />gggggg <br />gggg
   <br />gggggg <br />ggg

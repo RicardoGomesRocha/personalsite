@@ -24,60 +24,20 @@ export class AppComponent implements AfterViewInit {
 
   rotationAngle = 0;
 
-  defaultPhotoMargin = this.defaultVwSize / 40;
+  defaultPhotoMargin = this.defaultVwSize / 10;
 
-  photoMargins = `${this.defaultPhotoMargin / 40}vw`;
-
-  backgroundDivs: number[] = [...new Array(250)].map((value, index) =>
-    index % 2 > 0 ? 1 : 0
-  );
-
+  photoMargins = `${this.defaultPhotoMargin / 10}vw`;
   defaultDinosaurSize = 10;
 
   dinosaurSize = `${this.defaultDinosaurSize}vw`;
 
-  @ViewChild('backgroundElement')
-  backgroundElement: ElementRef<HTMLDivElement> | undefined;
-
   ngAfterViewInit() {
-    const elements: HTMLCollection | undefined =
-      this.backgroundElement?.nativeElement.children;
-
     this.setDinosaurTopValue('-8vw', 'max');
     this.setDinosaurTopValue('-4vw', 'mid');
 
     // Forces to initialize all elements that depends on
     // scroll size values.
     this.onScroll();
-
-    if (elements) {
-      const numberOfElements = elements.length;
-      const maxNumberVisibleElements = numberOfElements / 10;
-
-      setInterval(() => {
-        let numberVisibleElements = this.getRandomIntInclusive(
-          0,
-          numberOfElements - 1
-        );
-
-        const positionsArray = [];
-
-        for (let i = 0; i < numberOfElements; i++) {
-          elements[i].classList.remove('visible');
-          positionsArray[i] = i;
-        }
-
-        while (numberVisibleElements > 0) {
-          const randomPosition = this.getRandomIntInclusive(
-            0,
-            numberOfElements
-          );
-          const elementsPosition = positionsArray.splice(randomPosition, 1)[0];
-          elements[elementsPosition]?.classList.add('visible');
-          numberVisibleElements--;
-        }
-      }, 1000);
-    }
   }
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
