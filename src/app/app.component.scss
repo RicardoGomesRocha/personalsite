@@ -43,6 +43,20 @@
         justify-content: center;
         position: fixed;
 
+        @keyframes photo-background-animation {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        animation: photo-background-animation 0.5s;
+
         img {
             border-radius: 100%;
             width: 20vw;
