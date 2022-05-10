@@ -1,0 +1,30 @@
+.menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    width: calc(100% - 30px);
+    left: 0;
+    padding: 0;
+    height: 70px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    button {
+        background-color: transparent !important;
+    }
+
+    menu {
+        display: flex;
+        align-items: center;
+
+        li {
+            list-style-type: none;
+
+        }
+    }
+
+    z-index: 3;
+}

@@ -1,0 +1,221 @@
+@import '../../colors.scss';
+
+.intro {
+    background-color: $primary-color;
+
+    .photo-wrapper {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+
+        @keyframes photo-background-animation {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        animation: photo-background-animation 0.5s;
+
+        img {
+            border-radius: 100%;
+            width: 20vw;
+            z-index: 1;
+            min-width: 30px;
+            min-height: 30px;
+        }
+
+        .photo-background-wrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .photo-background {
+                background-color: darken($primary-color, 15%);
+                border-radius: 100%;
+                width: 100%;
+                height: 100%;
+
+            }
+        }
+
+        .dinosaur {
+            @keyframes dinosaurAnimation {
+                0% {
+                    top: -0vw;
+                }
+
+                10% {
+                    top: -0vw;
+                }
+
+                12% {
+                    top: var(--dinosaur-margin-top-mid);
+                }
+
+                20% {
+                    top: var(--dinosaur-margin-top-mid);
+                    transform: rotateY(0deg);
+                }
+
+                21% {
+                    top: var(--dinosaur-margin-top-mid);
+                    transform: rotateY(180deg);
+                }
+
+                23% {
+                    top: var(--dinosaur-margin-top-mid);
+                    transform: rotateY(180deg);
+                }
+
+                24% {
+                    transform: rotateY(0deg);
+                    top: var(--dinosaur-margin-top-mid);
+                }
+
+                30% {
+                    top: var(--dinosaur-margin-top-mid);
+                }
+
+                33% {
+                    top: -0vw;
+                }
+
+                45% {
+                    top: -0vw
+                }
+
+                50% {
+                    top: var(--dinosaur-margin-top-mid)
+                }
+
+                52% {
+                    top: var(--dinosaur-margin-top-mid);
+                    transform: rotateY(0deg);
+                }
+
+                53% {
+                    top: var(--dinosaur-margin-top-mid);
+                    transform: rotateY(180deg);
+                }
+
+                54% {
+                    transform: rotateY(0deg);
+                    top: var(--dinosaur-margin-top-mid);
+                }
+
+                60% {
+                    transform: rotateY(0deg);
+                    top: var(--dinosaur-margin-top-mid);
+                }
+
+                61% {
+                    top: var(--dinosaur-margin-top-mid);
+                    transform: rotateY(0deg);
+                }
+
+                62% {
+                    top: var(--dinosaur-margin-top-mid);
+                    transform: rotateY(180deg);
+                }
+
+                63% {
+                    transform: rotateY(0deg);
+                    top: var(--dinosaur-margin-top-mid);
+                }
+
+                75% {
+                    top: var(--dinosaur-margin-top-mid)
+                }
+
+                78% {
+                    top: var(--dinosaur-margin-top-max)
+                }
+
+                85% {
+                    top: var(--dinosaur-margin-top-max)
+                }
+
+                88% {
+                    top: -0vw
+                }
+
+                100% {
+                    top: -0vw
+                }
+            }
+
+            animation: dinosaurAnimation 15s infinite;
+            top: -0vw;
+            position: absolute;
+            width: 10vw;
+
+        }
+
+        z-index: 2;
+    }
+
+    .background-wrapper {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+
+        overflow-x: hidden;
+        overflow-y: hidden;
+
+        z-index: 1;
+
+        .background-image {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../../assets/triangles-background.jpg');
+            background-position: center;
+            background-size: cover;
+
+
+            filter: blur(4px) contrast(100%) hue-rotate(0);
+
+            @keyframes background-animation {
+                0% {
+                    filter: blur(4px) contrast(100%) hue-rotate(0);
+                }
+
+                25% {
+                    filter: blur(7px) contrast(200%) hue-rotate(-10deg);
+                }
+
+                50% {
+                    filter: blur(4px) contrast(75%) hue-rotate(0deg);
+                }
+
+                75% {
+                    filter: blur(17px) contrast(150%) hue-rotate(10deg);
+                }
+
+                0% {
+                    filter: blur(4px) contrast(100%) hue-rotate(0deg);
+                }
+            }
+
+
+            animation: background-animation 45s infinite;
+        }
+
+
+    }
+
+    .portfolio-text {
+        color: white;
+        font-size: 2.5vw;
+    }
+}

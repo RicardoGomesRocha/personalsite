@@ -1,41 +1,4 @@
-<div class="intro">
-  <div
-    class="photo-wrapper"
-    id="photoWrapper"
-    [style.height]="photoWrapperSize"
-  >
-    <img src="./assets/ricardo-photo.jpg" [style.width]="photoSize" />
-    <div
-      class="photo-background-wrapper"
-      [style.width]="photoSize"
-      [style.height]="photoSize"
-      [style.transform]="getTransformAngle()"
-    >
-      <div
-        class="photo-background"
-        [style.margin-top]="photoMargins"
-        [style.margin-left]="photoMargins"
-      ></div>
-      <img
-        class="dinosaur"
-        src="./assets/google-dinosaur.png"
-        [style.width]="dinosaurSize"
-      />
-    </div>
-  </div>
-  <div class="background-wrapper">
-    <div class="background-image"></div>
-  </div>
-  <div class="menu-wrapper">
-    <button mat-flat-button color="primary">Home</button>
-    <menu class="menu">
-      <li>
-        <button mat-flat-button color="primary">Portfolio</button>
-      </li>
-      <li><button mat-flat-button color="primary">Contact Me</button></li>
-    </menu>
-  </div>
-</div>
+<app-intro></app-intro>
 <div class="portfolio-text">
   Any fool can write code that a computer can understand. Good programmers write
   code that humans can understand.” – Martin Fowler

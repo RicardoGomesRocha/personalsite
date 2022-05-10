@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IntroComponent } from './intro/intro.component';
 import { MaterialsModule } from './materials.module';
-import { MatButtonModule } from '@angular/material/button';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TopMenuComponent, IntroComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
