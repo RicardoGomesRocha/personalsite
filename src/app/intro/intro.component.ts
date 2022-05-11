@@ -9,7 +9,7 @@ import { IntroService } from './intro.service';
 export class IntroComponent implements AfterViewInit {
   defaultVwSize = 20;
 
-  units = `vw`;
+  units = `vh`;
 
   photoSize = `${this.defaultVwSize}${this.units}`;
 
@@ -21,7 +21,7 @@ export class IntroComponent implements AfterViewInit {
 
   defaultPhotoMargin = this.defaultVwSize / 10;
 
-  photoMargins = `${this.defaultPhotoMargin / 10}vw`;
+  photoMargins = `${this.defaultPhotoMargin / 10}${this.units}`;
 
   defaultDinosaurSize = 10;
 
@@ -55,7 +55,7 @@ export class IntroComponent implements AfterViewInit {
     this.photoMargins = `${
       this.defaultPhotoMargin -
       (percentageToFinish * this.defaultPhotoMargin) / 100
-    }vw`;
+    }${this.units}`;
 
     this.dinosaurSize =
       this.defaultDinosaurSize -
