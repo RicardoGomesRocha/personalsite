@@ -9,9 +9,10 @@
       [dinosaurSize]="dinosaurSize"
       [photoMargins]="photoMargins"
       [rotationAngle]="rotationAngle"
+      [style.opacity]="opacity"
     ></app-photo>
   </div>
-  <div class="background-wrapper">
+  <div class="background-wrapper" [style.opacity]="opacity">
     <div class="background-image"></div>
   </div>
 </div>

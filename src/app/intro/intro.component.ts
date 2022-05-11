@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, HostListener } from '@angular/core';
+import { IntroService } from './intro.service';
 
 @Component({
   selector: 'app-intro',
@@ -25,6 +26,10 @@ export class IntroComponent implements AfterViewInit {
   defaultDinosaurSize = 10;
 
   dinosaurSize = this.defaultDinosaurSize;
+
+  opacity = 1;
+
+  constructor(private readonly introService: IntroService) {}
 
   ngAfterViewInit() {
     // Forces to initialize all elements that depends on
@@ -55,5 +60,8 @@ export class IntroComponent implements AfterViewInit {
     this.dinosaurSize =
       this.defaultDinosaurSize -
       (percentageToFinish * this.defaultDinosaurSize) / 100;
+
+    this.introService.percentageToFinish$.next(percentageToFinish);
+    this.opacity = 1 - percentageToFinish / 100;
   }
 }
