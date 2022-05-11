@@ -3,4 +3,5 @@ export interface Project {
   name: string;
   backgroundImage: string;
   description: string;
+  smallDescription: string;
 }
