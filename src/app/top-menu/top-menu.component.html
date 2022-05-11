@@ -1,6 +1,10 @@
 <div class="menu-wrapper" [class.is-home]="isHomePage">
   <button mat-flat-button color="primary" routerLink="/">Home</button>
-  <app-photo [photoSize]="'30px'" [dinosaurSize]="'30px'"></app-photo>
+  <app-photo
+    [photoSize]="'30px'"
+    [dinosaurSize]="15"
+    [dinosaurUnit]="'px'"
+  ></app-photo>
   <menu class="menu">
     <li>
       <button mat-flat-button color="primary" routerLink="/portfolio">

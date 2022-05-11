@@ -24,12 +24,9 @@ export class IntroComponent implements AfterViewInit {
 
   defaultDinosaurSize = 10;
 
-  dinosaurSize = `${this.defaultDinosaurSize}vw`;
+  dinosaurSize = this.defaultDinosaurSize;
 
   ngAfterViewInit() {
-    this.setDinosaurTopValue('-8vw', 'max');
-    this.setDinosaurTopValue('-4vw', 'mid');
-
     // Forces to initialize all elements that depends on
     // scroll size values.
     this.onScroll();
@@ -55,23 +52,8 @@ export class IntroComponent implements AfterViewInit {
       (percentageToFinish * this.defaultPhotoMargin) / 100
     }vw`;
 
-    const topMaxValue = 8 - (percentageToFinish * 8) / 100;
-    const topMidValue = 4 - (percentageToFinish * 4) / 100;
-    this.setDinosaurTopValue(`-${topMaxValue}vw`, 'max');
-    this.setDinosaurTopValue(`-${topMidValue}vw`, 'mid');
-
-    this.dinosaurSize = `${
+    this.dinosaurSize =
       this.defaultDinosaurSize -
-      (percentageToFinish * this.defaultDinosaurSize) / 100
-    }vw`;
-  }
-
-  private setDinosaurTopValue(value: string, topLocations: 'mid' | 'max') {
-    const variableName =
-      topLocations === 'mid'
-        ? '--dinosaur-margin-top-mid'
-        : '--dinosaur-margin-top-max';
-
-    document.documentElement.style.setProperty(variableName, value);
+      (percentageToFinish * this.defaultDinosaurSize) / 100;
   }
 }
