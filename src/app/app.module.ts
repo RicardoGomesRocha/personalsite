@@ -6,10 +6,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IntroComponent } from './intro/intro.component';
 import { MaterialsModule } from './materials.module';
+import { PhotoComponent } from './photo/photo.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, TopMenuComponent, IntroComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    TopMenuComponent,
+    IntroComponent,
+    HomeComponent,
+    PhotoComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

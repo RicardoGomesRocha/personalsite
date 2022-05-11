@@ -4,24 +4,12 @@
     id="photoWrapper"
     [style.height]="photoWrapperSize"
   >
-    <img src="./assets/ricardo-photo.jpg" [style.width]="photoSize" />
-    <div
-      class="photo-background-wrapper"
-      [style.width]="photoSize"
-      [style.height]="photoSize"
-      [style.transform]="getTransformAngle()"
-    >
-      <div
-        class="photo-background"
-        [style.margin-top]="photoMargins"
-        [style.margin-left]="photoMargins"
-      ></div>
-      <img
-        class="dinosaur"
-        src="./assets/google-dinosaur.png"
-        [style.width]="dinosaurSize"
-      />
-    </div>
+    <app-photo
+      [photoSize]="photoSize"
+      [dinosaurSize]="dinosaurSize"
+      [photoMargins]="photoMargins"
+      [rotationAngle]="rotationAngle"
+    ></app-photo>
   </div>
   <div class="background-wrapper">
     <div class="background-image"></div>

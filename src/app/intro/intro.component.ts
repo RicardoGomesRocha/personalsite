@@ -66,16 +66,6 @@ export class IntroComponent implements AfterViewInit {
     }vw`;
   }
 
-  getTransformAngle(): string {
-    return `rotate(${this.rotationAngle}deg)`;
-  }
-
-  getRandomIntInclusive(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-  }
-
   private setDinosaurTopValue(value: string, topLocations: 'mid' | 'max') {
     const variableName =
       topLocations === 'mid'

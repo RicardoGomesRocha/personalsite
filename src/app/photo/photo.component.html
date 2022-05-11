@@ -1,0 +1,20 @@
+<div class="photo-wrapper" [style.width]="photoSize" [style.height]="photoSize">
+  <img src="./assets/ricardo-photo.jpg" [style.width]="photoSize" />
+  <div
+    class="photo-background-wrapper"
+    [style.width]="photoSize"
+    [style.height]="photoSize"
+    [style.transform]="getTransformAngle()"
+  >
+    <div
+      class="photo-background"
+      [style.margin-top]="photoMargins"
+      [style.margin-left]="photoMargins"
+    ></div>
+    <img
+      class="dinosaur"
+      src="./assets/google-dinosaur.png"
+      [style.width]="dinosaurSize"
+    />
+  </div>
+</div>

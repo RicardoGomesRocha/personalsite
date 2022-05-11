@@ -38,5 +38,14 @@
         width: 100vw;
         height: 70px;
         z-index: -1;
+        opacity: 1;
+        animation: opacity 4s ease-in-out;
+    }
+
+    &.is-home {
+        .background {
+            opacity: 0;
+
+        }
     }
 }
