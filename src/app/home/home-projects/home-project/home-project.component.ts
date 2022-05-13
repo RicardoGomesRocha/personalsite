@@ -9,4 +9,8 @@ import { Project } from 'src/app/models';
 export class HomeProjectComponent {
   @Input()
   project: Project | undefined;
+
+  getBackgroundImage(): string {
+    return `url(${this.project?.backgroundImage})`;
+  }
 }

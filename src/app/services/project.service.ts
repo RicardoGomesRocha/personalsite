@@ -10,8 +10,30 @@ export class ProjectService {
     return of([
       {
         id: '1',
-        name: 'Wow! Project.',
-        backgroundImage: '',
+        title: 'Wow! Project.',
+        backgroundImage: '/assets/triangles-background.jpg',
+        smallDescription: 'This is a small description',
+        description:
+          'This is some description. For fully example, I need to had some html!',
+        createdDate: new Date(),
+        likes: 0,
+        shares: 0,
+      },
+      {
+        id: '1',
+        title: 'Wow! Project.',
+        backgroundImage: '/assets/triangles-background.jpg',
+        smallDescription: 'This is a small description',
+        description:
+          'This is some description. For fully example, I need to had some html!',
+        createdDate: new Date(),
+        likes: 0,
+        shares: 0,
+      },
+      {
+        id: '1',
+        title: 'Wow! Project.',
+        backgroundImage: '/assets/triangles-background.jpg',
         smallDescription: 'This is a small description',
         description:
           'This is some description. For fully example, I need to had some html!',

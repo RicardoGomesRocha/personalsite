@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { IntroComponent } from './intro/intro.component';
 import { MaterialsModule } from './materials.module';
 import { PhotoComponent } from './photo/photo.component';
+import { ProjectComponent } from './projects/project/project.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     HomeProjectComponent,
     HomeBlogPostComponent,
     HomeBlogPostsComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,

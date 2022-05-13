@@ -1,6 +1,13 @@
-<h3>Check out my projects!</h3>
-<div class="project-wrapper">
-  <app-home-project></app-home-project>
-  <app-home-project></app-home-project>
-  <app-home-project></app-home-project>
+<div class="home-projects">
+  <h3>Check out my projects!</h3>
+  <div class="projects-wrapper">
+    <app-home-project
+      *ngFor="let project of $projects | async"
+      [project]="project"
+      matRipple
+    ></app-home-project>
+    <div class="all-projects" matRipple [routerLink]="['projects']">
+      See all projects.
+    </div>
+  </div>
 </div>
