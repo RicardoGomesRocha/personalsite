@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Search } from './search.model';
@@ -7,6 +7,7 @@ import { Search } from './search.model';
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SearchComponent {
   searchControl = new FormControl();

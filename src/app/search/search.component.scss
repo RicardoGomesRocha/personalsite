@@ -1,11 +1,17 @@
-mat-form-field {
-    width: 50vw;
+.mat-option {
+    height: auto !important;
+
+    mat-option {
+        height: 150px;
+    }
+
 }
 
+.search-form {
+    mat-form-field {
+        width: 50vw;
+    }
 
-
-mat-option {
-    height: 80px;
 }
 
 .search-content {
@@ -14,7 +20,13 @@ mat-option {
 
     .search-image {
         border-radius: 100%;
-        margin-right: 6px;
+        margin-right: 15px;
+    }
+
+    .lines {
+        .line {
+            height: 20px;
+        }
     }
 
     // .lines {

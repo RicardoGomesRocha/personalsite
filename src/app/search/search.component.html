@@ -21,11 +21,11 @@
             height="25"
           />
           <div class="lines">
-            <span class="title">{{ search.title }}</span>
-            <span class="text" *ngFor="let text of search.text">{{
-              text
-            }}</span>
-            <div class="categories">
+            <div class="line title">{{ search.title }}</div>
+            <div class="line text" *ngFor="let text of search.text">
+              {{ text }}
+            </div>
+            <div class="line categories">
               <span
                 class="categories"
                 *ngFor="let category of search.categories"
