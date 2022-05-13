@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { IntroService } from './intro.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { IntroService } from './intro.service';
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss'],
 })
-export class IntroComponent implements AfterViewInit {
+export class IntroComponent implements OnInit {
   defaultVwSize = 20;
 
   units = `vh`;
@@ -30,10 +30,7 @@ export class IntroComponent implements AfterViewInit {
   opacity = 1;
 
   constructor(private readonly introService: IntroService) {}
-
-  ngAfterViewInit() {
-    // Forces to initialize all elements that depends on
-    // scroll size values.
+  ngOnInit(): void {
     this.onScroll();
   }
 

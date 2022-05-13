@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { TopMenuComponent } from './top-menu.component';
 
 describe('TopMenuComponent', () => {
@@ -8,9 +8,9 @@ describe('TopMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TopMenuComponent ]
-    })
-    .compileComponents();
+      declarations: [TopMenuComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
