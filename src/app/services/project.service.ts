@@ -15,6 +15,9 @@ export class ProjectService {
         smallDescription: 'This is a small description',
         description:
           'This is some description. For fully example, I need to had some html!',
+        createdDate: new Date(),
+        likes: 0,
+        shares: 0,
       },
     ]);
   }

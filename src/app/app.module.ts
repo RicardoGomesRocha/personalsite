@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeBlogPostComponent } from './home/home-blog-posts/home-blog-post/home-blog-post.component';
+import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.component';
+import { HomeProjectComponent } from './home/home-projects/home-project/home-project.component';
+import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { HomeComponent } from './home/home.component';
 import { IntroComponent } from './intro/intro.component';
 import { MaterialsModule } from './materials.module';
@@ -16,6 +20,10 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     IntroComponent,
     HomeComponent,
     PhotoComponent,
+    HomeProjectsComponent,
+    HomeProjectComponent,
+    HomeBlogPostComponent,
+    HomeBlogPostsComponent,
   ],
   imports: [
     BrowserModule,
