@@ -1,0 +1,25 @@
+mat-form-field {
+    width: 50vw;
+}
+
+
+
+mat-option {
+    height: 80px;
+}
+
+.search-content {
+    display: flex;
+    align-items: center;
+
+    .search-image {
+        border-radius: 100%;
+        margin-right: 6px;
+    }
+
+    // .lines {
+    //     display: flex;
+    //     align-items: center;
+    //     flex-direction: column;
+    // }
+}

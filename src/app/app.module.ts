@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,8 +13,8 @@ import { IntroComponent } from './intro/intro.component';
 import { MaterialsModule } from './materials.module';
 import { PhotoComponent } from './photo/photo.component';
 import { ProjectComponent } from './projects/project/project.component';
+import { SearchComponent } from './search/search.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +27,15 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     HomeBlogPostComponent,
     HomeBlogPostsComponent,
     ProjectComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

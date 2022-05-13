@@ -1,0 +1,40 @@
+<form class="search-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Search any thing you want . . .</mat-label>
+    <input
+      matInput
+      aria-label="Search"
+      [matAutocomplete]="auto"
+      [formControl]="searchControl"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let search of search$ | async"
+        [value]="search.title"
+        routerLink="{{ search.link }}"
+      >
+        <div class="search-content">
+          <img
+            class="search-image"
+            aria-hidden
+            [src]="search.image"
+            height="25"
+          />
+          <div class="lines">
+            <span class="title">{{ search.title }}</span>
+            <span class="text" *ngFor="let text of search.text">{{
+              text
+            }}</span>
+            <div class="categories">
+              <span
+                class="categories"
+                *ngFor="let category of search.categories"
+                >{{ category }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
