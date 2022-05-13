@@ -5,7 +5,9 @@
 >
   <h2>{{ project?.title }}</h2>
   <h4>{{ project?.smallDescription }}</h4>
-  <button mat-raised-button color="primary">See more</button>
+  <button mat-raised-button color="primary">
+    See more <mat-icon>arrow_right_alt</mat-icon>
+  </button>
   <div
     class="background-image"
     [style.backgroundImage]="getBackgroundImage()"

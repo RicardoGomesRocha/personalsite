@@ -1,5 +1,12 @@
 <div class="home-projects">
-  <h3>Check out my projects!</h3>
+  <div class="description">
+    <h1>Check out my projects</h1>
+    <h3>
+      You can check all of my projects here including this website. <br />
+      Some of them are open source and you can contribute to those on github.
+    </h3>
+  </div>
+
   <div class="projects-wrapper">
     <app-home-project
       *ngFor="let project of $projects | async"
@@ -7,7 +14,9 @@
       matRipple
     ></app-home-project>
     <div class="all-projects" matRipple [routerLink]="['projects']">
-      See all projects.
+      <h3 class="text">
+        See all projects <mat-icon>arrow_right_alt</mat-icon>
+      </h3>
     </div>
   </div>
 </div>
