@@ -1,8 +1,11 @@
 .header {
+    h3 {
+        margin-bottom: 0px;
+    }
+
     .image {
         width: 100%;
         height: 30px;
-        background-image: url('/assets/triangles-background.jpg');
         background-size: cover;
     }
 

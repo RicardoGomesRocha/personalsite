@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { HomeBlogPostComponent } from './home/home-blog-posts/home-blog-post/home-blog-post.component';
 import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.component';
 import { HomeProjectComponent } from './home/home-projects/home-project/home-project.component';
@@ -28,6 +29,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     HomeBlogPostsComponent,
     ProjectComponent,
     SearchComponent,
+    BlogPostComponent,
   ],
   imports: [
     BrowserModule,
