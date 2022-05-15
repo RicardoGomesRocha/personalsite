@@ -1,0 +1,19 @@
+.home-blog-posts {
+    padding: 5vw;
+
+    .description {
+        text-align: center;
+    }
+
+    .blog-posts-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        app-home-blog-post {
+            width: 25vw;
+            margin: 2vw;
+        }
+    }
+}
