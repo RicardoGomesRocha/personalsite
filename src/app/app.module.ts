@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { HomeBlogPostComponent } from './home/home-blog-posts/home-blog-post/home-blog-post.component';
 import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.component';
+import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { HomeProjectComponent } from './home/home-projects/home-project/home-project.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { HomeComponent } from './home/home.component';
@@ -30,6 +31,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     ProjectComponent,
     SearchComponent,
     BlogPostComponent,
+    HomeFooterComponent,
   ],
   imports: [
     BrowserModule,
