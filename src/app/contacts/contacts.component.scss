@@ -10,5 +10,10 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+
+        app-social-media {
+            width: 100px;
+            height: 100px;
+        }
     }
 }
