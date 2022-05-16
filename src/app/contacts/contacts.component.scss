@@ -4,6 +4,7 @@
     justify-content: center;
     width: 100vw;
     flex-direction: column;
+    margin-bottom: 5vh;
 
     .social-media-wrapper {
         display: flex;
@@ -16,4 +17,19 @@
             height: 100px;
         }
     }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 40vw);
+
+        button {
+            width: 125px;
+            align-self: end;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
 }

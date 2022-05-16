@@ -1,10 +1,8 @@
 /**
 * Generated theme by Material Theme Generator
 * https://materialtheme.arcsine.dev
-* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzI0Nzg4MSIsIj9lcjwjYmRkN2Q5IiwiO2VyPCMxNjViNjR$LCIlPmBePCM0MzkxOWIiLCI~ZXI8I2M3ZGVlMSIsIjtlcjwjMmM3NDdmfiwid2Fybj5gXjwjZmYwMDAwIiwiP2VyPCNmZmIzYjMiLCI7ZXI8I2ZmMDAwMH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZjZmYmZiIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMxMjI5MmJ$LCJmb250cz5bYEA8KC00IiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPCgtMyIsImZhbWlseTxNb250c2VycmF0fixgQDwoLTIiLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8KC0xIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPGhlYWRsaW5lIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPHRpdGxlIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPHN1YiktMiIsImZhbWlseTxNb250c2VycmF0fixgQDxzdWIpLTEiLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8Ym9keS0yIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPGJvZHktMSIsImZhbWlseTxNb250c2VycmF0fixgQDxidXR0b24iLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8Y2FwdGlvbiIsImZhbWlseTxNb250c2VycmF0fixgQDxpbnB1dCIsImZhbWlseTxNb250c2VycmF0Iiwic2l6ZT5udWxsfV0sImljb25zPEZpbGxlZCIsIj9uZXNzPmZhbHNlLCJ2ZXJzaW9uPjEzfQ==
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzI0Nzg4MSIsIj9lcjwjYmRkN2Q5IiwiO2VyPCMxNjViNjR$LCIlPmBePCM0MzkxOWIiLCI~ZXI8I2M3ZGVlMSIsIjtlcjwjMmM3NDdmfiwid2Fybj5gXjwjZmYwMDAwIiwiP2VyPCNmZmIzYjMiLCI7ZXI8I2ZmMDAwMH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZjZmYmZiIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMxMjI5MmJ$LCJmb250cz5bYEA8KC00IiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPCgtMyIsImZhbWlseTxNb250c2VycmF0fixgQDwoLTIiLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8KC0xIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPGhlYWRsaW5lIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPHRpdGxlIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPHN1YiktMiIsImZhbWlseTxNb250c2VycmF0fixgQDxzdWIpLTEiLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8Ym9keS0yIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPGJvZHktMSIsImZhbWlseTxNb250c2VycmF0fixgQDxidXR0b24iLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8Y2FwdGlvbiIsImZhbWlseTxNb250c2VycmF0fixgQDxpbnB1dCIsImZhbWlseTxNb250c2VycmF0Iiwic2l6ZT5udWxsfV0sImljb25zPEZpbGxlZCIsIj9uZXNzPnRydWUsInZlcnNpb24$MTN9
 */
-
-// CHANGES COULD ME MADE USING THIS LINK: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzI0Nzg4MSIsIj9lcjwjYmRkN2Q5IiwiO2VyPCMxNjViNjR$LCIlPmBePCM0MzkxOWIiLCI~ZXI8I2M3ZGVlMSIsIjtlcjwjMmM3NDdmfiwid2Fybj5gXjwjZmYwMDAwIiwiP2VyPCNmZmIzYjMiLCI7ZXI8I2ZmMDAwMH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZjZmYmZiIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMxMjI5MmJ$LCJmb250cz5bYEA8KC00IiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPCgtMyIsImZhbWlseTxNb250c2VycmF0fixgQDwoLTIiLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8KC0xIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPGhlYWRsaW5lIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPHRpdGxlIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPHN1YiktMiIsImZhbWlseTxNb250c2VycmF0fixgQDxzdWIpLTEiLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8Ym9keS0yIiwiZmFtaWx5PE1vbnRzZXJyYXR$LGBAPGJvZHktMSIsImZhbWlseTxNb250c2VycmF0fixgQDxidXR0b24iLCJmYW1pbHk8TW9udHNlcnJhdH4sYEA8Y2FwdGlvbiIsImZhbWlseTxNb250c2VycmF0fixgQDxpbnB1dCIsImZhbWlseTxNb250c2VycmF0Iiwic2l6ZT5udWxsfV0sImljb25zPEZpbGxlZCIsIj9uZXNzPmZhbHNlLCJ2ZXJzaW9uPjEzfQ==
 
 @use '@angular/material'as mat;
 
@@ -14,7 +12,6 @@
 // Fonts
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
-@import './colors.scss';
 
 $fontConfig: (display-4: mat.define-typography-level(112px, 112px, 300, 'Montserrat', -0.0134em),
     display-3: mat.define-typography-level(56px, 56px, 400, 'Montserrat', -0.0089em),
@@ -146,18 +143,18 @@ $mat-dark-theme-background: (background: $dark-background,
 // Theme Config
 
 body {
-    --primary-color: $primary-color;
-    --primary-lighter-color: $primary-lighter-color;
-    --primary-darker-color: $primary-darker-color;
+    --primary-color: #247881;
+    --primary-lighter-color: #bdd7d9;
+    --primary-darker-color: #165b64;
     --text-primary-color: #{$light-primary-text};
     --text-primary-lighter-color: #{$dark-primary-text};
     --text-primary-darker-color: #{$light-primary-text};
 }
 
-$mat-primary: (main: $primary-color,
-    lighter: $primary-lighter-color,
-    darker: $primary-darker-color,
-    200: $primary-color, // For slide toggle,
+$mat-primary: (main: #247881,
+    lighter: #bdd7d9,
+    darker: #165b64,
+    200: #247881, // For slide toggle,
     contrast : (main: $light-primary-text,
         lighter: $dark-primary-text,
         darker: $light-primary-text,
@@ -208,16 +205,16 @@ $theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
 $theme: (primary: $theme-primary,
     accent: $theme-accent,
     warn: $theme-warn,
-    is-dark: true,
-    foreground: $mat-dark-theme-foreground,
-    background: $mat-dark-theme-background,
+    is-dark: false,
+    foreground: $mat-light-theme-foreground,
+    background: $mat-light-theme-background,
 );
 $altTheme: (primary: $theme-primary,
     accent: $theme-accent,
     warn: $theme-warn,
-    is-dark: false,
-    foreground: $mat-light-theme-foreground,
-    background: $mat-light-theme-background,
+    is-dark: true,
+    foreground: $mat-dark-theme-foreground,
+    background: $mat-dark-theme-background,
 );
 
 // Theme Init

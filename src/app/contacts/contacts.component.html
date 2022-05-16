@@ -34,12 +34,21 @@
     ></app-social-media>
   </div>
   <h3>Contact me!</h3>
-  <div class="contact-form">
-    <form>
-      <mat-form-field appearance="outline" color="primary">
-        <mat-label>Title</mat-label>
-        <input matInput placeholder="It's me! Mario!" color="primary" />
-      </mat-form-field>
-    </form>
-  </div>
+  <form class="contact-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="It's me! Mario!" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        rows="12"
+        placeholder="Wake up, Luigi! The only time plumbers sleep on the job is when we're working by the hour."
+      ></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary">
+      <mat-icon>send</mat-icon> Send
+    </button>
+  </form>
 </div>
