@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { SocialMediaComponent } from './contacts/social-media/social-media.component';
 import { HomeBlogPostComponent } from './home/home-blog-posts/home-blog-post/home-blog-post.component';
 import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.component';
 import { HomeFooterComponent } from './home/home-footer/home-footer.component';
@@ -32,6 +34,8 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     SearchComponent,
     BlogPostComponent,
     HomeFooterComponent,
+    ContactsComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,

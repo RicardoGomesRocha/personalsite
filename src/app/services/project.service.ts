@@ -11,7 +11,7 @@ export class ProjectService {
       {
         id: '1',
         title: 'Wow! Project.',
-        backgroundImage: '/assets/triangles-background.jpg',
+        backgroundImage: '/assets/images/triangles-background.jpg',
         smallDescription: 'This is a small description',
         description:
           'This is some description. For fully example, I need to had some html!',
@@ -22,7 +22,7 @@ export class ProjectService {
       {
         id: '1',
         title: 'Wow! Project.',
-        backgroundImage: '/assets/triangles-background.jpg',
+        backgroundImage: '/assets/images/triangles-background.jpg',
         smallDescription: 'This is a small description',
         description:
           'This is some description. For fully example, I need to had some html!',
@@ -33,7 +33,7 @@ export class ProjectService {
       {
         id: '1',
         title: 'Wow! Project.',
-        backgroundImage: '/assets/triangles-background.jpg',
+        backgroundImage: '/assets/images/triangles-background.jpg',
         smallDescription: 'This is a small description',
         description:
           'This is some description. For fully example, I need to had some html!',

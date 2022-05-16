@@ -11,7 +11,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
@@ -19,7 +19,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
@@ -27,7 +27,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
@@ -35,7 +35,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
@@ -43,7 +43,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
@@ -51,7 +51,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
@@ -59,7 +59,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
@@ -67,7 +67,7 @@ export class BlogService {
       {
         id: '1',
         title: 'Some title that makes sense',
-        image: '/assets/triangles-background.jpg',
+        image: '/assets/images/triangles-background.jpg',
         body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
         createDate: new Date(),
         likes: 0,
