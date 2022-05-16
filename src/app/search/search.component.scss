@@ -10,6 +10,21 @@
 .search-form {
     mat-form-field {
         width: 50vw;
+        color: white !important;
+
+        .mat-form-field-outline {
+            color: white !important;
+            background-color: #ffffff1c;
+        }
+
+        mat-label {
+            color: white;
+        }
+
+        .mat-icon {
+            font-size: 25px;
+            margin-right: 5px;
+        }
     }
 
 }

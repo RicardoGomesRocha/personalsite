@@ -1,12 +1,13 @@
 <form class="search-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Search any thing you want . . .</mat-label>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Search any thing you want</mat-label>
     <input
       matInput
       aria-label="Search"
       [matAutocomplete]="auto"
       [formControl]="searchControl"
     />
+    <mat-icon matPrefix>search</mat-icon>
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option
         *ngFor="let search of search$ | async"
