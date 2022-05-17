@@ -1,5 +1,9 @@
-<div class="side-bar" *ngIf="$openState | async">
-  <div class="side-bar-content">
+<div class="side-bar">
+  <div
+    class="side-bar-content"
+    *ngIf="$openState | async"
+    [@inOutAnimationMenu]
+  >
     <div class="side-bar-content-wrapper">
       <button
         mat-flat-button
@@ -9,7 +13,10 @@
       >
         <mat-icon>close</mat-icon>
       </button>
-      <menu class="menu">
+      <menu class="menu" (click)="closeMenu()">
+        <li>
+          <button mat-flat-button color="primary" routerLink="/">Home</button>
+        </li>
         <li>
           <button mat-flat-button color="primary" routerLink="/portfolio">
             Portfolio
@@ -29,14 +36,6 @@
           <button mat-flat-button color="primary" routerLink="/contacts">
             Contacts
           </button>
-        </li>
-        <li>
-          <button mat-raised-button color="accent">Login</button>
-        </li>
-        <li class="theme">
-          <mat-icon matPrefix class="moon">brightness_2</mat-icon>
-          <mat-slide-toggle> </mat-slide-toggle>
-          <mat-icon matSuffix class="sun">wb_sunny</mat-icon>
         </li>
         <li>
           <div id="donate-button-container">
@@ -59,7 +58,23 @@
           </div>
         </li>
       </menu>
+
+      <div class="bottom-part">
+        <div class="theme">
+          <mat-icon matPrefix class="moon">brightness_2</mat-icon>
+          <mat-slide-toggle> </mat-slide-toggle>
+          <mat-icon matSuffix class="sun">wb_sunny</mat-icon>
+        </div>
+        <div>
+          <button mat-raised-button color="accent">Login</button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="side-bar-screen" (click)="closeMenu()"></div>
+  <div
+    class="side-bar-screen"
+    (click)="closeMenu()"
+    *ngIf="$openState | async"
+    [@inOutAnimationOpacity]
+  ></div>
 </div>

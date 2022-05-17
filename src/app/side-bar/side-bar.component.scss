@@ -5,15 +5,13 @@
     width: 300px;
     height: 100vh;
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
     background-image: url(../../assets/images/triangles-background.jpg);
     background-size: cover;
     background-color: $primary-color;
     z-index: 4;
-    box-shadow: 8px 7px 19px 4px #0000008f;
-
-
+    box-shadow: -6px 7px 19px 4px #0000008f;
 
     .side-bar-content-wrapper {
         position: relative;
@@ -21,7 +19,7 @@
         .close-button {
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             margin: 16px;
             background: transparent;
         }
@@ -41,25 +39,33 @@
 
             li {
                 list-style-type: none;
-
-                &.theme {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    .moon {
-                        color: #646464;
-                        transform: rotate(29deg);
-                    }
-
-                    .sun {
-                        color: #ffd400;
-                    }
-                }
-
             }
         }
 
+        .bottom-part {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            width: calc(100% - 40px);
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px;
+
+            .theme {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .moon {
+                    color: #646464;
+                    transform: rotate(29deg);
+                }
+
+                .sun {
+                    color: #ffd400;
+                }
+            }
+        }
     }
 }
 

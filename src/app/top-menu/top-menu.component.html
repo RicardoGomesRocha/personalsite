@@ -1,13 +1,12 @@
 <div class="menu-wrapper" [class.is-home]="isHomePage">
-  <button mat-flat-button color="primary" routerLink="/">Home</button>
+  <button mat-flat-button color="primary" (click)="openMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <app-photo
     [photoSize]="'30px'"
     [dinosaurSize]="15"
     [dinosaurUnit]="'px'"
     [style.opacity]="opacity"
   ></app-photo>
-  <button mat-flat-button color="primary" (click)="openMenu()">
-    <mat-icon>menu</mat-icon>
-  </button>
   <div class="background" [style.opacity]="opacity"></div>
 </div>
