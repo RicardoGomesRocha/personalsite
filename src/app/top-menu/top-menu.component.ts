@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IntroService } from '../intro';
+import { SideBarService } from '../side-bar/side-bar.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -14,7 +15,8 @@ export class TopMenuComponent {
 
   constructor(
     private router: Router,
-    private readonly introService: IntroService
+    private readonly introService: IntroService,
+    private readonly sideBarService: SideBarService
   ) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
@@ -26,5 +28,9 @@ export class TopMenuComponent {
         this.opacity = 1;
       }
     });
+  }
+
+  openMenu() {
+    this.sideBarService.$openState.next(true);
   }
 }

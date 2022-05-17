@@ -18,6 +18,7 @@ import { MaterialsModule } from './materials.module';
 import { PhotoComponent } from './photo/photo.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { SearchComponent } from './search/search.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     HomeFooterComponent,
     ContactsComponent,
     SocialMediaComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,

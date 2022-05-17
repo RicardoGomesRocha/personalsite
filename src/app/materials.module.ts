@@ -5,6 +5,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
   exports: [
     MatButtonModule,
@@ -14,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
     MatAutocompleteModule,
     MatIconModule,
     MatInputModule,
+    MatSlideToggleModule,
+    MatSidenavModule,
   ],
 })
 export class MaterialsModule {}

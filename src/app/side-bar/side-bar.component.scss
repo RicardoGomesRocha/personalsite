@@ -1,0 +1,75 @@
+@import '../../colors.scss';
+
+
+.side-bar-content {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-image: url(../../assets/images/triangles-background.jpg);
+    background-size: cover;
+    background-color: $primary-color;
+    z-index: 4;
+    box-shadow: 8px 7px 19px 4px #0000008f;
+
+
+
+    .side-bar-content-wrapper {
+        position: relative;
+
+        .close-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 16px;
+            background: transparent;
+        }
+
+        menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+
+            button {
+                background: transparent
+            }
+
+            li {
+                list-style-type: none;
+
+                &.theme {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .moon {
+                        color: #646464;
+                        transform: rotate(29deg);
+                    }
+
+                    .sun {
+                        color: #ffd400;
+                    }
+                }
+
+            }
+        }
+
+    }
+}
+
+.side-bar-screen {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    position: fixed;
+    background-color: #0000003d;
+    cursor: pointer;
+}
