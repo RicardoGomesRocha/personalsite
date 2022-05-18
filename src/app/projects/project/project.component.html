@@ -1,1 +1,38 @@
-<p>project works!</p>
+<div
+  class="project-wrapper"
+  *ngIf="project"
+  [routerLink]="['project/', project.id]"
+>
+  <h2>{{ project?.title }}</h2>
+  <h4>{{ project?.smallDescription }}</h4>
+  <button mat-raised-button color="primary" class="see-more">
+    See more <mat-icon>arrow_right_alt</mat-icon>
+  </button>
+  <div
+    class="background-image"
+    [style.backgroundImage]="getBackgroundImage()"
+  ></div>
+  <button
+    class="context-menu"
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Delete Project</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    <span>Edit Project</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>add_circle_outline</mat-icon>
+    <span>Add Project</span>
+  </button>
+</mat-menu>

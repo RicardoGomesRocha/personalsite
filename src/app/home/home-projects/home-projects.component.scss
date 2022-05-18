@@ -19,10 +19,8 @@
         justify-content: center;
         flex-wrap: wrap;
 
-        app-home-project,
+        app-project,
         .all-projects {
-            width: 300px;
-            height: 300px;
             margin: 20px;
             cursor: pointer;
         }
@@ -32,8 +30,8 @@
             align-items: center;
             justify-content: center;
             background-color: $primary-color;
-            width: 300px;
-            height: 300px;
+            width: 340px;
+            height: 340px;
             position: relative;
             color: white;
 

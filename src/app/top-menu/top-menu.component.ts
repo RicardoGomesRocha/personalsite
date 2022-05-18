@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 import { IntroService } from '../intro';
+import { RouteService } from '../services/route.service';
 import { SideBarService } from '../side-bar/side-bar.service';
 
 @Component({
@@ -14,13 +14,13 @@ export class TopMenuComponent {
   opacity = 1;
 
   constructor(
-    private router: Router,
+    private readonly routeService: RouteService,
     private readonly introService: IntroService,
     private readonly sideBarService: SideBarService
   ) {
-    this.router.events.subscribe((event: any) => {
-      if (event instanceof NavigationEnd) {
-        this.isHomePage = event.url === '/' || event.url.includes('home');
+    this.routeService.$isHomePage.subscribe((isHomePage) => {
+      this.isHomePage = isHomePage;
+      if (this.isHomePage) {
         this.introService.percentageToFinish$.subscribe(
           (value) => (this.opacity = value / 100)
         );

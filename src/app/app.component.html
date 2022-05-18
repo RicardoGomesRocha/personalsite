@@ -1,5 +1,5 @@
 <app-top-menu></app-top-menu>
-<div class="page-content">
+<div class="page-content" [class.home-page]="$isHome | async">
   <router-outlet></router-outlet>
 </div>
 <app-side-bar></app-side-bar>

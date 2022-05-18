@@ -8,11 +8,11 @@
   </div>
 
   <div class="projects-wrapper">
-    <app-home-project
+    <app-project
       *ngFor="let project of $projects | async"
       [project]="project"
       matRipple
-    ></app-home-project>
+    ></app-project>
     <div class="all-projects" matRipple [routerLink]="['projects']">
       <h3 class="text">
         See all projects <mat-icon>arrow_right_alt</mat-icon>
