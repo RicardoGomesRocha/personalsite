@@ -11,16 +11,17 @@ export class AuthService {
 
   constructor(private readonly auth: AngularFireAuth) {}
 
-  login(provider = AuthProviders.Google) {
+  login(
+    provider = AuthProviders.Google
+  ): Observable<firebase.auth.UserCredential> {
     switch (provider) {
       case AuthProviders.Google:
-        this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-        break;
+        return from(
+          this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        );
     }
-    this.auth.user.subscribe((user) => {
-      console.log(user);
-    });
   }
+
   logout(): Observable<void> {
     return from(this.auth.signOut());
   }

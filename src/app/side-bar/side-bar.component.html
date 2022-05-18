@@ -70,7 +70,8 @@
             mat-raised-button
             color="accent"
             routerLink="/login"
-            *ngIf="$authState | async"
+            *ngIf="($authState | async) === false"
+            (click)="closeMenu()"
           >
             Login
           </button>
@@ -78,7 +79,7 @@
             mat-raised-button
             color="accent"
             (click)="logout()"
-            *ngIf="!($authState | async)"
+            *ngIf="$authState | async"
           >
             Logout
           </button>
