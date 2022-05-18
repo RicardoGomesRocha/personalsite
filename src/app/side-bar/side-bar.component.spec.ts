@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MockProvider } from 'ng-mocks';
+import { AuthService } from '../services/auth.service';
 import { SideBarComponent } from './side-bar.component';
 
 describe('SideBarComponent', () => {
@@ -8,9 +9,9 @@ describe('SideBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SideBarComponent ]
-    })
-    .compileComponents();
+      declarations: [SideBarComponent],
+      providers: [MockProvider(AuthService)],
+    }).compileComponents();
   });
 
   beforeEach(() => {
