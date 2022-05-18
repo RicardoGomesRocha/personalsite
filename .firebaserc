@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "personalwebsite-28065"
+  },
+  "targets": {
+    "personalwebsite-28065": {
+      "hosting": {
+        "personalsite": [
+          "personalwebsite-28065"
+        ]
+      }
+    }
   }
 }

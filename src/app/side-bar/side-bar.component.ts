@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { SideBarService } from './side-bar.service';
 
 @Component({
@@ -31,10 +32,18 @@ import { SideBarService } from './side-bar.service';
 })
 export class SideBarComponent {
   $openState = this.sidebarService.$openState;
+  $authState = this.authService.$authState;
 
-  constructor(private readonly sidebarService: SideBarService) {}
+  constructor(
+    private readonly sidebarService: SideBarService,
+    private readonly authService: AuthService
+  ) {}
 
   closeMenu() {
     this.sidebarService.$openState.next(false);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

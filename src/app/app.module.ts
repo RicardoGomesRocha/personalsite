@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire/compat';
+import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
@@ -14,12 +17,14 @@ import { HomeProjectComponent } from './home/home-projects/home-project/home-pro
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { HomeComponent } from './home/home.component';
 import { IntroComponent } from './intro/intro.component';
+import { LoginComponent } from './login/login.component';
 import { MaterialsModule } from './materials.module';
 import { PhotoComponent } from './photo/photo.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { SearchComponent } from './search/search.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +43,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     ContactsComponent,
     SocialMediaComponent,
     SideBarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,8 +52,9 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     MaterialsModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [],
+  providers: [{ provide: PERSISTENCE, useValue: 'local' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
