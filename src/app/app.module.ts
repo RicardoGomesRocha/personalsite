@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
+import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SocialMediaComponent } from './contacts/social-media/social-media.component';
 import { HomeBlogPostComponent } from './home/home-blog-posts/home-blog-post/home-blog-post.component';
@@ -27,7 +27,6 @@ import { ViewProjectComponent } from './projects/view-project/view-project.compo
 import { SearchComponent } from './search/search.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +48,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     LoginComponent,
     ProjectsComponent,
     EditProjectComponent,
+    BottomMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +58,6 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    MatMenuModule,
   ],
   providers: [{ provide: PERSISTENCE, useValue: 'local' }],
   bootstrap: [AppComponent],

@@ -1,11 +1,12 @@
-<div
-  class="project-wrapper"
-  *ngIf="project"
-  [routerLink]="['/projects', project.id]"
->
+<div class="project-wrapper" *ngIf="project">
   <h2>{{ project?.title }}</h2>
   <h4>{{ project?.smallDescription }}</h4>
-  <button mat-raised-button color="primary" class="see-more">
+  <button
+    mat-raised-button
+    color="primary"
+    class="see-more"
+    [routerLink]="['/projects', project.id]"
+  >
     See more <mat-icon>arrow_right_alt</mat-icon>
   </button>
   <div

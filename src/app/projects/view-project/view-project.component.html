@@ -9,16 +9,34 @@
     </h5>
   </div>
   <h3>{{ project.smallDescription }}</h3>
+  <div class="small-bar">
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="Example icon button with a menu icon"
+      matBadge="8"
+      matBadgePosition="before"
+      matBadgeColor="warn"
+    >
+      <mat-icon>favorite_border</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="accent"
+      aria-label="Example icon button with a menu icon"
+      (click)="openShareMenu()"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" [routerLink]="['edit']">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
   <div
     class="background-image"
     [style.backgroundImage]="'url(' + project.backgroundImage + ')'"
   ></div>
   <div class="description">
     {{ project.description }}
-  </div>
-  <div class="edit-button">
-    <button mat-raised-button color="primary" [routerLink]="['edit']">
-      <mat-icon>edit</mat-icon> Edit
-    </button>
   </div>
 </div>

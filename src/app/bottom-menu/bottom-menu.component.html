@@ -1,0 +1,6 @@
+<mat-list *ngIf="items">
+  <mat-list-item *ngFor="let item of items" (click)="item.click()">
+    <span mat-line *ngFor="let line of item.lines">{{ line }}</span>
+    <mat-icon>{{ item.icon }}</mat-icon>
+  </mat-list-item>
+</mat-list>
