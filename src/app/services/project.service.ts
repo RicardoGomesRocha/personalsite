@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { filter, map, Observable, of } from 'rxjs';
+import { first, flatMap, Observable, of } from 'rxjs';
 import { Project } from '../models';
 
 @Injectable({
@@ -44,8 +44,8 @@ export class ProjectService {
 
   getProject(id: string): Observable<Project> {
     return this.$projects.pipe(
-      filter((projects, index) => projects[index].id === id),
-      map((project) => project[0])
+      flatMap((projects) => projects),
+      first((project) => project.id === id)
     );
   }
 }
