@@ -11,7 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ViewProjectComponent {
   $project: Observable<Project>;
-  editMode = false;
+  project: Project | undefined;
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute
@@ -19,5 +19,6 @@ export class ViewProjectComponent {
     this.$project = this.projectService.getProject(
       route.snapshot.paramMap.get('id') || ''
     );
+    this.$project.subscribe((project) => (this.project = project));
   }
 }

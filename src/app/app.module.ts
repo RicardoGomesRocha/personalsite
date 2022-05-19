@@ -20,6 +20,7 @@ import { IntroComponent } from './intro/intro.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialsModule } from './materials.module';
 import { PhotoComponent } from './photo/photo.component';
+import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ViewProjectComponent } from './projects/view-project/view-project.component';
@@ -47,6 +48,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     SideBarComponent,
     LoginComponent,
     ProjectsComponent,
+    EditProjectComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,8 @@
+<form class="project" [formGroup]="projectForm" (submit)="save()">
+  <mat-form-field appearance="standard">
+    <input matInput formControlName="title" type="text" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">
+    <mat-icon>save</mat-icon> Save
+  </button>
+</form>

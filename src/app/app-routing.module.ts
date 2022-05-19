@@ -11,6 +11,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ViewProjectComponent } from './projects/view-project/view-project.component';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'blog/:id', component: BlogPostComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/:id', component: ViewProjectComponent },
+  { path: 'projects/:id/edit', component: EditProjectComponent },
   {
     path: 'contacts',
     component: ContactsComponent,

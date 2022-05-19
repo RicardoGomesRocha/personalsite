@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { first, flatMap, Observable } from 'rxjs';
+import { first, flatMap, from, Observable } from 'rxjs';
 import { Project } from '../models';
 
 @Injectable({
@@ -25,5 +25,9 @@ export class ProjectService {
       flatMap((projects) => projects),
       first((project) => project.id === id)
     );
+  }
+
+  setProject(project: Project): Observable<void> {
+    return from(this.projectsCollection.doc(project.id).set(project));
   }
 }

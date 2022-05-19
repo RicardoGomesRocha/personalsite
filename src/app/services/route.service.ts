@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,5 +21,9 @@ export class RouteService {
         this.isHomePage = isHomePage;
       }
     });
+  }
+
+  navigate(commands: any[], extras?: NavigationExtras): Observable<boolean> {
+    return from(this.router.navigate(commands, extras));
   }
 }

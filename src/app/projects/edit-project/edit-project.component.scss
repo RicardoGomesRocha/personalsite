@@ -1,0 +1,15 @@
+.project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5vw;
+    position: relative;
+
+    mat-form-field {
+        text-align: center;
+        width: 100%;
+    }
+
+
+}

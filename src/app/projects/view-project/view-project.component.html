@@ -1,5 +1,5 @@
-<div class="project" *ngIf="$project | async as project">
-  <h1 [contentEditable]="true">{{ project.title }}</h1>
+<div class="project" *ngIf="project">
+  <h1>{{ project.title }}</h1>
   <div class="dates">
     <h5>
       Created on: {{ project.createdDate | date }}
@@ -17,21 +17,8 @@
     {{ project.description }}
   </div>
   <div class="edit-button">
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="editMode = !editMode"
-      *ngIf="!editMode"
-    >
+    <button mat-raised-button color="primary" [routerLink]="['edit']">
       <mat-icon>edit</mat-icon> Edit
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="editMode = !editMode"
-      *ngIf="editMode"
-    >
-      <mat-icon>save</mat-icon> Save
     </button>
   </div>
 </div>
