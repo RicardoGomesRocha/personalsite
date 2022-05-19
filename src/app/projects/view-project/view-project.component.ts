@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { BottomMenuService } from 'src/app/bottom-menu/bottom-menu.service';
 import { Project } from 'src/app/models';
 import { ProjectService } from 'src/app/services/project.service';
+import { ShareService } from 'src/app/services/share.service';
 
 @Component({
   selector: 'app-view-project',
@@ -16,7 +16,7 @@ export class ViewProjectComponent {
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute,
-    private readonly bottomMenuService: BottomMenuService
+    private readonly shareService: ShareService
   ) {
     this.$project = this.projectService.getProject(
       route.snapshot.paramMap.get('id') || ''
@@ -25,12 +25,6 @@ export class ViewProjectComponent {
   }
 
   openShareMenu() {
-    this.bottomMenuService.openBottomMenu([
-      {
-        icon: 'share',
-        lines: ['Facebook'],
-        click: () => alert('Share on facebook'),
-      },
-    ]);
+    this.shareService.share('Im a page :)', window.location.href);
   }
 }

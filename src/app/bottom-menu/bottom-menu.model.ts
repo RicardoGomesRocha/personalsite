@@ -1,5 +1,5 @@
 export interface BottomMenuItem {
-  icon: string;
+  icon?: string;
   lines: string[];
   click: () => void;
 }
