@@ -12,7 +12,8 @@ export class ShareService {
       {
         icon: '',
         lines: ['Twitter'],
-        click: () => alert('not implemented yet'),
+        click: () =>
+          (window.location.href = `https://twitter.com/intent/tweet?text=${message}&url=${link}`),
       },
       {
         icon: '',
