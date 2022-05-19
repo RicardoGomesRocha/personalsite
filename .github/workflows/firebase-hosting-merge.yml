@@ -15,7 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -41,10 +40,12 @@ jobs:
           npm ci
 
       - name: Build
+        env: 
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
         run: |
           npm run build --prod
-      - name: Lint
 
+      - name: Lint
         run: |
           npm run lint
       - name: Test
