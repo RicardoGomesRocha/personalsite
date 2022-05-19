@@ -11,8 +11,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { ProjectComponent } from './projects/project/project.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { ViewProjectComponent } from './projects/view-project/view-project.component';
 
 // More about auth guards here: https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'blog', component: PortfolioComponent },
   { path: 'blog/:id', component: BlogPostComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: 'projects/:id', component: ProjectComponent },
+  { path: 'projects/:id', component: ViewProjectComponent },
   {
     path: 'contacts',
     component: ContactsComponent,

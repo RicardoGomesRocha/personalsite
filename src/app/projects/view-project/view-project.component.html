@@ -1,1 +1,11 @@
-<p>project works!</p>
+<div class="project" *ngIf="$project | async as project">
+  <h1>{{ project.title }}</h1>
+  <h3>{{ project.smallDescription }}</h3>
+  <div
+    class="background-image"
+    [style.backgroundImage]="'url(' + project.backgroundImage + ')'"
+  ></div>
+  <div class="description">
+    {{ project.description }}
+  </div>
+</div>

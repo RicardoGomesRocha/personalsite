@@ -1,7 +1,7 @@
 <div
   class="project-wrapper"
   *ngIf="project"
-  [routerLink]="['project/', project.id]"
+  [routerLink]="['/projects', project.id]"
 >
   <h2>{{ project?.title }}</h2>
   <h4>{{ project?.smallDescription }}</h4>

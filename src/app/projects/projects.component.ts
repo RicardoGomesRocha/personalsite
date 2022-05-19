@@ -12,6 +12,6 @@ export class ProjectsComponent {
   $projects: Observable<Project[]>;
 
   constructor(private readonly projectService: ProjectService) {
-    this.$projects = this.projectService.getProjects();
+    this.$projects = this.projectService.$projects;
   }
 }
