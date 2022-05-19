@@ -11,6 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ViewProjectComponent {
   $project: Observable<Project>;
+  editMode = false;
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute

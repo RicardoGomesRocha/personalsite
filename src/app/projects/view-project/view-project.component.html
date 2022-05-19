@@ -1,5 +1,13 @@
 <div class="project" *ngIf="$project | async as project">
-  <h1>{{ project.title }} | {{ project.id }}</h1>
+  <h1 [contentEditable]="true">{{ project.title }}</h1>
+  <div class="dates">
+    <h5>
+      Created on: {{ project.createdDate | date }}
+      <span *ngIf="project.modifiedDate"
+        >Modify on: {{ project.modifiedDate | date }}</span
+      >
+    </h5>
+  </div>
   <h3>{{ project.smallDescription }}</h3>
   <div
     class="background-image"
@@ -7,5 +15,23 @@
   ></div>
   <div class="description">
     {{ project.description }}
+  </div>
+  <div class="edit-button">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="editMode = !editMode"
+      *ngIf="!editMode"
+    >
+      <mat-icon>edit</mat-icon> Edit
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="editMode = !editMode"
+      *ngIf="editMode"
+    >
+      <mat-icon>save</mat-icon> Save
+    </button>
   </div>
 </div>

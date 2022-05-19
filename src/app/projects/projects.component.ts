@@ -13,5 +13,6 @@ export class ProjectsComponent {
 
   constructor(private readonly projectService: ProjectService) {
     this.$projects = this.projectService.$projects;
+    this.$projects.subscribe((project) => console.log(project));
   }
 }
