@@ -9,3 +9,8 @@ export interface Project {
   createdDate: Date;
   modifiedDate?: Date;
 }
+
+export interface ProjectSaveStatus {
+  percentage: number;
+  projectId?: string;
+}

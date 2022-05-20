@@ -14,6 +14,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ViewProjectComponent } from './projects/view-project/view-project.component';
+import { UsersComponent } from './users/users.component';
 
 // More about auth guards here: https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 
@@ -23,9 +24,23 @@ const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'blog', component: PortfolioComponent },
   { path: 'blog/:id', component: BlogPostComponent },
+  {
+    path: 'project/create',
+    component: EditProjectComponent,
+    data: {
+      mode: 'create',
+    },
+  },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/:id', component: ViewProjectComponent },
-  { path: 'projects/:id/edit', component: EditProjectComponent },
+  {
+    path: 'projects/:id/edit',
+    component: EditProjectComponent,
+    data: {
+      mode: 'edit',
+    },
+  },
+
   {
     path: 'contacts',
     component: ContactsComponent,
@@ -41,6 +56,10 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: () => hasCustomClaim('admin') },
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
   },
 ];
 

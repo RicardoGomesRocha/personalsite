@@ -2,11 +2,22 @@
   <mat-form-field appearance="standard">
     <input matInput formControlName="title" type="text" />
   </mat-form-field>
+  <mat-form-field appearance="standard">
+    <textarea matInput formControlName="smallDescription"></textarea>
+  </mat-form-field>
   <app-upload-image
     [(imageUrl)]="imageUrl"
     (fileChange)="newImage = $event"
   ></app-upload-image>
-  <button mat-raised-button color="primary" type="submit">
-    <mat-icon>save</mat-icon> Save
+  <mat-form-field appearance="standard">
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">
+    <mat-icon>save</mat-icon> {{ editMode ? "Save" : "Create" }}
   </button>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    mode="determinate"
+    [value]="loadingPercentage"
+  ></mat-progress-spinner>
 </form>

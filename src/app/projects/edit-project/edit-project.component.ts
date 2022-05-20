@@ -16,46 +16,66 @@ export class EditProjectComponent {
     createdOn: new FormControl(''),
     smallDescription: new FormControl(''),
     description: new FormControl(''),
-    backgroundImage: new FormControl(''),
+    image: new FormControl(''),
   });
 
-  $project: Observable<Project>;
+  $project: Observable<Project> | undefined;
+
   projectId: string = '';
 
   imageUrl: string | undefined;
 
   newImage: File | undefined;
 
+  isLoading = false;
+
+  loadingPercentage = 0;
+
+  editMode = false;
+
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute,
     private routeService: RouteService
   ) {
-    this.$project = this.projectService.getProject(
-      route.snapshot.paramMap.get('id') || ''
-    );
-    this.$project.subscribe((project) => this.setFormField(project));
+    this.editMode = route.snapshot.data['mode'] === 'edit' ? true : false;
+    if (this.editMode) {
+      this.$project = this.projectService.getProject(
+        route.snapshot.paramMap.get('id') || ''
+      );
+      this.$project.subscribe((project) => this.setFormField(project));
+    }
   }
 
   setFormField(project: Project) {
     this.projectId = project.id;
     this.imageUrl = project.image;
     this.projectForm.setValue({
-      title: project.title,
-      createdOn: '',
-      smallDescription: '',
-      description: '',
-      backgroundImage: '',
+      title: project.title || '',
+      createdOn: project.createdDate || '',
+      smallDescription: project.smallDescription || '',
+      description: project.description || '',
+      image: project.image || '',
     });
   }
 
   save() {
     const project = this.getProjectFromFormField();
     project.id = this.projectId;
-
-    this.projectService
-      .saveProject(project, this.newImage)
-      .subscribe(() => this.routeService.navigate(['/projects', project.id]));
+    project.modifiedDate = new Date();
+    this.isLoading = true;
+    this.projectService.saveProject(project, this.newImage).subscribe(
+      (value) => {
+        if (value.percentage === 100) {
+          this.routeService.navigate(['/projects', value.projectId]);
+        }
+        this.loadingPercentage = value.percentage;
+      },
+      () => {
+        this.loadingPercentage = 0;
+        this.isLoading = false;
+      }
+    );
   }
 
   private getProjectFromFormField(): Project {

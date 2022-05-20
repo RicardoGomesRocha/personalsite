@@ -3,8 +3,8 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { first, flatMap, Observable } from 'rxjs';
-import { Project } from '../models';
+import { first, flatMap, Observable, Subscriber } from 'rxjs';
+import { Project, ProjectSaveStatus } from '../models';
 import { UploadStatus, UploadStatuses } from '../models/upload';
 import { UploadService } from './upload.service';
 
@@ -36,25 +36,46 @@ export class ProjectService {
     );
   }
 
-  saveProject(project: Project, newImage?: File): Observable<void> {
-    return new Observable<void>((sub) => {
+  saveProject(
+    project: Project,
+    newImage?: File
+  ): Observable<ProjectSaveStatus> {
+    return new Observable<ProjectSaveStatus>((sub) => {
       if (newImage) {
         this.upload(newImage, project.id).subscribe((value) => {
           if (value.status === UploadStatuses.Complete) {
             if (value.fileUrl) {
               project.image = value.fileUrl;
             }
-
-            this.projectsCollection
-              .doc(project.id)
-              .set(project)
-              .then(() => sub.next())
-              .catch((error) => sub.error(error));
+            sub.next({ percentage: 80 });
+            this.setProject(project, sub);
           } else if (value.status === UploadStatuses.Error) {
             sub.error(new Error('Was not possible to upload the image'));
+          } else if (value.status === UploadStatuses.Uploading) {
+            sub.next({ percentage: value.percentage || 0 });
           }
         });
+      } else {
+        sub.next({ percentage: 50 });
+        this.setProject(project, sub);
       }
     });
+  }
+
+  private setProject(project: Project, sub: Subscriber<ProjectSaveStatus>) {
+    if (project.id) {
+      this.projectsCollection
+        .doc(project.id)
+        .set(project)
+        .then(() => sub.next({ percentage: 100, projectId: project.id }))
+        .catch((error) => sub.error(error));
+    } else {
+      this.projectsCollection.add(project).then(
+        (value) => {
+          sub.next({ percentage: 100, projectId: value.id });
+        },
+        (error) => sub.error(error)
+      );
+    }
   }
 }

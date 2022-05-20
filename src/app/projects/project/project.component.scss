@@ -1,9 +1,13 @@
+@import '../../../colors.scss';
+
 .project-wrapper {
     width: 300px;
     height: 300px;
     position: relative;
     padding: 20px;
     cursor: pointer;
+    background-color: rgba($primary-color, .6);
+    color: white;
 
     &:hover {
         .background-image {
