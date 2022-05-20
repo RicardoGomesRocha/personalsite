@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  backgroundImage: string;
+  image: string;
   description: string;
   smallDescription: string;
   likes: number;

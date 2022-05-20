@@ -2,6 +2,10 @@
   <mat-form-field appearance="standard">
     <input matInput formControlName="title" type="text" />
   </mat-form-field>
+  <app-upload-image
+    [(imageUrl)]="imageUrl"
+    (fileChange)="newImage = $event"
+  ></app-upload-image>
   <button mat-raised-button color="primary" type="submit">
     <mat-icon>save</mat-icon> Save
   </button>

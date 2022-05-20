@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +28,8 @@ import { ViewProjectComponent } from './projects/view-project/view-project.compo
 import { SearchComponent } from './search/search.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import { UploadImageComponent } from './upload/upload-image/upload-image.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +52,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     ProjectsComponent,
     EditProjectComponent,
     BottomMenuComponent,
+    UploadImageComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
   ],
   providers: [{ provide: PERSISTENCE, useValue: 'local' }],
   bootstrap: [AppComponent],

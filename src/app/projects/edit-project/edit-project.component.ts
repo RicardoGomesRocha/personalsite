@@ -22,7 +22,9 @@ export class EditProjectComponent {
   $project: Observable<Project>;
   projectId: string = '';
 
-  image: File | undefined;
+  imageUrl: string | undefined;
+
+  newImage: File | undefined;
 
   constructor(
     private readonly projectService: ProjectService,
@@ -37,6 +39,7 @@ export class EditProjectComponent {
 
   setFormField(project: Project) {
     this.projectId = project.id;
+    this.imageUrl = project.image;
     this.projectForm.setValue({
       title: project.title,
       createdOn: '',
@@ -49,8 +52,9 @@ export class EditProjectComponent {
   save() {
     const project = this.getProjectFromFormField();
     project.id = this.projectId;
+
     this.projectService
-      .setProject(project)
+      .saveProject(project, this.newImage)
       .subscribe(() => this.routeService.navigate(['/projects', project.id]));
   }
 

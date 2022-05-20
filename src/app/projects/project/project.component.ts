@@ -11,6 +11,6 @@ export class ProjectComponent {
   project: Project | undefined;
 
   getBackgroundImage(): string {
-    return `url(${this.project?.backgroundImage})`;
+    return `url(${this.project?.image})`;
   }
 }
