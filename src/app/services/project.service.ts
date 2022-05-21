@@ -26,7 +26,7 @@ export class ProjectService {
   }
 
   upload(file: File, projectId: string): Observable<UploadStatus> {
-    return this.uploadService.upload(`project/${projectId}/${file.name}`, file);
+    return this.uploadService.upload(`projects/${projectId}`, file, 'image');
   }
 
   getProject(id: string): Observable<Project> {
@@ -34,6 +34,10 @@ export class ProjectService {
       flatMap((projects) => projects),
       first((project) => project.id === id)
     );
+  }
+
+  deleteImage(projectId: string): Observable<any> {
+    return this.uploadService.deleteFile(`/projects/${projectId}/image.png`);
   }
 
   saveProject(

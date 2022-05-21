@@ -46,4 +46,9 @@ export class FirebaseService {
 
     return obs;
   }
+
+  deleteFile(path: string): Observable<any> {
+    const storageRef = this.storage.ref(path);
+    return storageRef.delete();
+  }
 }
