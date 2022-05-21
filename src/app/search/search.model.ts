@@ -5,3 +5,8 @@ export interface Search {
   link: string;
   categories: string[];
 }
+
+export enum SearchTheme {
+  Light,
+  Dark,
+}

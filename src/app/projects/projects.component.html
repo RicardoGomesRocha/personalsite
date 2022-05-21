@@ -1,7 +1,20 @@
 <div class="projects">
-  <app-project
-    *ngFor="let project of $projects | async"
-    [project]="project"
-    matRipple
-  ></app-project>
+  <div class="description">
+    <h1>Check out my projects</h1>
+    <h3>
+      You can check all of my projects here including this website. <br />
+      Some of them are open source and you can contribute to those on github.
+    </h3>
+    <app-search
+      [lightBackground]="false"
+      [placeholder]="'Search for projects'"
+    ></app-search>
+  </div>
+  <div class="projects-wrapper">
+    <app-project
+      *ngFor="let project of $projects | async"
+      [project]="project"
+      matRipple
+    ></app-project>
+  </div>
 </div>

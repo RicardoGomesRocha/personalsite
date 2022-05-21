@@ -10,14 +10,27 @@ export class FirebaseService {
   constructor(private readonly storage: AngularFireStorage) {}
 
   uploadFile(path: string, file: File): Observable<UploadStatus> {
-    const storageRef = this.storage.ref(path);
-    const uploadTask = this.storage.upload(path, file);
-
     const obs = new BehaviorSubject<UploadStatus>({
       status: UploadStatuses.Uploading,
       percentage: 0,
     });
 
+    this.deleteFile(path).subscribe({
+      complete: () => this.upload(path, file, obs),
+      error: () => this.upload(path, file, obs),
+    });
+
+    return obs;
+  }
+
+  deleteFile(path: string): Observable<any> {
+    const storageRef = this.storage.ref(path);
+    return storageRef.delete();
+  }
+
+  private upload(path: string, file: File, obs: BehaviorSubject<UploadStatus>) {
+    const storageRef = this.storage.ref(path);
+    const uploadTask = this.storage.upload(path, file);
     uploadTask
       .snapshotChanges()
       .pipe(
@@ -33,8 +46,6 @@ export class FirebaseService {
       )
       .subscribe();
 
-    uploadTask.then((value) => {});
-
     uploadTask.percentageChanges().subscribe((value) => {
       if (value) {
         obs.next({
@@ -43,12 +54,5 @@ export class FirebaseService {
         });
       }
     });
-
-    return obs;
-  }
-
-  deleteFile(path: string): Observable<any> {
-    const storageRef = this.storage.ref(path);
-    return storageRef.delete();
   }
 }

@@ -1,6 +1,8 @@
-<form class="search-form">
+<form class="search-form" [class.light-background]="lightBackground">
   <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Search any thing you want</mat-label>
+    <mat-label>
+      {{ placeholder ? placeholder : "Search any thing you want" }}</mat-label
+    >
     <input
       matInput
       aria-label="Search"

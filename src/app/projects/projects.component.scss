@@ -1,10 +1,18 @@
 .projects {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    margin: 5vw;
 
-    app-project {
-        margin: 20px
+    .description {
+        text-align: center;
+    }
+
+    .projects-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        app-project {
+            margin: 20px
+        }
     }
 }

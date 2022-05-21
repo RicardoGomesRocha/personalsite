@@ -13,6 +13,12 @@ export class SearchComponent {
   searchControl = new FormControl();
 
   @Input()
+  lightBackground = true;
+
+  @Input()
+  placeholder: string | undefined;
+
+  @Input()
   search$: Observable<Search[]> = new BehaviorSubject([
     {
       title: 'This is a title',
