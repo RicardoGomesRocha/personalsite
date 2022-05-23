@@ -1,0 +1,16 @@
+<div class="image-wrapper" [class.loaded]="isLoaded">
+  <img
+    class="image"
+    [src]="src"
+    *ngIf="src"
+    [style.border-radius]="borderRadius"
+    (load)="isLoaded = true"
+    (error)="error = true"
+  />
+  <img
+    class="defaultImage"
+    [src]="defaultImage"
+    *ngIf="!src || !isLoaded || error"
+    [style.border-radius]="borderRadius"
+  />
+</div>

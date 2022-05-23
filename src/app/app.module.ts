@@ -17,6 +17,7 @@ import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.c
 import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { HomeComponent } from './home/home.component';
+import { ImageComponent } from './image/image.component';
 import { IntroComponent } from './intro/intro.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialsModule } from './materials.module';
@@ -53,6 +54,7 @@ import { UploadImageComponent } from './upload/upload-image/upload-image.compone
     EditProjectComponent,
     BottomMenuComponent,
     UploadImageComponent,
+    ImageComponent,
   ],
   imports: [
     BrowserModule,

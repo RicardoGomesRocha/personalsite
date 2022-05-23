@@ -18,12 +18,7 @@
         routerLink="{{ search.link }}"
       >
         <div class="search-content">
-          <img
-            class="search-image"
-            aria-hidden
-            [src]="search.image"
-            height="25"
-          />
+          <app-image [src]="search.image" [borderRadius]="'100%'"></app-image>
           <div class="lines">
             <div class="line title">{{ search.title }}</div>
             <div class="line text" *ngFor="let text of search.text">
