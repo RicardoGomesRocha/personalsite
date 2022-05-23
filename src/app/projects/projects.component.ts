@@ -11,7 +11,7 @@ import { ProjectService } from '../services/project.service';
 export class ProjectsComponent {
   $projects: Observable<Project[]>;
 
-  constructor(private readonly projectService: ProjectService) {
+  constructor(public readonly projectService: ProjectService) {
     this.$projects = this.projectService.$projects;
     this.$projects.subscribe((project) => console.log(project));
   }

@@ -3,16 +3,27 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { first, flatMap, Observable, Subscriber } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  first,
+  flatMap,
+  map,
+  Observable,
+  Subscriber,
+} from 'rxjs';
 import { Project, ProjectSaveStatus } from '../models';
 import { UploadStatus, UploadStatuses } from '../models/upload';
+import { Search, SearchableService } from '../search/search.model';
 import { UploadService } from './upload.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectService {
+export class ProjectService implements SearchableService {
   $projects: Observable<Project[]>;
+  $searchResults: Observable<Search[]>;
+  private $searchText = new BehaviorSubject<string>('');
   private projectsCollection: AngularFirestoreCollection<Project>;
 
   constructor(
@@ -23,6 +34,35 @@ export class ProjectService {
     this.$projects = this.projectsCollection.valueChanges({
       idField: 'id',
     });
+
+    this.$searchResults = combineLatest([
+      this.$projects,
+      this.$searchText,
+    ]).pipe(
+      map((value: [Project[], string]) => {
+        const projects = value[0];
+        const searchText = value[1];
+        return projects
+          .filter(
+            (project) =>
+              project.title.includes(searchText) ||
+              project.description.includes(searchText) ||
+              project.smallDescription.includes(searchText)
+          )
+          .map((project) => {
+            return {
+              title: project.title,
+              text: [project.smallDescription, project.description],
+              image: project.image,
+              link: '',
+              categories: ['', ''],
+            } as Search;
+          });
+      })
+    );
+  }
+  setSearchTextFilter(text: string): void {
+    this.$searchText.next(text);
   }
 
   upload(file: File, projectId: string): Observable<UploadStatus> {

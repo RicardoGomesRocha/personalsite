@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Search } from './search.model';
+import { Observable } from 'rxjs';
+import { Search, SearchableService } from './search.model';
 
 @Component({
   selector: 'app-search',
@@ -19,27 +19,22 @@ export class SearchComponent {
   placeholder: string | undefined;
 
   @Input()
-  search$: Observable<Search[]> = new BehaviorSubject([
-    {
-      title: 'This is a title',
-      text: ['This is a small description', 'This is a description'],
-      image: '/assets/images/triangles-background.jpg',
-      link: 'project/someId',
-      categories: ['animals', 'places', 'projects'],
-    },
-    {
-      title: 'This is a title',
-      text: ['This is a small description', 'This is a description'],
-      image: '/assets/images/triangles-background.jpg',
-      link: 'project/someId',
-      categories: ['animals', 'places', 'projects'],
-    },
-    {
-      title: 'This is a title',
-      text: ['This is a small description', 'This is a description'],
-      image: '/assets/images/triangles-background.jpg',
-      link: 'project/someId',
-      categories: ['animals', 'places', 'projects'],
-    },
-  ]);
+  search$: Observable<Search[]> | undefined;
+
+  @Input()
+  set searchService(service: SearchableService) {
+    this.search$ = service.$searchResults;
+    this._searchService = service;
+    this.search$?.subscribe((value) => {
+      console.log(value);
+    });
+  }
+
+  private _searchService: SearchableService | undefined;
+
+  search(text: KeyboardEvent) {
+    this._searchService?.setSearchTextFilter(
+      (<HTMLInputElement>text.currentTarget).value
+    );
+  }
 }

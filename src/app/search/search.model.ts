@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface Search {
   title: string;
   text: string[];
@@ -9,4 +11,9 @@ export interface Search {
 export enum SearchTheme {
   Light,
   Dark,
+}
+
+export interface SearchableService {
+  $searchResults: Observable<Search[]>;
+  setSearchTextFilter(text: string): void;
 }

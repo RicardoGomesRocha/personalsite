@@ -8,6 +8,7 @@
       aria-label="Search"
       [matAutocomplete]="auto"
       [formControl]="searchControl"
+      (keyup)="search($event)"
     />
     <mat-icon matPrefix>search</mat-icon>
     <mat-autocomplete #auto="matAutocomplete">
