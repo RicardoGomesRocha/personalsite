@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { HomeService } from '../home/home.service';
 import { IntroService } from './intro.service';
 
 @Component({
@@ -29,7 +30,10 @@ export class IntroComponent implements OnInit {
 
   opacity = 1;
 
-  constructor(private readonly introService: IntroService) {}
+  constructor(
+    private readonly introService: IntroService,
+    public readonly homeService: HomeService
+  ) {}
   ngOnInit(): void {
     this.onScroll();
   }
