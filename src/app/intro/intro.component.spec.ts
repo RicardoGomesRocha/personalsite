@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MockProviders } from 'ng-mocks';
+import { ProjectService } from '../services/project.service';
 import { IntroComponent } from './intro.component';
 
 describe('IntroComponent', () => {
@@ -8,9 +9,10 @@ describe('IntroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IntroComponent ]
-    })
-    .compileComponents();
+      declarations: [IntroComponent],
+
+      providers: MockProviders(ProjectService),
+    }).compileComponents();
   });
 
   beforeEach(() => {
