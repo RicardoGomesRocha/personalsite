@@ -6,20 +6,46 @@
     margin: 5vw;
     position: relative;
 
+    .title {
+        margin: 0;
+        font-weight: bolder;
+    }
+
+    .small-description {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .dates {
+        .separator {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+
     .background-image {
         width: 100%;
         height: 20vh;
         background-size: cover;
         border-radius: 20px;
-        margin-bottom: 20px;
 
+    }
+
+    .small-bar {
+        margin: 20px;
+
+        button {
+            margin: 2px;
+        }
     }
 
     .mat-badge-content {
         background-color: white
     }
 
-    .desscription {
+    .description {
         text-align: justify;
+        font-size: 16px;
+        line-height: 30px;
     }
 }

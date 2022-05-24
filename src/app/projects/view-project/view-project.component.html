@@ -1,14 +1,20 @@
 <div class="project" *ngIf="project">
-  <h1>{{ project.title }}</h1>
+  <h1 class="title">{{ project.title }}</h1>
   <div class="dates">
     <h5>
-      Created on: {{ project.createdDate | date }}
+      <span>Created on: {{ project.createdOn.toDate() | date }}</span>
+      <span class="separator" *ngIf="project.modifiedDate">|</span>
       <span *ngIf="project.modifiedDate"
-        >Modify on: {{ project.modifiedDate | date }}</span
+        >Modify on: {{ project?.modifiedDate?.toDate() | date }}</span
       >
     </h5>
   </div>
-  <h3>{{ project.smallDescription }}</h3>
+  <h3 class="small-description">{{ project.smallDescription }}</h3>
+
+  <div
+    class="background-image"
+    [style.backgroundImage]="'url(' + project.image + ')'"
+  ></div>
   <div class="small-bar">
     <button
       mat-mini-fab
@@ -32,10 +38,6 @@
       <mat-icon>edit</mat-icon>
     </button>
   </div>
-  <div
-    class="background-image"
-    [style.backgroundImage]="'url(' + project.image + ')'"
-  ></div>
   <div class="description">
     {{ project.description }}
   </div>

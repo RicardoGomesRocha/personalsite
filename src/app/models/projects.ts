@@ -1,3 +1,6 @@
+import * as Firestore from 'firebase/firestore';
+import Timestamp = Firestore.Timestamp;
+
 export interface Project {
   id: string;
   title: string;
@@ -6,8 +9,8 @@ export interface Project {
   smallDescription: string;
   likes: number;
   shares: number;
-  createdDate: Date;
-  modifiedDate?: Date;
+  createdOn: Timestamp;
+  modifiedDate?: Timestamp;
 }
 
 export interface ProjectSaveStatus {

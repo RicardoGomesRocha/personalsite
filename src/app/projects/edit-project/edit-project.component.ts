@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Timestamp } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Project } from 'src/app/models';
 import { ProjectService } from 'src/app/services/project.service';
@@ -52,7 +53,7 @@ export class EditProjectComponent {
     this.imageUrl = project.image;
     this.projectForm.setValue({
       title: project.title || '',
-      createdOn: project.createdDate || '',
+      createdOn: project.createdOn || null,
       smallDescription: project.smallDescription || '',
       description: project.description || '',
       image: project.image || '',
@@ -62,7 +63,7 @@ export class EditProjectComponent {
   save() {
     const project = this.getProjectFromFormField();
     project.id = this.projectId;
-    project.modifiedDate = new Date();
+    project.modifiedDate = new Timestamp(new Date().getMilliseconds(), 0);
     this.isLoading = true;
     this.projectService.saveProject(project, this.newImage).subscribe(
       (value) => {
