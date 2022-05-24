@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IntroService } from '../intro';
+import { GlobalSearchService } from '../services/global-search.service';
 import { RouteService } from '../services/route.service';
 import { SideBarService } from '../side-bar/side-bar.service';
 
@@ -16,7 +17,8 @@ export class TopMenuComponent {
   constructor(
     private readonly routeService: RouteService,
     private readonly introService: IntroService,
-    private readonly sideBarService: SideBarService
+    private readonly sideBarService: SideBarService,
+    public readonly globalSearchService: GlobalSearchService
   ) {
     this.routeService.$isHomePage.subscribe((isHomePage) => {
       this.isHomePage = isHomePage;
