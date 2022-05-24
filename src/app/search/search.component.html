@@ -20,6 +20,7 @@
         <div class="search-content">
           <app-image [src]="search.image" [borderRadius]="'100%'"></app-image>
           <div class="lines">
+            <div class="line type">{{ search.type }}</div>
             <div class="line title">{{ search.title }}</div>
             <div class="line text" *ngFor="let text of search.text">
               {{ text }}

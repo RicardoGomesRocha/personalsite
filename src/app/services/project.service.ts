@@ -51,6 +51,7 @@ export class ProjectService implements SearchableService {
           )
           .map((project) => {
             return {
+              type: 'Project',
               title: project.title,
               text: [project.smallDescription, project.description],
               image: project.image,

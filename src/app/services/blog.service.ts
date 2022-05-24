@@ -31,6 +31,7 @@ export class BlogService implements SearchableService {
           )
           .map((blogPost) => {
             return {
+              type: 'Blog Post',
               title: blogPost.title,
               text: [blogPost.body],
               image: blogPost.image,

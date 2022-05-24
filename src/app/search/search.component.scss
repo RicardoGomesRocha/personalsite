@@ -53,6 +53,16 @@
     .lines {
         .line {
             height: 20px;
+
+            &.type {
+                font-size: 10px;
+                font-weight: bolder;
+            }
+
+            &.text {
+                font-size: 12px;
+                font-style: italic;
+            }
         }
     }
 }

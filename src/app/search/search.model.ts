@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 
 export interface Search {
+  type: string;
   title: string;
   text: string[];
   image: string;
