@@ -20,9 +20,10 @@
       mat-mini-fab
       color="warn"
       aria-label="Example icon button with a menu icon"
-      matBadge="8"
+      [matBadge]="project.likes"
       matBadgePosition="before"
       matBadgeColor="warn"
+      (click)="addLike()"
     >
       <mat-icon>favorite_border</mat-icon>
     </button>

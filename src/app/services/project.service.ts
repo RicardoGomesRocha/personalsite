@@ -106,6 +106,12 @@ export class ProjectService implements SearchableService {
     });
   }
 
+  setLikes(projectId: string, likes: number) {
+    this.projectsCollection.doc(projectId).update({
+      likes,
+    });
+  }
+
   private setProject(project: Project, sub: Subscriber<ProjectSaveStatus>) {
     if (project.id) {
       this.projectsCollection

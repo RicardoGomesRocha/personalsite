@@ -27,4 +27,11 @@ export class ViewProjectComponent {
   openShareMenu() {
     this.shareService.share('Im a page :)', window.location.href);
   }
+
+  addLike() {
+    if (this.project) {
+      const likes = this.project.likes ? this.project.likes++ : 1;
+      this.projectService.setLikes(this.project.id, likes);
+    }
+  }
 }
