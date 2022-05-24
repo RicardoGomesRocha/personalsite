@@ -9,9 +9,7 @@
     [(imageUrl)]="imageUrl"
     (fileChange)="newImage = $event"
   ></app-upload-image>
-  <mat-form-field appearance="standard">
-    <textarea matInput formControlName="description"></textarea>
-  </mat-form-field>
+  <quill-editor [modules]="config" formControlName="description"></quill-editor>
   <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">
     <mat-icon>save</mat-icon> {{ editMode ? "Save" : "Create" }}
   </button>

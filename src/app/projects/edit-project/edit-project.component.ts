@@ -34,6 +34,21 @@ export class EditProjectComponent {
 
   editMode = false;
 
+  project: Project | undefined;
+
+  config = {
+    toolbar: [
+      ['bold', 'italic', 'underline'],
+      ['code-block'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ script: 'sub' }, { script: 'super' }],
+      [{ size: ['small', false, 'large', 'huge'] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }], // dropdown with defaults from theme
+      [{ align: [] }],
+      ['link'],
+    ],
+  };
+
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute,
@@ -58,6 +73,7 @@ export class EditProjectComponent {
       description: project.description || '',
       image: project.image || '',
     });
+    this.project = project;
   }
 
   save() {

@@ -38,7 +38,5 @@
       <mat-icon>edit</mat-icon>
     </button>
   </div>
-  <div class="description">
-    {{ project.description }}
-  </div>
+  <div class="description" [innerHTML]="project.description"></div>
 </div>

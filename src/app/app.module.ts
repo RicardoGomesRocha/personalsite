@@ -5,6 +5,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QuillModule } from 'ngx-quill';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -65,6 +66,7 @@ import { UploadImageComponent } from './upload/upload-image/upload-image.compone
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
+    QuillModule.forRoot(),
   ],
   providers: [{ provide: PERSISTENCE, useValue: 'local' }],
   bootstrap: [AppComponent],
