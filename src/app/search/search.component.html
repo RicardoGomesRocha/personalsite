@@ -15,7 +15,7 @@
       <mat-option
         *ngFor="let search of search$ | async"
         [value]="search.title"
-        routerLink="{{ search.link }}"
+        [routerLink]="['', search.link]"
       >
         <div class="search-content">
           <app-image [src]="search.image" [borderRadius]="'100%'"></app-image>

@@ -11,6 +11,6 @@ import { BlogService } from 'src/app/services/blog.service';
 export class HomeBlogPostsComponent {
   $posts: Observable<BlogPost[]>;
   constructor(private readonly blogService: BlogService) {
-    this.$posts = this.blogService.getBlogPosts();
+    this.$posts = this.blogService.$blogPosts;
   }
 }
