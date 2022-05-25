@@ -23,6 +23,6 @@ const fileContent = `export const environment = ${JSON.stringify(environment)}`;
 
 writeFile(targetPath, fileContent, 'utf8', (err) => {
   if (err) {
-    return console.log(err);
+    return console.error(err);
   }
 });

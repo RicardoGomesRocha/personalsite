@@ -55,7 +55,7 @@ export class ProjectService implements SearchableService {
               title: project.title,
               text: [project.smallDescription, project.description],
               image: project.image,
-              link: `projects/${project.id}/`,
+              link: `/projects/${project.id}/`,
               categories: ['', ''],
             } as Search;
           });

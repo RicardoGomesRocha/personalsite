@@ -25,9 +25,6 @@ export class SearchComponent {
   set searchService(service: SearchableService) {
     this.search$ = service.$searchResults;
     this._searchService = service;
-    this.search$?.subscribe((value) => {
-      console.log(value);
-    });
   }
 
   private _searchService: SearchableService | undefined;
