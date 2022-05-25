@@ -11,6 +11,7 @@ export interface Project {
   shares: number;
   createdOn: Timestamp;
   modifiedDate?: Timestamp;
+  categories?: Array<string>;
 }
 
 export interface ProjectSaveStatus {

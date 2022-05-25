@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { ActivatedRoute } from '@angular/router';
 import { Timestamp } from 'firebase/firestore';
 import { Observable } from 'rxjs';
@@ -13,6 +14,7 @@ import { RouteService } from 'src/app/services/route.service';
 })
 export class EditProjectComponent {
   projectForm = new FormGroup({
+    categories: new FormControl(''),
     title: new FormControl(''),
     createdOn: new FormControl(''),
     smallDescription: new FormControl(''),
@@ -49,6 +51,8 @@ export class EditProjectComponent {
     ],
   };
 
+  keywords = new Set(['angular', 'how-to', 'tutorial']);
+
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute,
@@ -61,6 +65,17 @@ export class EditProjectComponent {
       );
       this.$project.subscribe((project) => this.setFormField(project));
     }
+  }
+
+  addKeywordFromInput(event: MatChipInputEvent) {
+    if (event.value) {
+      this.keywords.add(event.value);
+      event.chipInput!.clear();
+    }
+  }
+
+  removeKeyword(keyword: string) {
+    this.keywords.delete(keyword);
   }
 
   setFormField(project: Project) {
