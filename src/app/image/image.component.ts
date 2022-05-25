@@ -7,10 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class ImageComponent {
   @Input()
-  src = '';
+  src: string | undefined;
 
   @Input()
-  defaultImage = 'assets/images/google-dinosaur.png';
+  defaultImage = 'assets/images/triangles-background.jpg';
 
   @Input()
   borderRadius: string | undefined;

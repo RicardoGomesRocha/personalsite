@@ -15,8 +15,30 @@ export class UploadImageComponent {
   @Output()
   fileChange = new EventEmitter<File>();
 
+  onDrag = false;
+
   change(event: any) {
     const file: File = event.target.files[0];
+    this.readFile(file);
+  }
+
+  getBackgroundImage() {
+    const src = this.imageUrl
+      ? this.imageUrl
+      : '/assets/images/triangles-background.jpg';
+  }
+
+  drop(event: any) {
+    // event.preventDefault();
+    // event.stopPropagation();
+    // const files = event.dataTransfer?.files;
+    // if (files?.length) {
+    //   this.readFile(files[0]);
+    // }
+    console.log(event);
+  }
+
+  readFile(file: File) {
     const reader = new FileReader();
     reader.onloadend = (event) => {
       this.imageUrl = reader.result as string;

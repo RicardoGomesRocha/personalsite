@@ -1,0 +1,17 @@
+<div
+  class="image-wrapper"
+  [class.on-drag]="onDrag"
+  (click)="imageUpload.click()"
+  (dragover)="onDrag = true"
+  (dragleave)="onDrag = false"
+  (files)="drop($event)"
+  draggable="true"
+>
+  <app-image [src]="imageUrl" class="image"></app-image>
+  <input
+    type="file"
+    class="image-upload"
+    (change)="change($event)"
+    #imageUpload
+  />
+</div>

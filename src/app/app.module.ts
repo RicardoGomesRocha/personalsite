@@ -19,6 +19,7 @@ import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { HomeComponent } from './home/home.component';
 import { ImageComponent } from './image/image.component';
+import { UploadImageComponent } from './image/upload-image/upload-image.component';
 import { IntroComponent } from './intro/intro.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialsModule } from './materials.module';
@@ -30,7 +31,6 @@ import { ViewProjectComponent } from './projects/view-project/view-project.compo
 import { SearchComponent } from './search/search.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
-import { UploadImageComponent } from './upload/upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
