@@ -1,0 +1,28 @@
+<mat-form-field class="example-chip-list" appearance="standard">
+  <mat-label>{{ title }}</mat-label>
+  <mat-chip-list #chipList aria-label="Video keywords" multiple>
+    <mat-chip
+      *ngFor="let category of categories"
+      [selected]="category.id"
+      [value]="category.text"
+      (removed)="removeCategory(category.id)"
+    >
+      {{ category.text }}
+    </mat-chip>
+    <input
+      placeholder="Search or add new {{ title }}"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      (matChipInputTokenEnd)="addCategoryFromInput($event)"
+      (keyup)="filter($event)"
+    />
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option
+      *ngFor="let category of $filterCategories | async"
+      [value]="category"
+    >
+      {{ category.text }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

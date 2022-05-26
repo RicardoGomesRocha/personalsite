@@ -8,11 +8,15 @@ import {
   combineLatest,
   first,
   flatMap,
+  forkJoin,
   map,
   Observable,
   Subscriber,
+  take,
 } from 'rxjs';
+import { CategoriesService } from '../categories/categories.service';
 import { Project, ProjectSaveStatus } from '../models';
+import { Category } from '../models/category';
 import { UploadStatus, UploadStatuses } from '../models/upload';
 import { Search, SearchableService } from '../search/search.model';
 import { UploadService } from './upload.service';
@@ -28,11 +32,40 @@ export class ProjectService implements SearchableService {
 
   constructor(
     private readonly afs: AngularFirestore,
-    private readonly uploadService: UploadService
+    private readonly uploadService: UploadService,
+    private readonly categoriesService: CategoriesService
   ) {
     this.projectsCollection = afs.collection<Project>('projects');
-    this.$projects = this.projectsCollection.valueChanges({
-      idField: 'id',
+    this.$projects = new Observable<Project[]>((sub) => {
+      this.projectsCollection
+        .valueChanges({
+          idField: 'id',
+        })
+        .subscribe((projects) => {
+          const projectsObservable = new Array<Observable<Category[]>>();
+          for (let project of projects) {
+            if (project.categoriesRefs) {
+              projectsObservable.push(
+                this.categoriesService
+                  .getCategoriesFromDocumentReference(
+                    project.categoriesRefs as any
+                  )
+                  .pipe(take(1))
+              );
+            }
+          }
+          if (projectsObservable.length > 0) {
+            const observable = forkJoin(projectsObservable);
+            observable.subscribe((categoriesMatrix) => {
+              for (let i = 0; i < projects.length; i++) {
+                projects[i].categories = categoriesMatrix[i];
+              }
+              sub.next(projects);
+            });
+          } else {
+            sub.next(projects);
+          }
+        });
     });
 
     this.$searchResults = combineLatest([
@@ -45,9 +78,13 @@ export class ProjectService implements SearchableService {
         return projects
           .filter(
             (project) =>
-              project.title.includes(searchText) ||
-              project.description.includes(searchText) ||
-              project.smallDescription.includes(searchText)
+              project.title.toLowerCase().includes(searchText.toLowerCase()) ||
+              project.description
+                .toLowerCase()
+                .includes(searchText.toLowerCase()) ||
+              project.smallDescription
+                .toLowerCase()
+                .includes(searchText.toLowerCase())
           )
           .map((project) => {
             return {
@@ -62,6 +99,7 @@ export class ProjectService implements SearchableService {
       })
     );
   }
+
   setSearchTextFilter(text: string): void {
     this.$searchText.next(text);
   }

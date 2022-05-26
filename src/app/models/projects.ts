@@ -1,4 +1,6 @@
 import * as Firestore from 'firebase/firestore';
+import { DocumentReference } from 'firebase/firestore';
+import { Category } from './category';
 import Timestamp = Firestore.Timestamp;
 
 export interface Project {
@@ -11,7 +13,8 @@ export interface Project {
   shares: number;
   createdOn: Timestamp;
   modifiedDate?: Timestamp;
-  categories?: Array<string>;
+  categoriesRefs?: DocumentReference<Category>[];
+  categories?: Category[];
 }
 
 export interface ProjectSaveStatus {

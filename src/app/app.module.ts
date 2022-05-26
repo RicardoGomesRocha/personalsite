@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SocialMediaComponent } from './contacts/social-media/social-media.component';
 import { HomeBlogPostComponent } from './home/home-blog-posts/home-blog-post/home-blog-post.component';
@@ -56,6 +57,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     BottomMenuComponent,
     UploadImageComponent,
     ImageComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,

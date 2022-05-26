@@ -1,27 +1,6 @@
 <form class="project" [formGroup]="projectForm" (submit)="save()">
-  <mat-form-field class="example-chip-list" appearance="standard">
-    <mat-label>Project categories</mat-label>
-    <mat-chip-list
-      #chipList
-      aria-label="Video keywords"
-      multiple
-      formControlName="categories"
-    >
-      <mat-chip
-        *ngFor="let keyword of keywords"
-        [selected]="keyword"
-        [value]="keyword"
-        (removed)="removeKeyword(keyword)"
-      >
-        {{ keyword }}
-      </mat-chip>
-      <input
-        placeholder="New keyword..."
-        [matChipInputFor]="chipList"
-        (matChipInputTokenEnd)="addKeywordFromInput($event)"
-      />
-    </mat-chip-list>
-  </mat-form-field>
+  <app-categories [categories]="project?.categories || []"></app-categories>
+
   <mat-form-field appearance="standard">
     <input matInput formControlName="title" type="text" />
   </mat-form-field>
