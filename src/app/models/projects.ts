@@ -1,5 +1,5 @@
+import { DocumentReference } from '@angular/fire/compat/firestore';
 import * as Firestore from 'firebase/firestore';
-import { DocumentReference } from 'firebase/firestore';
 import { Category } from './category';
 import Timestamp = Firestore.Timestamp;
 

@@ -2,7 +2,7 @@
   <mat-label>{{ title }}</mat-label>
   <mat-chip-list #chipList aria-label="Video keywords" multiple>
     <mat-chip
-      *ngFor="let category of categories"
+      *ngFor="let category of _categories"
       [selected]="category.id"
       [value]="category.text"
       (removed)="removeCategory(category.id)"

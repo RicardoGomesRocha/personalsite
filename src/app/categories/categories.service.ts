@@ -41,6 +41,17 @@ export class CategoriesService {
     this.$searchText.next(text);
   }
 
+  getDocumentReferenceFromCategories(
+    categories: Category[] | undefined
+  ): DocumentReference<Category>[] {
+    if (!categories) {
+      return [];
+    }
+    return categories.map(
+      (category) => this.afs.doc<Category>(`categories/${category.id}`).ref
+    );
+  }
+
   getCategoriesFromDocumentReference(
     categoriesRef: DocumentReference<Category>[]
   ): Observable<Category[]> {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
@@ -15,14 +15,22 @@ export class CategoriesComponent {
   title = 'Categories';
 
   @Input()
-  categories = new Array<Category>();
+  set categories(categories: Category[] | undefined) {
+    if (categories) {
+      this._categories = categories;
+    } else {
+      this._categories = [];
+    }
+  }
 
-  @Input()
+  @Output()
   categoriesChange = new EventEmitter<Category[]>();
 
   $filterCategories: Observable<Category[]>;
 
-  $categoriesChanged = new BehaviorSubject<Category[]>(this.categories);
+  _categories = new Array<Category>();
+
+  $categoriesChanged = new BehaviorSubject<Category[]>(this._categories);
 
   constructor(private readonly categoriesService: CategoriesService) {
     this.$filterCategories = combineLatest([
@@ -51,11 +59,11 @@ export class CategoriesComponent {
   }
 
   removeCategory(categoryId: string) {
-    this.categories = this.categories.filter(
+    this.categories = this._categories.filter(
       (category) => category.id !== categoryId
     );
-    this.categoriesChange.emit(this.categories);
-    this.$categoriesChanged.next(this.categories);
+    this.categoriesChange.emit(this._categories);
+    this.$categoriesChanged.next(this._categories);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
@@ -69,8 +77,8 @@ export class CategoriesComponent {
   }
 
   private addCategory(category: Category) {
-    this.categories.push({ id: category.id, text: category.text });
-    this.categoriesChange.emit(this.categories);
-    this.$categoriesChanged.next(this.categories);
+    this._categories.push({ id: category.id, text: category.text });
+    this.categoriesChange.emit(this._categories);
+    this.$categoriesChanged.next(this._categories);
   }
 }

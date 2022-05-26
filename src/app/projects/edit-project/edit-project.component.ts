@@ -3,8 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Timestamp } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { CategoriesService } from 'src/app/categories/categories.service';
 import { Project } from 'src/app/models';
-import { Category } from 'src/app/models/category';
 import { ProjectService } from 'src/app/services/project.service';
 import { RouteService } from 'src/app/services/route.service';
 @Component({
@@ -50,12 +50,11 @@ export class EditProjectComponent {
     ],
   };
 
-  categories = new Array<Category>();
-
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute,
-    private routeService: RouteService
+    private routeService: RouteService,
+    private readonly categoriesService: CategoriesService
   ) {
     this.editMode = route.snapshot.data['mode'] === 'edit' ? true : false;
     if (this.editMode) {
@@ -83,6 +82,11 @@ export class EditProjectComponent {
     const project = this.getProjectFromFormField();
     project.id = this.projectId;
     project.modifiedDate = new Timestamp(new Date().getMilliseconds(), 0);
+    project.categoriesRefs =
+      this.categoriesService.getDocumentReferenceFromCategories(
+        this.project?.categories
+      );
+    project.categories = undefined;
     this.isLoading = true;
     this.projectService.saveProject(project, this.newImage).subscribe(
       (value) => {

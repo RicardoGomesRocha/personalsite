@@ -1,5 +1,10 @@
-<form class="project" [formGroup]="projectForm" (submit)="save()">
-  <app-categories [categories]="project?.categories || []"></app-categories>
+<form
+  class="project"
+  [formGroup]="projectForm"
+  (submit)="save()"
+  *ngIf="project"
+>
+  <app-categories [(categories)]="project.categories"></app-categories>
 
   <mat-form-field appearance="standard">
     <input matInput formControlName="title" type="text" />
