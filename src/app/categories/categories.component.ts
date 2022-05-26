@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { CategoriesService } from './categories.service';
 
@@ -22,8 +22,21 @@ export class CategoriesComponent {
 
   $filterCategories: Observable<Category[]>;
 
+  $categoriesChanged = new BehaviorSubject<Category[]>(this.categories);
+
   constructor(private readonly categoriesService: CategoriesService) {
-    this.$filterCategories = this.categoriesService.$filterResults;
+    this.$filterCategories = combineLatest([
+      this.categoriesService.$filterResults,
+      this.$categoriesChanged,
+    ]).pipe(
+      map((results) => {
+        return results[0].filter((category) => {
+          return results[1].find((_category) => _category.id === category.id)
+            ? false
+            : true;
+        });
+      })
+    );
   }
 
   addCategoryFromInput(event: MatChipInputEvent) {
@@ -39,9 +52,10 @@ export class CategoriesComponent {
 
   removeCategory(categoryId: string) {
     this.categories = this.categories.filter(
-      (category) => category.id === categoryId
+      (category) => category.id !== categoryId
     );
     this.categoriesChange.emit(this.categories);
+    this.$categoriesChanged.next(this.categories);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
@@ -57,5 +71,6 @@ export class CategoriesComponent {
   private addCategory(category: Category) {
     this.categories.push({ id: category.id, text: category.text });
     this.categoriesChange.emit(this.categories);
+    this.$categoriesChanged.next(this.categories);
   }
 }

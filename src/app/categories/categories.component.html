@@ -8,6 +8,9 @@
       (removed)="removeCategory(category.id)"
     >
       {{ category.text }}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
     </mat-chip>
     <input
       placeholder="Search or add new {{ title }}"
