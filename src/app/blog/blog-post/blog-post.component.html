@@ -1,1 +1,19 @@
-<p>blog-post works!</p>
+<div class="blog-post">
+  <div class="header">
+    <h3>{{ post?.title }}</h3>
+    <div class="image" [style.background-image]="getBackgroundImage()"></div>
+  </div>
+  <div class="body">
+    <h5>
+      {{ post?.body }}
+    </h5>
+  </div>
+  <div class="date">
+    <h5>{{ post?.createDate | date }}</h5>
+  </div>
+  <div class="footer">
+    <button mat-button color="primary" [routerLink]="['blog/', post?.id]">
+      Check out full post <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+  </div>
+</div>

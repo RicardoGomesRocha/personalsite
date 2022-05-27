@@ -1,0 +1,27 @@
+.blog-post {
+    width: 25vw;
+    margin: 2vw;
+    min-width: 250px;
+
+    .header {
+        h3 {
+            margin-bottom: 0px;
+        }
+
+        .image {
+            width: 100%;
+            height: 30px;
+            background-size: cover;
+        }
+
+    }
+
+    .body {
+        text-align: justify;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: end;
+    }
+}

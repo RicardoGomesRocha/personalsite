@@ -1,1 +1,20 @@
-<p>blog works!</p>
+<div class="blog-posts">
+  <div class="description">
+    <h1>Check out my blog posts</h1>
+    <h3>
+      This is some description. I don't know what I should right, so I'm justing
+      creating this website.
+    </h3>
+    <app-search
+      [lightBackground]="false"
+      [placeholder]="'Search for projects'"
+      [searchService]="blogService"
+    ></app-search>
+  </div>
+  <div class="blog-posts-wrapper">
+    <app-blog-post
+      *ngFor="let post of $posts | async"
+      [post]="post"
+    ></app-blog-post>
+  </div>
+</div>

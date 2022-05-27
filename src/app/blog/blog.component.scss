@@ -1,0 +1,14 @@
+.blog-posts {
+    margin: 5vw;
+
+    .blog-posts-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .description {
+        text-align: center;
+    }
+}

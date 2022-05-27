@@ -12,11 +12,11 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
+import { BlogComponent } from './blog/blog.component';
 import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SocialMediaComponent } from './contacts/social-media/social-media.component';
-import { HomeBlogPostComponent } from './home/home-blog-posts/home-blog-post/home-blog-post.component';
 import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.component';
 import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
@@ -51,7 +51,7 @@ export * from 'highlight.js';
     PhotoComponent,
     HomeProjectsComponent,
     ProjectComponent,
-    HomeBlogPostComponent,
+    BlogPostComponent,
     HomeBlogPostsComponent,
     ViewProjectComponent,
     SearchComponent,
@@ -68,6 +68,7 @@ export * from 'highlight.js';
     ImageComponent,
     CategoriesComponent,
     TextEditorComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,
