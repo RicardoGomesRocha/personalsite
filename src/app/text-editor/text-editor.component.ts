@@ -58,7 +58,8 @@ export class TextEditorComponent {
           [{ size: fontSizeArr }],
           [{ header: [1, 2, 3, 4, 5, 6, false] }], // dropdown with defaults from theme
           [{ align: [] }],
-          ['link'],
+          [{ color: [] }],
+          ['link', 'image'],
           ['emoji'],
           ['clean'],
         ],
