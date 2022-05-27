@@ -1,6 +1,10 @@
-<mat-form-field class="example-chip-list" appearance="standard">
+<mat-form-field
+  class="example-chip-list"
+  appearance="standard"
+  *ngIf="mode === 'edit'"
+>
   <mat-label>{{ title }}</mat-label>
-  <mat-chip-list #chipList aria-label="Video keywords" multiple>
+  <mat-chip-list #chipList multiple>
     <mat-chip
       *ngFor="let category of _categories"
       [selected]="category.id"
@@ -29,3 +33,14 @@
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+
+<mat-chip-list #chipList multiple *ngIf="mode === 'view'">
+  <mat-chip
+    *ngFor="let category of _categories"
+    [selected]="category.id"
+    [value]="category.text"
+    (removed)="removeCategory(category.id)"
+  >
+    {{ category.text }}
+  </mat-chip>
+</mat-chip-list>

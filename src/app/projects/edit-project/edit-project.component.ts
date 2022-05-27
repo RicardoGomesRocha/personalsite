@@ -86,7 +86,6 @@ export class EditProjectComponent {
       this.categoriesService.getDocumentReferenceFromCategories(
         this.project?.categories
       );
-    project.categories = undefined;
     this.isLoading = true;
     this.projectService.saveProject(project, this.newImage).subscribe(
       (value) => {

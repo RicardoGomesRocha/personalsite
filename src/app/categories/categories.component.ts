@@ -12,6 +12,9 @@ import { CategoriesService } from './categories.service';
 })
 export class CategoriesComponent {
   @Input()
+  mode: 'edit' | 'view' = 'view';
+
+  @Input()
   title = 'Categories';
 
   @Input()

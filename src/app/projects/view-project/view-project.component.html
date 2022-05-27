@@ -9,6 +9,11 @@
       >
     </h5>
   </div>
+  <app-categories
+    [categories]="project.categories"
+    [mode]="'view'"
+  ></app-categories>
+
   <h3 class="small-description">{{ project.smallDescription }}</h3>
 
   <div

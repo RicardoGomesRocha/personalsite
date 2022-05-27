@@ -4,7 +4,10 @@
   (submit)="save()"
   *ngIf="project"
 >
-  <app-categories [(categories)]="project.categories"></app-categories>
+  <app-categories
+    [(categories)]="project.categories"
+    [mode]="'edit'"
+  ></app-categories>
 
   <mat-form-field appearance="standard">
     <input matInput formControlName="title" type="text" />

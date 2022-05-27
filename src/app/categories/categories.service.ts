@@ -57,11 +57,14 @@ export class CategoriesService {
   ): Observable<Category[]> {
     const ids = categoriesRef.map((refs) => refs.id);
     const filterIds = categoriesRef.map((category) => category.id);
+
     return this.afs
-      .collection<Category>('categories', (result) => {
-        return result.where('id', 'in', ids);
+      .collection<Category>('categories', (doc) => {
+        return doc.where('id', 'in', ids);
       })
-      .valueChanges({ idField: 'id' });
+      .valueChanges({
+        idFiled: 'id',
+      });
   }
 
   addCategory(text: string): Observable<DocumentReference<Category>> {

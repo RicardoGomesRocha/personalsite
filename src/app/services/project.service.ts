@@ -124,6 +124,7 @@ export class ProjectService implements SearchableService {
     newImage?: File
   ): Observable<ProjectSaveStatus> {
     return new Observable<ProjectSaveStatus>((sub) => {
+      delete project.categories;
       if (newImage) {
         this.upload(newImage, project.id).subscribe((value) => {
           if (value.status === UploadStatuses.Complete) {
