@@ -34,7 +34,7 @@
   </mat-autocomplete>
 </mat-form-field>
 
-<mat-chip-list #chipList multiple *ngIf="mode === 'view'">
+<mat-chip-list class="view-mode" multiple *ngIf="mode === 'view'">
   <mat-chip
     *ngFor="let category of _categories"
     [selected]="category.id"

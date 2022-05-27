@@ -4,7 +4,14 @@ import {
   AngularFirestoreCollection,
   DocumentReference,
 } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, combineLatest, from, map, Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  from,
+  map,
+  Observable,
+  of,
+} from 'rxjs';
 import { Category } from '../models/category';
 
 @Injectable({
@@ -56,11 +63,12 @@ export class CategoriesService {
     categoriesRef: DocumentReference<Category>[]
   ): Observable<Category[]> {
     const ids = categoriesRef.map((refs) => refs.id);
-    const filterIds = categoriesRef.map((category) => category.id);
-
+    if (!ids || ids.length === 0) {
+      return of([]);
+    }
     return this.afs
       .collection<Category>('categories', (doc) => {
-        return doc.where('id', 'in', ids);
+        return doc.where('__name__', 'in', ids);
       })
       .valueChanges({
         idFiled: 'id',
