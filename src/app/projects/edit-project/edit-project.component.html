@@ -19,7 +19,11 @@
     [(imageUrl)]="imageUrl"
     (fileChange)="newImage = $event"
   ></app-upload-image>
-  <quill-editor [modules]="config" formControlName="description"></quill-editor>
+  <app-text-editor
+    [mode]="'edit'"
+    [formGroup]="projectForm"
+    [controllerName]="'description'"
+  ></app-text-editor>
   <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">
     <mat-icon>save</mat-icon> {{ editMode ? "Save" : "Create" }}
   </button>

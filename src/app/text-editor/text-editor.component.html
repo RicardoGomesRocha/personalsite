@@ -1,0 +1,10 @@
+<div class="text-editor">
+  <div [formGroup]="formGroup" *ngIf="formGroup">
+    <quill-editor
+      [modules]="config"
+      formControlName="{{ controllerName }}"
+      *ngIf="mode === 'edit'"
+    ></quill-editor>
+  </div>
+  <quill-view-html [content]="content"></quill-view-html>
+</div>

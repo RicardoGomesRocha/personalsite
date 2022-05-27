@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
@@ -9,6 +15,7 @@ import { CategoriesService } from './categories.service';
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CategoriesComponent {
   @Input()

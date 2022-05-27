@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import * as hljs from 'highlight.js';
 import { QuillModule } from 'ngx-quill';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +33,15 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ViewProjectComponent } from './projects/view-project/view-project.component';
 import { SearchComponent } from './search/search.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { TextEditorComponent } from './text-editor/text-editor.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+
+hljs.default.configure({
+  languages: ['html', 'css', 'scss', 'typescript'],
+});
+
+export * from 'highlight.js';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +67,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     UploadImageComponent,
     ImageComponent,
     CategoriesComponent,
+    TextEditorComponent,
   ],
   imports: [
     BrowserModule,

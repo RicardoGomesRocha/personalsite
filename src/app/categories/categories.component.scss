@@ -1,7 +1,11 @@
 mat-form-field {
     width: 100%;
+}
 
-    .view-mode {
-        font-size: 10px;
+.view-mode {
+    .mat-chip-list-wrapper {
+        align-items: center;
+        justify-content: center;
+        display: flex;
     }
 }
