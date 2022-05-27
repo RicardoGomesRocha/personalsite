@@ -1,0 +1,34 @@
+.ql-picker {
+    &.ql-size {
+
+        .ql-picker-label,
+        .ql-picker-item {
+            &::before {
+                content: attr(data-value) !important;
+            }
+        }
+    }
+
+    &.ql-font {
+
+        ql-picker-label,
+        .ql-picker-item {
+            &::before {
+                content: attr(data-value) !important;
+                font-family: attr(data-value) !important;
+            }
+        }
+    }
+}
+
+.ql-font-arial {
+    font-family: 'Arial';
+}
+
+.ql-font-times-new-roman {
+    font-family: 'Times New Roman';
+}
+
+.ql-font-roboto {
+    font-family: 'Roboto';
+}
