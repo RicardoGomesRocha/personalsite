@@ -8,10 +8,14 @@ import {
   combineLatest,
   first,
   flatMap,
+  forkJoin,
   map,
   Observable,
+  take,
 } from 'rxjs';
+import { CategoriesService } from '../categories/categories.service';
 import { BlogPost } from '../models/blog';
+import { Category } from '../models/category';
 import { Search, SearchableService } from '../search/search.model';
 
 @Injectable({
@@ -26,9 +30,41 @@ export class BlogService implements SearchableService {
 
   private $searchText = new BehaviorSubject<string>('');
 
-  constructor(private readonly afs: AngularFirestore) {
+  constructor(
+    private readonly afs: AngularFirestore,
+    private readonly categoriesService: CategoriesService
+  ) {
     this.blogPostsCollection = afs.collection<BlogPost>('blogPosts');
-    this.$blogPosts = this.blogPostsCollection.valueChanges({ idField: 'id' });
+    this.$blogPosts = new Observable<BlogPost[]>((sub) => {
+      this.blogPostsCollection
+        .valueChanges({ idField: 'id' })
+        .subscribe((blogPosts) => {
+          const blogPostsObservable = new Array<Observable<Category[]>>();
+          for (let post of blogPosts) {
+            if (post.categoriesRefs) {
+              blogPostsObservable.push(
+                this.categoriesService
+                  .getCategoriesFromDocumentReference(
+                    post.categoriesRefs as any
+                  )
+                  .pipe(take(1))
+              );
+            }
+          }
+          if (blogPostsObservable.length > 0) {
+            const observable = forkJoin(blogPostsObservable);
+            observable.subscribe((categoriesMatrix) => {
+              for (let i = 0; i < blogPosts.length; i++) {
+                blogPosts[i].categories = categoriesMatrix[i];
+              }
+              sub.next(blogPosts);
+            });
+          } else {
+            sub.next(blogPosts);
+          }
+        });
+    });
+
     this.$searchResults = combineLatest([
       this.$blogPosts,
       this.$searchText,
@@ -65,5 +101,11 @@ export class BlogService implements SearchableService {
 
   setSearchTextFilter(text: string): void {
     this.$searchText.next(text);
+  }
+
+  setLikes(projectId: string, likes: number) {
+    this.blogPostsCollection.doc(projectId).update({
+      likes,
+    });
   }
 }

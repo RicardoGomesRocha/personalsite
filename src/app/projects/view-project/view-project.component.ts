@@ -30,8 +30,8 @@ export class ViewProjectComponent {
 
   addLike() {
     if (this.project) {
-      const likes = this.project.likes ? this.project.likes++ : 1;
-      this.projectService.setLikes(this.project.id, likes);
+      if (!this.project.likes) this.project.likes = 0;
+      this.projectService.setLikes(this.project.id, ++this.project.likes);
     }
   }
 }

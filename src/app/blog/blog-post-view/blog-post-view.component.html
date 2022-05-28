@@ -1,1 +1,49 @@
-<p *ngIf="blogPost">{{ blogPost | json }}</p>
+<div class="blog-post" *ngIf="blogPost">
+  <h1 class="title">{{ blogPost.title }}</h1>
+  <div class="dates">
+    <h5>
+      <span>Created on: {{ blogPost.createdDate.toDate() | date }}</span>
+      <span class="separator" *ngIf="blogPost.modifiedDate">|</span>
+      <span *ngIf="blogPost.modifiedDate"
+        >Modify on: {{ blogPost?.modifiedDate?.toDate() | date }}</span
+      >
+    </h5>
+  </div>
+  <app-categories
+    *ngIf="blogPost.categories"
+    [categories]="blogPost.categories"
+    [mode]="'view'"
+  ></app-categories>
+
+  <h3 class="small-description">{{ blogPost.description }}</h3>
+
+  <div
+    class="background-image"
+    [style.backgroundImage]="'url(' + blogPost.image + ')'"
+  ></div>
+  <div class="small-bar">
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="Example icon button with a menu icon"
+      [matBadge]="blogPost.likes"
+      matBadgePosition="before"
+      matBadgeColor="warn"
+      (click)="addLike()"
+    >
+      <mat-icon>favorite_border</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="accent"
+      aria-label="Example icon button with a menu icon"
+      (click)="openShareMenu()"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" [routerLink]="['edit']">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <app-text-editor [content]="blogPost.body"></app-text-editor>
+</div>

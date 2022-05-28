@@ -10,6 +10,7 @@
     </h5>
   </div>
   <app-categories
+    *ngIf="project.categories"
     [categories]="project.categories"
     [mode]="'view'"
   ></app-categories>
