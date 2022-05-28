@@ -1,16 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HomeBlogPostsComponent } from './home-blog-posts.component';
 
-describe('HomeBlogPostsComponent', () => {
+xdescribe('HomeBlogPostsComponent', () => {
   let component: HomeBlogPostsComponent;
   let fixture: ComponentFixture<HomeBlogPostsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeBlogPostsComponent ]
-    })
-    .compileComponents();
+      declarations: [HomeBlogPostsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
