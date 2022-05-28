@@ -22,15 +22,15 @@
           <div class="lines">
             <div class="line type">{{ search.type }}</div>
             <div class="line title">{{ search.title }}</div>
-            <div class="line text" *ngFor="let text of search.text">
-              {{ text }}
-            </div>
             <div class="line categories">
               <span
                 class="categories"
                 *ngFor="let category of search.categories"
-                >{{ category }}</span
+                >#{{ category }}</span
               >
+            </div>
+            <div class="line text" *ngFor="let text of search.text">
+              {{ text }}
             </div>
           </div>
         </div>

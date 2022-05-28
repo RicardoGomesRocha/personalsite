@@ -40,6 +40,9 @@
 .search-content {
     display: flex;
     align-items: center;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
 
     app-image {
         border-radius: 100%;
@@ -51,8 +54,15 @@
     }
 
     .lines {
+        width: 92%;
+
         .line {
-            height: 20px;
+            height: auto;
+            line-height: 23px;
+
+            &.title {
+                margin-top: -6px;
+            }
 
             &.type {
                 font-size: 10px;
@@ -62,6 +72,16 @@
             &.text {
                 font-size: 12px;
                 font-style: italic;
+            }
+
+            &.categories {
+                font-size: 10px;
+                font-weight: bolder;
+                margin-top: -6px;
+
+                span {
+                    padding: 2px;
+                }
             }
         }
     }

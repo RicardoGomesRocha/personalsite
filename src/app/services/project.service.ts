@@ -93,7 +93,9 @@ export class ProjectService implements SearchableService {
               text: [project.smallDescription, project.description],
               image: project.image,
               link: `/projects/${project.id}/`,
-              categories: ['', ''],
+              categories: project.categories?.map(
+                (categories) => categories.text
+              ),
             } as Search;
           });
       })

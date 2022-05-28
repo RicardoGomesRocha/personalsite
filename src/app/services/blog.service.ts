@@ -84,8 +84,10 @@ export class BlogService implements SearchableService {
               title: blogPost.title,
               text: [blogPost.body],
               image: blogPost.image,
-              link: `blogPosts/${blogPost.id}/`,
-              categories: ['', ''],
+              link: `/blogPost/${blogPost.id}/`,
+              categories: blogPost.categories?.map(
+                (categories) => categories.text
+              ),
             } as Search;
           });
       })
