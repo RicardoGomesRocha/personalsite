@@ -10,6 +10,7 @@ import { BlogService } from '../services/blog.service';
 })
 export class BlogComponent {
   $posts: Observable<BlogPost[]>;
+
   constructor(public readonly blogService: BlogService) {
     this.$posts = this.blogService.$blogPosts;
   }

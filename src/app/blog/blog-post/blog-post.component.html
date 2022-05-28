@@ -5,14 +5,14 @@
   </div>
   <div class="body">
     <h5>
-      {{ post?.body }}
+      {{ post?.description }}
     </h5>
   </div>
   <div class="date">
-    <h5>{{ post?.createDate | date }}</h5>
+    <h5>{{ post?.createdDate?.toDate() | date }}</h5>
   </div>
   <div class="footer">
-    <button mat-button color="primary" [routerLink]="['blog/', post?.id]">
+    <button mat-button color="primary" [routerLink]="['/blogPost', post?.id]">
       Check out full post <mat-icon>arrow_right_alt</mat-icon>
     </button>
   </div>

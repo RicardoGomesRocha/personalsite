@@ -1,5 +1,16 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
+import {
+  BehaviorSubject,
+  combineLatest,
+  first,
+  flatMap,
+  map,
+  Observable,
+} from 'rxjs';
 import { BlogPost } from '../models/blog';
 import { Search, SearchableService } from '../search/search.model';
 
@@ -7,15 +18,17 @@ import { Search, SearchableService } from '../search/search.model';
   providedIn: 'root',
 })
 export class BlogService implements SearchableService {
-  $blogPosts: Observable<BlogPost[]> = new Observable<BlogPost[]>((sub) => {
-    sub.next(this.getMockBlogPosts());
-  });
+  private blogPostsCollection: AngularFirestoreCollection<BlogPost>;
+
+  $blogPosts: Observable<BlogPost[]>;
 
   $searchResults: Observable<Search[]>;
 
   private $searchText = new BehaviorSubject<string>('');
 
-  constructor() {
+  constructor(private readonly afs: AngularFirestore) {
+    this.blogPostsCollection = afs.collection<BlogPost>('blogPosts');
+    this.$blogPosts = this.blogPostsCollection.valueChanges({ idField: 'id' });
     this.$searchResults = combineLatest([
       this.$blogPosts,
       this.$searchText,
@@ -43,76 +56,14 @@ export class BlogService implements SearchableService {
     );
   }
 
-  setSearchTextFilter(text: string): void {
-    this.$searchText.next(text);
+  getBlogPost(id: string) {
+    return this.$blogPosts.pipe(
+      flatMap((blogPosts) => blogPosts),
+      first((blogPost) => blogPost.id === id)
+    );
   }
 
-  private getMockBlogPosts(): BlogPost[] {
-    return [
-      {
-        id: '1',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-      {
-        id: '1',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-      {
-        id: '1',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-      {
-        id: '1',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-      {
-        id: '1',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-      {
-        id: '2',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-      {
-        id: '3',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-      {
-        id: '4',
-        title: 'Some title that makes sense',
-        image: '/assets/images/triangles-background.jpg',
-        body: '  This is some big description; This is some big description; This is some big description; This is some big description; This is some big description;This is some big description; This is some big description',
-        createDate: new Date(),
-        likes: 0,
-      },
-    ];
+  setSearchTextFilter(text: string): void {
+    this.$searchText.next(text);
   }
 }
