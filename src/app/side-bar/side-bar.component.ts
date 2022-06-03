@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../users/users.services';
 import { SideBarService } from './side-bar.service';
@@ -39,7 +40,8 @@ export class SideBarComponent {
   constructor(
     private readonly sidebarService: SideBarService,
     private readonly authService: AuthService,
-    private readonly usersService: UserService
+    private readonly usersService: UserService,
+    private readonly router: Router
   ) {
     this.$showUsersOption.subscribe((result) =>
       console.log(`showUsersOption: ${result}`)
@@ -51,6 +53,8 @@ export class SideBarComponent {
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

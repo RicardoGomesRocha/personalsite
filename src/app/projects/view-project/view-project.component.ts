@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Project } from 'src/app/models';
 import { ProjectService } from 'src/app/services/project.service';
 import { ShareService } from 'src/app/services/share.service';
+import { UserService } from 'src/app/users/users.services';
 
 @Component({
   selector: 'app-view-project',
@@ -13,10 +14,12 @@ import { ShareService } from 'src/app/services/share.service';
 export class ViewProjectComponent {
   $project: Observable<Project>;
   project: Project | undefined;
+  $showAdminOptions = this.usersService.hasRoles(['admin']);
   constructor(
     private readonly projectService: ProjectService,
     private route: ActivatedRoute,
-    private readonly shareService: ShareService
+    private readonly shareService: ShareService,
+    private readonly usersService: UserService
   ) {
     this.$project = this.projectService.getProject(
       route.snapshot.paramMap.get('id') || ''

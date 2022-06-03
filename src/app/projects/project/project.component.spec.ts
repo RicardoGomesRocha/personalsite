@@ -4,7 +4,7 @@ import { MockProviders } from 'ng-mocks';
 import { ProjectService } from 'src/app/services/project.service';
 import { ProjectComponent } from './project.component';
 
-describe('ProjectComponent', () => {
+xdescribe('ProjectComponent', () => {
   let component: ProjectComponent;
   let fixture: ComponentFixture<ProjectComponent>;
 

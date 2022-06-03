@@ -41,7 +41,12 @@
     >
       <mat-icon>share</mat-icon>
     </button>
-    <button mat-mini-fab color="primary" [routerLink]="['edit']">
+    <button
+      mat-mini-fab
+      color="primary"
+      [routerLink]="['edit']"
+      *ngIf="$showAdminOptions | async"
+    >
       <mat-icon>edit</mat-icon>
     </button>
   </div>
