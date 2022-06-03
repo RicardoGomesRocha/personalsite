@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../users/users.services';
 import { SideBarService } from './side-bar.service';
 
 @Component({
@@ -33,11 +34,17 @@ import { SideBarService } from './side-bar.service';
 export class SideBarComponent {
   $openState = this.sidebarService.$openState;
   $authState = this.authService.$authState;
+  $showUsersOption = this.usersService.hasRoles(['admin']);
 
   constructor(
     private readonly sidebarService: SideBarService,
-    private readonly authService: AuthService
-  ) {}
+    private readonly authService: AuthService,
+    private readonly usersService: UserService
+  ) {
+    this.$showUsersOption.subscribe((result) =>
+      console.log(`showUsersOption: ${result}`)
+    );
+  }
 
   closeMenu() {
     this.sidebarService.$openState.next(false);

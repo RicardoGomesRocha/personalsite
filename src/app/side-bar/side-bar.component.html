@@ -37,7 +37,7 @@
             Contacts
           </button>
         </li>
-        <li>
+        <li *ngIf="$showUsersOption | async">
           <button mat-flat-button color="primary" routerLink="/users">
             Users
           </button>

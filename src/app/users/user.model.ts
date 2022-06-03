@@ -10,4 +10,5 @@ export interface User {
     lastRefreshTime?: string | null;
   };
   photoURL: string;
+  [claim: string]: any;
 }

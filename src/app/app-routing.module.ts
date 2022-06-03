@@ -61,6 +61,8 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: () => hasCustomClaim('admin') },
   },
 ];
 

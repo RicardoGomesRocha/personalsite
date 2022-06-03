@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { from, Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from './user.model';
 @Injectable({
@@ -29,5 +29,28 @@ export class UserService {
 
   getUserToken(): Observable<string | null> {
     return this.auth.idToken;
+  }
+
+  getCurrentUser(): Observable<User | null> {
+    return this.auth.user as Observable<User | null>;
+  }
+
+  getClaims(): Observable<
+    | {
+        [key: string]: any;
+      }
+    | undefined
+  > {
+    return this.auth.idTokenResult.pipe(map((result) => result?.claims));
+  }
+
+  hasRoles(roles: string[]): Observable<boolean> {
+    return this.getClaims().pipe(
+      map((claims) => {
+        if (!claims) return false;
+        const hasRole = roles.find((role) => claims[role] === true);
+        return hasRole ? true : false;
+      })
+    );
   }
 }
