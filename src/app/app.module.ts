@@ -25,6 +25,7 @@ import { HomeProjectsComponent } from './home/home-projects/home-projects.compon
 import { HomeComponent } from './home/home.component';
 import { ImageComponent } from './image/image.component';
 import { UploadImageComponent } from './image/upload-image/upload-image.component';
+import { httpInterceptorProviders } from './interceptors/interceptors';
 import { IntroComponent } from './intro/intro.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialsModule } from './materials.module';
@@ -90,7 +91,10 @@ export * from 'highlight.js';
     MatChipsModule,
     HttpClientModule,
   ],
-  providers: [{ provide: PERSISTENCE, useValue: 'local' }],
+  providers: [
+    { provide: PERSISTENCE, useValue: 'local' },
+    httpInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
