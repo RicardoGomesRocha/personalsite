@@ -1,7 +1,18 @@
 <div class="login-wrapper">
-  <button (click)="login(AuthProviders.Google)">Login with google</button>
-  <button (click)="login(AuthProviders.Facebook)">Login with facebook</button>
-  <button (click)="login(AuthProviders.Github)">Login with github</button>
-  <button (click)="login(AuthProviders.Twitter)">Login with twitter</button>
-  <button (click)="login(AuthProviders.Microsoft)">Login with microsoft</button>
+  <button (click)="login(AuthProviders.Google)" mat-button>
+    Login with google
+  </button>
+  <button (click)="login(AuthProviders.Facebook)" mat-button>
+    Login with facebook
+  </button>
+  <button (click)="login(AuthProviders.Github)" mat-button>
+    Login with github
+  </button>
+  <button (click)="login(AuthProviders.Twitter)" mat-button>
+    Login with twitter
+  </button>
+  <button (click)="login(AuthProviders.Microsoft)" mat-button>
+    Login with microsoft
+  </button>
+  <div class="email-password"></div>
 </div>
