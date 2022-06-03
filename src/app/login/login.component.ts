@@ -9,13 +9,15 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  AuthProviders = AuthProviders;
+
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router
   ) {}
 
-  login() {
-    this.authService.login(AuthProviders.Google).subscribe((user) => {
+  login(authMethod: AuthProviders) {
+    this.authService.login(authMethod).subscribe((user) => {
       this.router.navigateByUrl('');
     });
   }

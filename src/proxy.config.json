@@ -1,0 +1,7 @@
+{
+  "/personalwebsite-28065/us-central1": {
+    "target": "http://localhost:5001",
+    "secure": false
+  },
+  "logLevel": "debug"
+}

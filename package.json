@@ -4,7 +4,7 @@
   "scripts": {
     "config": "ts-node ./src/environments/generate-keys.ts ",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl true",
     "build": "npm run config && ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

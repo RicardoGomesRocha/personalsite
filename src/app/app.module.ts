@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
@@ -36,6 +37,8 @@ import { SearchComponent } from './search/search.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import { UserComponent } from './users/user/user.component';
+import { UsersComponent } from './users/users.component';
 
 hljs.default.configure({
   languages: ['html', 'css', 'scss', 'typescript'],
@@ -71,6 +74,8 @@ export * from 'highlight.js';
     TextEditorComponent,
     BlogComponent,
     BlogPostViewComponent,
+    UserComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +88,7 @@ export * from 'highlight.js';
     AngularFireStorageModule,
     QuillModule.forRoot(),
     MatChipsModule,
+    HttpClientModule,
   ],
   providers: [{ provide: PERSISTENCE, useValue: 'local' }],
   bootstrap: [AppComponent],

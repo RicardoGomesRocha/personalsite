@@ -14,6 +14,9 @@ export const environment = {
     appId: '',
     measurementId: '',
   },
+  api: {
+    url: '',
+  },
   version: '',
   name: '',
 };

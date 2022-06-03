@@ -19,6 +19,22 @@ export class AuthService {
         return from(
           this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
         );
+      case AuthProviders.Facebook:
+        return from(
+          this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        );
+      case AuthProviders.Github:
+        return from(
+          this.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
+        );
+      case AuthProviders.Twitter:
+        return from(
+          this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+        );
+      case AuthProviders.Microsoft:
+        return from(
+          this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+        );
     }
   }
 

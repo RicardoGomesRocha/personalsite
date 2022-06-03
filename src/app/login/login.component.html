@@ -1,3 +1,7 @@
 <div class="login-wrapper">
-  <button (click)="login()">Login with google</button>
+  <button (click)="login(AuthProviders.Google)">Login with google</button>
+  <button (click)="login(AuthProviders.Facebook)">Login with facebook</button>
+  <button (click)="login(AuthProviders.Github)">Login with github</button>
+  <button (click)="login(AuthProviders.Twitter)">Login with twitter</button>
+  <button (click)="login(AuthProviders.Microsoft)">Login with microsoft</button>
 </div>

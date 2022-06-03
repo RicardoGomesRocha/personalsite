@@ -12,7 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   exports: [
     MatButtonModule,
@@ -30,6 +30,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatListModule,
     MatBadgeModule,
     MatProgressSpinnerModule,
+    MatTableModule,
   ],
 })
 export class MaterialsModule {}

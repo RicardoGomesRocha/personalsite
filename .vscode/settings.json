@@ -1,0 +1,12 @@
+{
+    "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "Powershell",
+          "commands": ["powershell"],
+          "shouldRunCommands": true
+        }
+      ]
+    }]
+}
