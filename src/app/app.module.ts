@@ -23,6 +23,11 @@ import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.c
 import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { HomeComponent } from './home/home.component';
+import { FacebookIconComponent } from './icons/facebook-icon/facebook-icon.component';
+import { GithubIconComponent } from './icons/github-icon/github-icon.component';
+import { GoogleIconComponent } from './icons/google-icon/google-icon.component';
+import { MicrosoftIconComponent } from './icons/microsoft-icon/microsoft-icon.component';
+import { TwitterIconComponent } from './icons/twitter-icon/twitter-icon.component';
 import { ImageComponent } from './image/image.component';
 import { UploadImageComponent } from './image/upload-image/upload-image.component';
 import { httpInterceptorProviders } from './interceptors/interceptors';
@@ -77,6 +82,11 @@ export * from 'highlight.js';
     BlogPostViewComponent,
     UserComponent,
     UsersComponent,
+    GithubIconComponent,
+    TwitterIconComponent,
+    MicrosoftIconComponent,
+    FacebookIconComponent,
+    GoogleIconComponent,
   ],
   imports: [
     BrowserModule,

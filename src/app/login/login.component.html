@@ -1,18 +1,56 @@
-<div class="login-wrapper">
-  <button (click)="login(AuthProviders.Google)" mat-button>
-    Login with google
-  </button>
-  <button (click)="login(AuthProviders.Facebook)" mat-button>
-    Login with facebook
-  </button>
-  <button (click)="login(AuthProviders.Github)" mat-button>
-    Login with github
-  </button>
-  <button (click)="login(AuthProviders.Twitter)" mat-button>
-    Login with twitter
-  </button>
-  <button (click)="login(AuthProviders.Microsoft)" mat-button>
-    Login with microsoft
-  </button>
-  <div class="email-password"></div>
+<div class="login">
+  <div class="login-inner">
+    <h1 class="title">
+      Login with social media accounts or using the traditional email/password
+      form
+    </h1>
+    <div class="login-wrapper">
+      <div class="social-media">
+        <button class="google" (click)="login(AuthProviders.Google)" mat-button>
+          <app-google-icon class="icon"></app-google-icon>
+          <span>Login with google</span>
+        </button>
+        <button
+          class="facebook"
+          (click)="login(AuthProviders.Facebook)"
+          mat-button
+        >
+          <app-facebook-icon class="icon"></app-facebook-icon>
+          <span>Login with facebook</span>
+        </button>
+        <button class="github" (click)="login(AuthProviders.Github)" mat-button>
+          <app-github-icon class="icon"></app-github-icon>
+          <span>Login with github</span>
+        </button>
+        <button
+          class="twitter"
+          (click)="login(AuthProviders.Twitter)"
+          mat-button
+        >
+          <app-twitter-icon class="icon"></app-twitter-icon>
+          <span>Login with twitter</span>
+        </button>
+        <button
+          class="microsoft"
+          (click)="login(AuthProviders.Microsoft)"
+          mat-button
+        >
+          <app-microsoft-icon class="icon"></app-microsoft-icon>
+          <span>Login with microsoft</span>
+        </button>
+      </div>
+      <div class="division"></div>
+      <form class="email-password">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput />
+        </mat-form-field>
+        <button mat-raised-button color="primary">Login</button>
+      </form>
+    </div>
+  </div>
 </div>

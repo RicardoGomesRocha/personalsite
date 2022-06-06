@@ -1,8 +1,94 @@
-.login-wrapper {
-    width: 100vw;
-    height: calc(100vh - 70px);
+@import '../../colors.scss';
+
+.login {
+    width: calc(100vw - 80px);
+    height: calc(100vh - 150px);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 40px;
+
+    .title {
+        text-align: center;
+    }
+
+    .login-wrapper {
+        display: flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .social-media {
+            display: flex;
+            flex-direction: column;
+
+            button {
+                margin: 5px;
+                width: 200px;
+                color: white;
+
+                .mat-button-wrapper {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                .icon {
+                    width: 20px;
+                    margin-right: 5px;
+                    display: flex;
+                }
+
+                &.github {
+                    background-color: #171515;
+
+                    .icon {
+                        width: 28px;
+                    }
+
+                }
+
+                &.twitter {
+                    background-color: rgb(29, 161, 242);
+                }
+
+                &.microsoft {
+                    background-color: rgb(242, 80, 34);
+
+                    .icon {
+                        width: 23px;
+                    }
+                }
+
+                &.facebook {
+                    background-color: rgb(66, 103, 178);
+                }
+
+                &.google {
+                    background-color: rgb(219, 68, 55);
+                }
+
+            }
+        }
+
+        .division {
+            height: 215px;
+            width: 2px;
+            background: $primary-color;
+            margin: 25px;
+        }
+
+        .email-password {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+
+
 }

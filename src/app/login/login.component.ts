@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthProviders } from '../models/auth';
 import { AuthService } from '../services/auth.service';
@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
   AuthProviders = AuthProviders;
