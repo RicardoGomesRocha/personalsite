@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { from, map, Observable } from 'rxjs';
+import { BehaviorSubject, from, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from './user.model';
 @Injectable({
@@ -9,6 +9,8 @@ import { User } from './user.model';
 })
 export class UserService {
   private url = `${environment.api.url}/users`;
+  $users = new BehaviorSubject<User[]>([]);
+
   constructor(
     private readonly http: HttpClient,
     private readonly auth: AngularFireAuth
@@ -52,5 +54,9 @@ export class UserService {
         return hasRole ? true : false;
       })
     );
+  }
+
+  deleteUser(userId: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${userId}`);
   }
 }
