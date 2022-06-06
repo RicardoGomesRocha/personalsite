@@ -40,14 +40,18 @@
         </button>
       </div>
       <div class="division"></div>
-      <form class="email-password">
+      <form
+        class="email-password"
+        [formGroup]="loginForm"
+        (ngSubmit)="loginWithEmailPassword()"
+      >
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Email</mat-label>
-          <input type="email" matInput />
+          <input type="email" matInput formControlName="email" />
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Password</mat-label>
-          <input type="password" matInput />
+          <input type="password" matInput formControlName="password" />
         </mat-form-field>
         <button mat-raised-button color="primary">Login</button>
       </form>

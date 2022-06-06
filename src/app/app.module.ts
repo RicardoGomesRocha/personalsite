@@ -5,6 +5,7 @@ import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as hljs from 'highlight.js';
@@ -100,6 +101,7 @@ export * from 'highlight.js';
     QuillModule.forRoot(),
     MatChipsModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [
     { provide: PERSISTENCE, useValue: 'local' },
