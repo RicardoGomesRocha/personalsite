@@ -27,6 +27,7 @@ export class LoginComponent {
 
   login(authMethod: AuthProviders) {
     this.authService.login(authMethod).subscribe((user) => {
+      user.user?.getIdToken().then((token) => console.log(token));
       this.router.navigateByUrl('');
     });
   }

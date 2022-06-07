@@ -1,0 +1,4 @@
+<button mat-raised-button [color]="color" *ngIf="!loading">
+  <ng-content></ng-content>
+</button>
+<app-loader *ngIf="loading" [color]="color"></app-loader>

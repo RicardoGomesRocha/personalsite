@@ -10,5 +10,7 @@ export interface User {
     lastRefreshTime?: string | null;
   };
   photoURL: string;
-  [claim: string]: any;
+  customClaims: { [claim: string]: any };
+  loadingClaims: boolean;
+  isDeleting: boolean;
 }

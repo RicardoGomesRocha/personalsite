@@ -5,6 +5,7 @@ import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +18,9 @@ import { BlogPostViewComponent } from './blog/blog-post-view/blog-post-view.comp
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { BlogComponent } from './blog/blog.component';
 import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
+import { ButtonComponent } from './button/button.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SocialMediaComponent } from './contacts/social-media/social-media.component';
 import { HomeBlogPostsComponent } from './home/home-blog-posts/home-blog-posts.component';
@@ -33,6 +36,7 @@ import { ImageComponent } from './image/image.component';
 import { UploadImageComponent } from './image/upload-image/upload-image.component';
 import { httpInterceptorProviders } from './interceptors/interceptors';
 import { IntroComponent } from './intro/intro.component';
+import { LoaderComponent } from './loader/loader.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialsModule } from './materials.module';
 import { PhotoComponent } from './photo/photo.component';
@@ -88,6 +92,9 @@ export * from 'highlight.js';
     MicrosoftIconComponent,
     FacebookIconComponent,
     GoogleIconComponent,
+    CheckboxComponent,
+    LoaderComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +109,7 @@ export * from 'highlight.js';
     MatChipsModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     { provide: PERSISTENCE, useValue: 'local' },

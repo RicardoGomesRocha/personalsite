@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BehaviorSubject, from, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from './user.model';
 @Injectable({
@@ -17,16 +17,11 @@ export class UserService {
   ) {}
 
   getAllUsers(): Observable<User[]> {
-    this.setClaims().subscribe();
     return this.http.get<User[]>(this.url);
   }
 
-  setClaims(): Observable<Object> {
-    return from(
-      this.http.post(`${this.url}/claims`, {
-        admin: true,
-      })
-    );
+  setClaims(userId: string, claims: { [key: string]: any }): Observable<void> {
+    return this.http.post<void>(`${this.url}/${userId}/claims`, claims);
   }
 
   getUserToken(): Observable<string | null> {

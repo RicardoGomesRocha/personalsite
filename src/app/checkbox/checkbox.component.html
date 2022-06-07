@@ -1,0 +1,9 @@
+<div class="checkbox">
+  <mat-checkbox
+    [color]="color"
+    [checked]="checked"
+    *ngIf="!loading"
+    (change)="onChange($event)"
+  ></mat-checkbox>
+  <app-loader *ngIf="loading" [diameter]="20"></app-loader>
+</div>
