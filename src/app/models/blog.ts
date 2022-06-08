@@ -1,5 +1,6 @@
 import { DocumentReference } from '@angular/fire/compat/firestore';
 import * as Firestore from 'firebase/firestore';
+import { CommentModel } from '../comments/comment/comment.model';
 import { Category } from './category';
 import Timestamp = Firestore.Timestamp;
 export interface BlogPost {
@@ -13,4 +14,5 @@ export interface BlogPost {
   modifiedDate?: Timestamp;
   categoriesRefs?: DocumentReference<Category>[];
   categories?: Category[];
+  comments?: DocumentReference<CommentModel>[];
 }

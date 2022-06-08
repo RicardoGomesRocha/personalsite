@@ -46,4 +46,8 @@
     </button>
   </div>
   <app-text-editor [content]="blogPost.body"></app-text-editor>
+  <app-comments
+    *ngIf="blogPost.comments && blogPost.comments"
+    [comments]="blogPost.comments"
+  ></app-comments>
 </div>
