@@ -6,5 +6,4 @@ export interface CommentModel {
   date: Date;
   comments?: CommentModel[];
   commentsRef?: DocumentReference<CommentModel>[] | undefined;
-  likes: 0;
 }
