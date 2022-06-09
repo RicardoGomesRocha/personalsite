@@ -11,8 +11,8 @@ import { CommentsService } from './comments.service';
 export class CommentsComponent {
   @Input()
   set comments(comments: DocumentReference<CommentModel>[]) {
-    this.commentsService.getComments(comments).subscribe((sub) => {
-      console.log(sub);
+    this.commentsService.getComments(comments).then((cmt) => {
+      this._comments = cmt;
     });
   }
 

@@ -16,10 +16,32 @@ export class CommentsService {
     private readonly afs: AngularFirestore
   ) {}
 
-  getComments(comments: DocumentReference<CommentModel>[]) {
-    const ids = comments.map((comment) => comment.id);
-    return this.afs
-      .collection(this.collectionPath, (ref) => ref.where('id', 'in', ids))
-      .valueChanges();
+  async getComments(
+    commentsRef: DocumentReference<CommentModel>[]
+  ): Promise<CommentModel[]> {
+    const promiseArray = commentsRef.map((comment) => comment.get());
+    const commentsSnapshot = await Promise.all(promiseArray);
+    const comments = commentsSnapshot
+      .map((value) => value.data())
+      .filter((value) => value !== undefined) as CommentModel[];
+
+    const commentsPromises = comments.map((value, index) => {
+      if (value.commentsRef && value.commentsRef.length > 0) {
+        return this.getComments(value.commentsRef);
+      } else {
+        return Promise.resolve(undefined);
+      }
+    }) as Promise<CommentModel[] | undefined>[];
+
+    const commentsPromiseResult = await Promise.all<CommentModel[] | undefined>(
+      commentsPromises
+    );
+
+    for (let i = 0; i < commentsPromiseResult.length; i++)
+      if (commentsPromiseResult[i] !== undefined) {
+        comments[i].comments = commentsPromiseResult[i];
+      }
+
+    return comments;
   }
 }

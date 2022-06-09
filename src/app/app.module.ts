@@ -21,6 +21,7 @@ import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
 import { ButtonComponent } from './button/button.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { CommentComponent } from './comments/comment/comment.component';
 import { CommentsComponent } from './comments/comments.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SocialMediaComponent } from './contacts/social-media/social-media.component';
@@ -97,6 +98,7 @@ export * from 'highlight.js';
     LoaderComponent,
     ButtonComponent,
     CommentsComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

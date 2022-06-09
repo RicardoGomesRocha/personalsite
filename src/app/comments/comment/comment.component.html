@@ -1,6 +1,14 @@
-<div class="comment">
+<div class="comment" *ngIf="comment">
   <span>{{ comment?.body }}</span>
+  <div class="actions">
+    <button class="like">Like</button>
+    <button class="share">Share</button>
+    <button class="replay">Replay</button>
+  </div>
   <div class="comments">
-    <app-comment></app-comment>
+    <app-comment
+      *ngFor="let comment of comment.comments"
+      [comment]="comment"
+    ></app-comment>
   </div>
 </div>
