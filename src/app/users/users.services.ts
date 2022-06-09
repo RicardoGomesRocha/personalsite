@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from './user.model';
 @Injectable({
@@ -32,6 +32,13 @@ export class UserService {
     return this.auth.user as Observable<User | null>;
   }
 
+  isCurrentUser(id: string | undefined): Observable<boolean> {
+    if (!id) return of(false);
+    return this.getCurrentUser().pipe(
+      map((user) => (user && user.uid === id ? true : false))
+    );
+  }
+
   getClaims(): Observable<
     | {
         [key: string]: any;
@@ -53,5 +60,9 @@ export class UserService {
 
   deleteUser(userId: string): Observable<void> {
     return this.http.delete<void>(`${this.url}/${userId}`);
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.hasRoles(['admin']);
   }
 }

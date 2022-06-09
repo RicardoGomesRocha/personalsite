@@ -1,10 +1,10 @@
-<div class="comment" *ngIf="comment">
-  <span>{{ comment?.body }}</span>
+<div class="comment" *ngIf="_comment">
+  <span>{{ _comment?.body }}</span>
   <div class="actions">
     <button class="like" mat-button>
       <mat-icon
         color="warn"
-        matBadge="4"
+        matBadge="{{ _comment.like ?? 0 }}"
         matBadgeOverlap="true"
         matBadgeColor="warn"
         matBadgeSize="small"
@@ -21,14 +21,22 @@
       <mat-icon color="accent">reply</mat-icon>
       <span>Reply</span>
     </button>
-    <button class="edit" mat-button>
+    <button class="edit" mat-button *ngIf="$isCurrentUser | async">
       <mat-icon color="accent">edit</mat-icon>
       <span>Edit</span>
+    </button>
+    <button
+      class="delete"
+      mat-button
+      *ngIf="($isAdmin | async) || ($isCurrentUser | async)"
+    >
+      <mat-icon color="accent">delete</mat-icon>
+      <span>Delete</span>
     </button>
   </div>
   <div class="comments">
     <app-comment
-      *ngFor="let comment of comment.comments"
+      *ngFor="let comment of _comment.comments"
       [comment]="comment"
     ></app-comment>
   </div>

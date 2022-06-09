@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DocumentReference } from '@angular/fire/compat/firestore';
+import { UserService } from '../users/users.services';
 import { CommentModel } from './comment/comment.model';
 import { CommentsService } from './comments.service';
 
@@ -18,5 +19,8 @@ export class CommentsComponent {
 
   _comments = new Array<CommentModel>();
 
-  constructor(private readonly commentsService: CommentsService) {}
+  constructor(
+    private readonly commentsService: CommentsService,
+    private readonly usersService: UserService
+  ) {}
 }
