@@ -1,4 +1,23 @@
-.comments {
-    margin-left: 10vw;
-    margin-top: 10px;
+.comment {
+    margin-top: 30px;
+
+    .comments {
+        margin-left: 10vw;
+        margin-top: 10px;
+    }
+
+    .actions {
+        display: flex;
+        margin-top: 5px;
+        flex-wrap: wrap;
+
+        button {
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-left: 2px !important;
+            }
+        }
+    }
 }

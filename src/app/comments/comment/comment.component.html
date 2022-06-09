@@ -1,9 +1,30 @@
 <div class="comment" *ngIf="comment">
   <span>{{ comment?.body }}</span>
   <div class="actions">
-    <button class="like">Like</button>
-    <button class="share">Share</button>
-    <button class="replay">Replay</button>
+    <button class="like" mat-button>
+      <mat-icon
+        color="warn"
+        matBadge="4"
+        matBadgeOverlap="true"
+        matBadgeColor="warn"
+        matBadgeSize="small"
+        matBadgePosition="before"
+        >favorite_border</mat-icon
+      >
+      <span>Love</span>
+    </button>
+    <button class="share" mat-button>
+      <mat-icon color="accent">share</mat-icon>
+      <span>Share</span>
+    </button>
+    <button class="reply" mat-button>
+      <mat-icon color="accent">reply</mat-icon>
+      <span>Reply</span>
+    </button>
+    <button class="edit" mat-button>
+      <mat-icon color="accent">edit</mat-icon>
+      <span>Edit</span>
+    </button>
   </div>
   <div class="comments">
     <app-comment
