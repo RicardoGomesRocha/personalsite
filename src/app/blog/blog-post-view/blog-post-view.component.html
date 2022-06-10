@@ -49,5 +49,6 @@
   <app-comments
     *ngIf="blogPost.comments && blogPost.comments"
     [comments]="blogPost.comments"
+    (commentAdded)="addComment($event)"
   ></app-comments>
 </div>

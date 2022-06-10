@@ -1,6 +1,11 @@
-<div class="comments" *ngIf="_comments.length > 0">
-  <app-comment
-    *ngFor="let comment of _comments"
-    [comment]="comment"
-  ></app-comment>
+<div class="comments">
+  <h1>Leave your comment bellow</h1>
+  <app-add-comment (commentAdded)="addComment($event)"></app-add-comment>
+  <div *ngIf="_comments.length > 0">
+    <app-comment
+      *ngFor="let comment of _comments; let i = index"
+      [comment]="comment"
+      (commentChanged)="this._comments[i] = $event"
+    ></app-comment>
+  </div>
 </div>

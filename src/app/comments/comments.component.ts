@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DocumentReference } from '@angular/fire/compat/firestore';
-import { UserService } from '../users/users.services';
 import { CommentModel } from './comment/comment.model';
 import { CommentsService } from './comments.service';
 
@@ -13,14 +12,20 @@ export class CommentsComponent {
   @Input()
   set comments(comments: DocumentReference<CommentModel>[]) {
     this.commentsService.getComments(comments).then((cmt) => {
-      this._comments = cmt;
+      this._comments = cmt.sort(
+        (a, b) => b.date.toMillis() - a.date.toMillis()
+      );
     });
   }
 
+  @Output()
+  commentAdded = new EventEmitter<DocumentReference<CommentModel>>();
+
   _comments = new Array<CommentModel>();
 
-  constructor(
-    private readonly commentsService: CommentsService,
-    private readonly usersService: UserService
-  ) {}
+  constructor(private readonly commentsService: CommentsService) {}
+
+  addComment(comment: DocumentReference<CommentModel>) {
+    this.commentAdded.emit(comment);
+  }
 }

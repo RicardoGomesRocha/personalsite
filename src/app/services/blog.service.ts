@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
+  DocumentReference,
 } from '@angular/fire/compat/firestore';
 import {
   BehaviorSubject,
@@ -14,6 +15,7 @@ import {
   take,
 } from 'rxjs';
 import { CategoriesService } from '../categories/categories.service';
+import { CommentModel } from '../comments/comment/comment.model';
 import { BlogPost } from '../models/blog';
 import { Category } from '../models/category';
 import { Search, SearchableService } from '../search/search.model';
@@ -105,9 +107,15 @@ export class BlogService implements SearchableService {
     this.$searchText.next(text);
   }
 
-  setLikes(projectId: string, likes: number) {
-    this.blogPostsCollection.doc(projectId).update({
+  setLikes(blogPostId: string, likes: number) {
+    return this.blogPostsCollection.doc(blogPostId).update({
       likes,
+    });
+  }
+
+  setComments(blogPostId: string, comments: DocumentReference<CommentModel>[]) {
+    this.blogPostsCollection.doc(blogPostId).update({
+      comments,
     });
   }
 }

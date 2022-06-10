@@ -1,13 +1,14 @@
 import { DocumentReference } from '@angular/fire/compat/firestore';
+import { Timestamp } from 'firebase/firestore';
 import { User } from 'src/app/users/user.model';
 
 export interface CommentModel {
-  id: string;
+  id?: string;
   body: string;
-  date: Date;
+  date: Timestamp;
   comments?: CommentModel[];
   commentsRef?: DocumentReference<CommentModel>[] | undefined;
-  like?: number;
+  likes?: number;
   authorId?: string;
   author?: User;
 }

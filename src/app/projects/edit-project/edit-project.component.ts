@@ -88,10 +88,6 @@ export class EditProjectComponent {
     );
   }
 
-  getDescriptionControl() {
-    return this.projectForm.get('description') as FormControl;
-  }
-
   private getProjectFromFormField(): Project {
     return this.projectForm.value as Project;
   }

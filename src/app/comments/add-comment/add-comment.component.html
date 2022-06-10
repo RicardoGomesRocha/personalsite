@@ -1,0 +1,16 @@
+<form [formGroup]="commentForm">
+  <app-text-editor
+    [mode]="'edit'"
+    [formGroup]="commentForm"
+    [formControlName]="'comment'"
+    [configuration]="editorConfiguration"
+  ></app-text-editor>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="addComment()"
+  >
+    Save Comment
+  </button>
+</form>
