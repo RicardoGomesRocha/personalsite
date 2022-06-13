@@ -15,6 +15,7 @@ import { CommentModel } from './comment/comment.model';
 export class CommentsService {
   private readonly collectionPath = 'comments';
   private readonly collection: AngularFirestoreCollection<CommentModel>;
+
   constructor(
     private readonly http: HttpClient,
     private readonly afs: AngularFirestore
@@ -55,6 +56,13 @@ export class CommentsService {
     return comments;
   }
 
+  async getComment(
+    commentRef: DocumentReference<CommentModel>
+  ): Promise<CommentModel> {
+    const comments = await this.getComments([commentRef]);
+    return comments[0];
+  }
+
   setLikes(commentId: string, likes: number): Observable<void> {
     return from(
       this.collection.doc(commentId).update({
@@ -63,12 +71,21 @@ export class CommentsService {
     );
   }
 
-  addComment(comment: CommentModel) {
+  addComment(comment: CommentModel): Promise<DocumentReference<CommentModel>> {
     return this.collection.add(comment);
   }
 
-  deleteComment(commentId: string) {
+  deleteComment(commentId: string): Promise<void> {
     return this.collection.doc(commentId).delete();
+  }
+
+  updateComments(
+    commentsId: string,
+    commentsRef: DocumentReference<CommentModel>[]
+  ) {
+    return this.collection.doc(commentsId).update({
+      commentsRef: commentsRef,
+    });
   }
 
   textEditorConfig(): TextEditorConfiguration {

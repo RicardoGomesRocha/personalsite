@@ -2,15 +2,10 @@
   <app-text-editor
     [mode]="'edit'"
     [formGroup]="commentForm"
-    [formControlName]="'comment'"
+    [controllerName]="'comment'"
     [configuration]="editorConfiguration"
   ></app-text-editor>
-  <button
-    mat-raised-button
-    color="primary"
-    type="submit"
-    (click)="addComment()"
+  <app-button (click)="addComment()" [loading]="$loading | async"
+    >Add comment</app-button
   >
-    Save Comment
-  </button>
 </form>

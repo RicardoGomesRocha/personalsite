@@ -8,23 +8,21 @@
             }
         }
     }
-
-    &.ql-font {
-
-        ql-picker-label,
-        .ql-picker-item {
-            &::before {
-                content: attr(data-value) !important;
-                font-family: attr(data-value) !important;
-            }
-        }
-    }
 }
 
 .ql-container {
-    font-family: 'Roboto';
+    font-family: 'Montserrat';
 }
 
 .ql-editor {
     padding: 0;
+}
+
+.edit-mode {
+    .ql-editor {
+        padding-left: 20px;
+        padding-bottom: 10px;
+        padding-top: 17px;
+        padding-right: 20px;
+    }
 }

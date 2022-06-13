@@ -47,8 +47,8 @@
   </div>
   <app-text-editor [content]="blogPost.body"></app-text-editor>
   <app-comments
-    *ngIf="blogPost.comments && blogPost.comments"
     [comments]="blogPost.comments"
     (commentAdded)="addComment($event)"
+    (commentDeleted)="deleteComment($event)"
   ></app-comments>
 </div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DocumentReference } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { UserService } from 'src/app/users/users.services';
@@ -19,6 +20,9 @@ export class CommentComponent {
   }
   @Output()
   commentChanged = new EventEmitter<CommentModel>();
+
+  @Output()
+  commentDeleted = new EventEmitter<void>();
 
   @Input()
   mode: 'view' | 'edit' = 'view';
@@ -64,15 +68,46 @@ export class CommentComponent {
     }
   }
 
+  async commentAdded(commentAdded: DocumentReference<CommentModel>) {
+    this.showReplyTextEditor = false;
+    if (this._comment?.commentsRef)
+      this._comment?.commentsRef.push(commentAdded);
+    else if (this._comment) this._comment.commentsRef = [commentAdded];
+
+    if (this._comment?.commentsRef && this._comment?.id) {
+      try {
+        const results = await Promise.all([
+          this.commentsService.getComment(commentAdded),
+          this.commentsService.updateComments(
+            this._comment?.id,
+            this._comment?.commentsRef
+          ),
+        ]);
+        if (this._comment?.comments) this._comment?.comments?.push(results[0]);
+        else if (this._comment) this._comment.comments = [results[0]];
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
   commentChange(comment: CommentModel, index: number) {
     if (this._comment?.comments) {
       this._comment.comments[index] = comment;
     }
   }
 
-  deleteComment() {
+  commentDelete(index: number) {
+    if (this._comment?.comments) {
+      this._comment.comments = this._comment.comments.splice(index, 1);
+      this.commentDeleted.emit();
+    }
+  }
+
+  async deleteComment() {
     if (this._comment?.id) {
-      this.commentsService.deleteComment(this._comment?.id);
+      await this.commentsService.deleteComment(this._comment?.id);
+      this.commentDeleted.emit();
     }
   }
 }

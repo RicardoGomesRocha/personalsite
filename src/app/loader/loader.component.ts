@@ -6,9 +6,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent {
+  _diameter = 10;
+
   @Input()
   color = 'primary';
 
   @Input()
-  diameter: number | undefined;
+  set diameter(value: number) {
+    if (value && value > 0) {
+      this._diameter = value;
+    } else {
+      throw 'diameter value is not valid';
+    }
+  }
 }

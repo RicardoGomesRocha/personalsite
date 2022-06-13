@@ -6,6 +6,7 @@
       *ngFor="let comment of _comments; let i = index"
       [comment]="comment"
       (commentChanged)="this._comments[i] = $event"
+      (commentDeleted)="deleteComment(i)"
     ></app-comment>
   </div>
 </div>

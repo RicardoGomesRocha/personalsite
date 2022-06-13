@@ -1,4 +1,4 @@
-<div class="text-editor">
+<div class="text-editor" [class.edit-mode]="mode === 'edit'">
   <div [formGroup]="formGroup" *ngIf="formGroup">
     <quill-editor
       [modules]="config"

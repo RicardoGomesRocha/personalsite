@@ -36,6 +36,7 @@ export class BlogPostViewComponent {
       this.blogService.setLikes(this.blogPost.id, ++this.blogPost.likes);
     }
   }
+
   addComment(comment: DocumentReference<CommentModel>) {
     let comments = this.blogPost?.comments;
 
@@ -44,5 +45,13 @@ export class BlogPostViewComponent {
 
     if (this.blogPost?.id)
       this.blogService.setComments(this.blogPost?.id, comments);
+  }
+
+  deleteComment(index: number) {
+    if (this.blogPost?.comments)
+      this.blogPost.comments = this.blogPost.comments.slice(index);
+
+    if (this.blogPost?.id && this.blogPost?.comments)
+      this.blogService.setComments(this.blogPost?.id, this.blogPost?.comments);
   }
 }

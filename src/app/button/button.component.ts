@@ -10,5 +10,5 @@ export class ButtonComponent {
   color = 'primary';
 
   @Input()
-  loading = false;
+  loading: boolean | null | undefined = false;
 }
