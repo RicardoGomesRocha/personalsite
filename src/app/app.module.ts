@@ -43,6 +43,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialsModule } from './materials.module';
 import { PhotoComponent } from './photo/photo.component';
+import { PopupMessageComponent } from './popup-message/popup-message.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectsComponent } from './projects/projects.component';
@@ -101,6 +102,7 @@ export * from 'highlight.js';
     CommentsComponent,
     CommentComponent,
     AddCommentComponent,
+    PopupMessageComponent,
   ],
   imports: [
     BrowserModule,

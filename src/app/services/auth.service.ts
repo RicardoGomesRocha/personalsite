@@ -50,13 +50,13 @@ export class AuthService {
   ): Promise<boolean> {
     try {
       await this.auth.signInWithEmailAndPassword(email, password);
-      this.messageService.openBottomMessage({
+      this.messageService.showBottomMessage({
         message: 'Login was successful! Welcome back! 👋👋👋',
       });
     } catch (error) {
       try {
         await this.auth.createUserWithEmailAndPassword(email, password);
-        this.messageService.openBottomMessage({
+        this.messageService.showBottomMessage({
           message: 'You sign up successfully! Nice to meet you! 🤗',
         });
       } catch (error) {

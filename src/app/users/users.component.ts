@@ -27,13 +27,13 @@ export class UsersComponent {
     this.userService.deleteUser(user.uid).subscribe({
       next: () => {
         this.users = this.users?.filter((u) => u.uid !== user.uid);
-        this.messageService.openBottomMessage({
+        this.messageService.showBottomMessage({
           message: 'The user was deleted',
         });
         user.isDeleting = false;
       },
       error: () => {
-        this.messageService.openBottomMessage({
+        this.messageService.showBottomMessage({
           message: 'It was not possible to delete the user. Please, try latter',
         });
         user.isDeleting = false;
@@ -50,7 +50,7 @@ export class UsersComponent {
         user.loadingClaims = false;
       },
       error: () => {
-        this.messageService.openBottomMessage({
+        this.messageService.showBottomMessage({
           message: `It was not possible to change admin status for the user ${user.uid}`,
         });
       },

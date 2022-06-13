@@ -1,0 +1,21 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 10px;
+    padding-top: 30px;
+
+    .close-button {
+        width: 10px;
+        position: absolute;
+        top: -15px;
+        right: 0;
+        margin-right: -24px;
+
+    }
+
+    .actions {
+        align-self: flex-end;
+        margin-top: 15px;
+    }
+}

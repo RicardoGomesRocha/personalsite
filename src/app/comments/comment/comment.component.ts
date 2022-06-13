@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DocumentReference } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map, Observable } from 'rxjs';
+import { MessageService } from 'src/app/services/message.service';
 import { UserService } from 'src/app/users/users.services';
 import { CommentsService } from '../comments.service';
 import { CommentModel } from './comment.model';
@@ -41,7 +42,8 @@ export class CommentComponent {
 
   constructor(
     private readonly usersService: UserService,
-    private readonly commentsService: CommentsService
+    private readonly commentsService: CommentsService,
+    private readonly messageService: MessageService
   ) {
     this.$isAdmin = usersService.isAdmin();
     this.$isGuest = usersService
@@ -105,9 +107,14 @@ export class CommentComponent {
   }
 
   async deleteComment() {
-    if (this._comment?.id) {
-      await this.commentsService.deleteComment(this._comment?.id);
-      this.commentDeleted.emit();
-    }
+    this.messageService.showYesNoMessage(
+      'Are you sure that you want to delete this comment?',
+      async () => {
+        if (this._comment?.id) {
+          await this.commentsService.deleteComment(this._comment?.id);
+          this.commentDeleted.emit();
+        }
+      }
+    );
   }
 }

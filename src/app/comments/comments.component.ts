@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DocumentReference } from '@angular/fire/compat/firestore';
+import { MessageService } from '../services/message.service';
 import { CommentModel } from './comment/comment.model';
 import { CommentsService } from './comments.service';
 
@@ -34,7 +35,10 @@ export class CommentsComponent {
 
   private commentsRef: DocumentReference<CommentModel>[] = [];
 
-  constructor(private readonly commentsService: CommentsService) {}
+  constructor(
+    private readonly commentsService: CommentsService,
+    private readonly messageService: MessageService
+  ) {}
 
   addComment(comment: DocumentReference<CommentModel>) {
     this.comments = [...this.commentsRef, comment];
