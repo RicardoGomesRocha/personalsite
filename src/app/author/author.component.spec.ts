@@ -2,15 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthorComponent } from './author.component';
 
-describe('AuthorComponent', () => {
+xdescribe('AuthorComponent', () => {
   let component: AuthorComponent;
   let fixture: ComponentFixture<AuthorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthorComponent ]
-    })
-    .compileComponents();
+      declarations: [AuthorComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
