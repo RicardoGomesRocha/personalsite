@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { from, map, Observable } from 'rxjs';
 import { AuthProviders } from '../models/auth';
+import { UserService } from '../users/users.services';
 import { MessageService } from './message.service';
 @Injectable({
   providedIn: 'root',
@@ -14,34 +16,51 @@ export class AuthService {
   constructor(
     private readonly auth: AngularFireAuth,
     private readonly router: Router,
-    private readonly messageService: MessageService
+    private readonly messageService: MessageService,
+    private readonly afs: AngularFirestore,
+    private readonly userService: UserService
   ) {}
 
-  login(
+  async login(
     provider = AuthProviders.Google
-  ): Observable<firebase.auth.UserCredential> {
+  ): Promise<firebase.auth.UserCredential> {
+    let promise: Promise<firebase.auth.UserCredential>;
     switch (provider) {
       case AuthProviders.Google:
-        return from(
-          this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        promise = this.auth.signInWithPopup(
+          new firebase.auth.GoogleAuthProvider()
         );
+        break;
+
       case AuthProviders.Facebook:
-        return from(
-          this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        promise = this.auth.signInWithPopup(
+          new firebase.auth.FacebookAuthProvider()
         );
+        break;
+
       case AuthProviders.Github:
-        return from(
-          this.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
+        promise = this.auth.signInWithPopup(
+          new firebase.auth.GithubAuthProvider()
         );
+        break;
+
       case AuthProviders.Twitter:
-        return from(
-          this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+        promise = this.auth.signInWithPopup(
+          new firebase.auth.TwitterAuthProvider()
         );
+        break;
+
       case AuthProviders.Microsoft:
-        return from(
-          this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+        promise = this.auth.signInWithPopup(
+          new firebase.auth.TwitterAuthProvider()
         );
+        break;
     }
+    const user = await promise;
+    if (user.additionalUserInfo?.isNewUser) {
+      await this.userService.createUser(user.user);
+    }
+    return user;
   }
 
   async loginWithEmailPassword(
@@ -55,7 +74,12 @@ export class AuthService {
       });
     } catch (error) {
       try {
-        await this.auth.createUserWithEmailAndPassword(email, password);
+        const userCredential = await this.auth.createUserWithEmailAndPassword(
+          email,
+          password
+        );
+
+        await this.userService.createUser(userCredential.user);
         this.messageService.showBottomMessage({
           message: 'You sign up successfully! Nice to meet you! 🤗',
         });

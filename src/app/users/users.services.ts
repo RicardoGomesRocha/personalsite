@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
 import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from './user.model';
@@ -8,13 +12,16 @@ import { User } from './user.model';
   providedIn: 'root',
 })
 export class UserService {
-  private url = `${environment.api.url}/users`;
   $users = new BehaviorSubject<User[]>([]);
-
+  private url = `${environment.api.url}/users`;
+  private userCollection: AngularFirestoreCollection<User>;
   constructor(
     private readonly http: HttpClient,
-    private readonly auth: AngularFireAuth
-  ) {}
+    private readonly auth: AngularFireAuth,
+    private readonly afs: AngularFirestore
+  ) {
+    this.userCollection = afs.collection<User>('users');
+  }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url);
@@ -32,7 +39,7 @@ export class UserService {
     return this.auth.user as Observable<User | null>;
   }
 
-  isCurrentUser(id: string | undefined): Observable<boolean> {
+  isCurrentUser(id: string | undefined | null): Observable<boolean> {
     if (!id) return of(false);
     return this.getCurrentUser().pipe(
       map((user) => (user && user.uid === id ? true : false))
@@ -64,5 +71,39 @@ export class UserService {
 
   isAdmin(): Observable<boolean> {
     return this.hasRoles(['admin']);
+  }
+
+  async createUser(user: firebase.default.User | null): Promise<void> {
+    if (user) {
+      try {
+        await this.userCollection
+          .doc(user.uid)
+          .set(this.getUserFromUserCredentials(user));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  getUser(userId: string): Observable<User | undefined> {
+    return this.userCollection
+      .doc(userId)
+      .get()
+      .pipe(map((value) => value.data()));
+  }
+
+  getUserFromUserCredentials(firebaseUser: firebase.default.User): User {
+    return {
+      uid: firebaseUser.uid,
+      disable: false,
+      displayName: firebaseUser.displayName,
+      email: firebaseUser.email,
+      emailVerified: firebaseUser.emailVerified,
+      metadata: {
+        creationTime: firebaseUser.metadata.creationTime,
+        lastSignInTime: firebaseUser.metadata.lastSignInTime,
+      },
+      photoURL: firebaseUser.photoURL,
+    } as User;
   }
 }

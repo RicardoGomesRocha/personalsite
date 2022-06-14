@@ -14,6 +14,7 @@ import { QuillModule } from 'ngx-quill';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthorComponent } from './author/author.component';
 import { BlogPostViewComponent } from './blog/blog-post-view/blog-post-view.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { BlogComponent } from './blog/blog.component';
@@ -103,6 +104,7 @@ export * from 'highlight.js';
     CommentComponent,
     AddCommentComponent,
     PopupMessageComponent,
+    AuthorComponent,
   ],
   imports: [
     BrowserModule,

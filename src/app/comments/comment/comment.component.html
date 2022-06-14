@@ -1,5 +1,8 @@
 <div class="comment" *ngIf="_comment">
-  <span>{{ _comment.date.toDate() | date }}</span>
+  <app-author
+    [authorId]="_comment?.authorId"
+    [date]="_comment.date.toDate()"
+  ></app-author>
   <app-text-editor [content]="_comment.body"></app-text-editor>
   <div class="actions">
     <button class="like" mat-button (click)="this.addLike()">

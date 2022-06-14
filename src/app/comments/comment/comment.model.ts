@@ -9,6 +9,6 @@ export interface CommentModel {
   comments?: CommentModel[];
   commentsRef?: DocumentReference<CommentModel>[] | undefined;
   likes?: number;
-  authorId?: string;
+  authorId?: string | null;
   author?: User;
 }

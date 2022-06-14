@@ -1,16 +1,15 @@
 export interface User {
   uid: string;
   disable: boolean;
-  displayName: string;
-  email: string;
+  displayName?: string;
+  email?: string;
   emailVerified: boolean;
   metadata: {
-    creationTime: string;
-    lastSignInTime: string;
-    lastRefreshTime?: string | null;
+    creationTime?: string;
+    lastSignInTime?: string;
   };
-  photoURL: string;
-  customClaims: { [claim: string]: any };
-  loadingClaims: boolean;
-  isDeleting: boolean;
+  photoURL?: string;
+  customClaims?: { [claim: string]: any };
+  loadingClaims?: boolean;
+  isDeleting?: boolean;
 }

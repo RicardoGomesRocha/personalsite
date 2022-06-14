@@ -25,11 +25,9 @@ export class LoginComponent {
     private readonly messageService: MessageService
   ) {}
 
-  login(authMethod: AuthProviders) {
-    this.authService.login(authMethod).subscribe((user) => {
-      user.user?.getIdToken().then((token) => console.log(token));
-      this.router.navigateByUrl('');
-    });
+  async login(authMethod: AuthProviders) {
+    await this.authService.login(authMethod);
+    this.router.navigateByUrl('');
   }
 
   async loginWithEmailPassword() {

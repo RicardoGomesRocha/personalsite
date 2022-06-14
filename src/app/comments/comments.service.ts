@@ -5,8 +5,9 @@ import {
   AngularFirestoreCollection,
   DocumentReference,
 } from '@angular/fire/compat/firestore';
-import { from, Observable } from 'rxjs';
+import { firstValueFrom, from, Observable } from 'rxjs';
 import { TextEditorConfiguration } from '../text-editor/text-editor.model';
+import { UserService } from '../users/users.services';
 import { CommentModel } from './comment/comment.model';
 
 @Injectable({
@@ -18,7 +19,8 @@ export class CommentsService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly afs: AngularFirestore
+    private readonly afs: AngularFirestore,
+    private readonly usersService: UserService
   ) {
     this.collection = afs.collection<CommentModel>('comments');
   }
@@ -71,7 +73,13 @@ export class CommentsService {
     );
   }
 
-  addComment(comment: CommentModel): Promise<DocumentReference<CommentModel>> {
+  async addComment(
+    comment: CommentModel
+  ): Promise<DocumentReference<CommentModel>> {
+    const user = await firstValueFrom(this.usersService.getCurrentUser());
+    let userId = null;
+    if (user) userId = user.uid;
+    comment.authorId = userId;
     return this.collection.add(comment);
   }
 
@@ -97,6 +105,6 @@ export class CommentsService {
       codeBlock: true,
       image: true,
       link: true,
-    };
+    } as TextEditorConfiguration;
   }
 }
