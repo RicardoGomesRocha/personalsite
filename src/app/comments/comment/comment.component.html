@@ -49,7 +49,7 @@
       *ngFor="let comment of _comment.comments; let i = index"
       [comment]="comment"
       (commentChanged)="commentChange(comment, i)"
-      (commentDelete)="commentDelete(i)"
+      (commentDeleted)="onCommentDelete(i)"
     ></app-comment>
   </div>
 </div>

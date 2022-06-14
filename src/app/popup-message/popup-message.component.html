@@ -10,12 +10,23 @@
   <h1 *ngIf="data.title">{{ data.title }}</h1>
   <span *ngIf="data.message">{{ data.message }}</span>
   <div class="actions" *ngIf="data.actions && data.actions.length > 0">
-    <button
-      mat-button
-      *ngFor="let action of data.actions; let i = index"
-      (click)="onClickAction(i)"
-    >
-      {{ action.text }}
-    </button>
+    <div class="action" *ngFor="let action of data.actions; let i = index">
+      <button
+        *ngIf="!action.raised"
+        mat-button
+        [color]="action.color"
+        (click)="onClickAction(i)"
+      >
+        {{ action.text }}
+      </button>
+      <button
+        mat-raised-button
+        *ngIf="action.raised"
+        [color]="action.color"
+        (click)="onClickAction(i)"
+      >
+        {{ action.text }}
+      </button>
+    </div>
   </div>
 </div>

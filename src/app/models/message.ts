@@ -6,7 +6,13 @@ export interface BottomMessageConfiguration {
 export interface PopupMessageConfiguration {
   title?: string;
   message: string;
-  actions?: { text: string; closeOnClick?: boolean; callback?: () => void }[];
+  actions?: {
+    text: string;
+    closeOnClick?: boolean;
+    color?: string;
+    raised?: boolean;
+    callback?: () => void;
+  }[];
   hideCloseButton?: boolean;
   onClose?: () => {};
 }

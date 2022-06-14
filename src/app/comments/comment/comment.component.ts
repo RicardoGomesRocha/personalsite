@@ -99,7 +99,7 @@ export class CommentComponent {
     }
   }
 
-  commentDelete(index: number) {
+  onCommentDelete(index: number) {
     if (this._comment?.comments) {
       this._comment.comments = this._comment.comments.splice(index, 1);
       this.commentDeleted.emit();

@@ -40,6 +40,8 @@ export class MessageService {
         {
           text: 'no',
           callback: noCallback,
+          raised: true,
+          color: 'warn',
         },
       ],
     });

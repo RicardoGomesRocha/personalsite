@@ -6,16 +6,19 @@
     padding-top: 30px;
 
     .close-button {
-        width: 10px;
         position: absolute;
         top: -15px;
         right: 0;
-        margin-right: -24px;
-
+        margin-right: -15px;
+        padding: 0;
+        min-width: 0;
+        line-height: 0px;
     }
 
     .actions {
         align-self: flex-end;
         margin-top: 15px;
+        display: flex;
+        flex-direction: row;
     }
 }
