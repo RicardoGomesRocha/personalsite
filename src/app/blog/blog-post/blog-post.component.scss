@@ -4,9 +4,15 @@
     min-width: 250px;
 
     .header {
-        h3 {
-            margin-bottom: 0px;
+        .title {
+            display: flex;
+            align-items: row;
+
+            h3 {
+                margin-bottom: 0px;
+            }
         }
+
 
         .image {
             width: 100%;

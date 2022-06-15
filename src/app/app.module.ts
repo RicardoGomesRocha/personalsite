@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthorComponent } from './author/author.component';
+import { BlogPostEditComponent } from './blog/blog-post-edit/blog-post-edit.component';
 import { BlogPostViewComponent } from './blog/blog-post-view/blog-post-view.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { BlogComponent } from './blog/blog.component';
@@ -105,6 +106,7 @@ export * from 'highlight.js';
     AddCommentComponent,
     PopupMessageComponent,
     AuthorComponent,
+    BlogPostEditComponent,
   ],
   imports: [
     BrowserModule,

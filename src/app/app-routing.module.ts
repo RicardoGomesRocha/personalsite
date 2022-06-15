@@ -6,6 +6,7 @@ import {
 } from '@angular/fire/compat/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from 'src/admin/admin.component';
+import { BlogPostEditComponent } from './blog/blog-post-edit/blog-post-edit.component';
 import { BlogPostViewComponent } from './blog/blog-post-view/blog-post-view.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -24,7 +25,21 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'blog', component: BlogComponent },
-  { path: 'blogPost/:id', component: BlogPostViewComponent },
+  { path: 'blogPosts/:id', component: BlogPostViewComponent },
+  {
+    path: 'blogPosts/:id/edit',
+    component: BlogPostEditComponent,
+    data: {
+      mode: 'edit',
+    },
+  },
+  {
+    path: 'blogPost/create',
+    component: BlogPostEditComponent,
+    data: {
+      mode: 'create',
+    },
+  },
   {
     path: 'project/create',
     component: EditProjectComponent,

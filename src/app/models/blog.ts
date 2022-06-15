@@ -16,3 +16,8 @@ export interface BlogPost {
   categories?: Category[];
   comments?: DocumentReference<CommentModel>[];
 }
+
+export interface BlogPostSaveStatus {
+  percentage: number;
+  blogPostId?: string;
+}

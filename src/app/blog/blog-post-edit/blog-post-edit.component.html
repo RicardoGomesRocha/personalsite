@@ -1,0 +1,27 @@
+<form class="blog-post" [formGroup]="blogPostForm" (submit)="save()">
+  <app-categories [(categories)]="categories" [mode]="'edit'"></app-categories>
+
+  <mat-form-field appearance="standard">
+    <input matInput formControlName="title" type="text" />
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <app-upload-image
+    [(imageUrl)]="imageUrl"
+    (fileChange)="newImage = $event"
+  ></app-upload-image>
+  <app-text-editor
+    [mode]="'edit'"
+    [formGroup]="blogPostForm"
+    [controllerName]="'body'"
+  ></app-text-editor>
+  <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">
+    <mat-icon>save</mat-icon> {{ editMode ? "Save" : "Create" }}
+  </button>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    mode="determinate"
+    [value]="loadingPercentage"
+  ></mat-progress-spinner>
+</form>
