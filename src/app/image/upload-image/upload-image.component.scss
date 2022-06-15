@@ -3,16 +3,19 @@
 .image-wrapper {
     width: 100%;
     height: 100%;
+    transition: 0.1s ease;
 
     .image {
         width: 100%;
         height: 100%;
         cursor: pointer;
+        border-radius: 20px;
+
     }
 
     &.on-drag {
-        border: 4px solid $primary-color;
-        border-style: dashed;
+        transform: scale(1.05);
+        cursor: copy;
     }
 }
 

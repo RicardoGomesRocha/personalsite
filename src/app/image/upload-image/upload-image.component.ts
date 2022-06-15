@@ -29,12 +29,12 @@ export class UploadImageComponent {
   }
 
   drop(event: any) {
-    // event.preventDefault();
-    // event.stopPropagation();
-    // const files = event.dataTransfer?.files;
-    // if (files?.length) {
-    //   this.readFile(files[0]);
-    // }
+    event.preventDefault();
+    event.stopPropagation();
+    const files = event.dataTransfer?.files;
+    if (files?.length) {
+      this.readFile(files[0]);
+    }
     console.log(event);
   }
 

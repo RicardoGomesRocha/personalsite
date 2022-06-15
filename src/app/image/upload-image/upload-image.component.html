@@ -5,6 +5,7 @@
   (dragover)="onDrag = true"
   (dragleave)="onDrag = false"
   (files)="drop($event)"
+  (drop)="drop($event)"
   draggable="true"
 >
   <app-image [src]="imageUrl" class="image"></app-image>

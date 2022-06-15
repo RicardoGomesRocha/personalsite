@@ -17,10 +17,8 @@
 
   <h3 class="small-description">{{ blogPost.description }}</h3>
 
-  <div
-    class="background-image"
-    [style.backgroundImage]="'url(' + blogPost.image + ')'"
-  ></div>
+  <app-image class="image" [src]="blogPost.image"></app-image>
+
   <div class="small-bar">
     <button
       mat-mini-fab
@@ -46,6 +44,11 @@
     </button>
   </div>
   <app-text-editor [content]="blogPost.body"></app-text-editor>
+  <div class="author-section">
+    <span>This post was written by:</span>
+    <app-author [authorId]="blogPost.authorId"></app-author>
+  </div>
+
   <app-comments
     [comments]="blogPost.comments"
     (commentAdded)="addComment($event)"

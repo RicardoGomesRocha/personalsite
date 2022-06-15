@@ -3,14 +3,9 @@
     class="image"
     [src]="src"
     *ngIf="src"
-    [style.border-radius]="borderRadius"
     (load)="isLoaded = true"
     (error)="error = true"
+    [@inAnimation]="isLoaded ? true : false"
   />
-  <img
-    class="defaultImage"
-    [src]="defaultImage"
-    *ngIf="!src || !isLoaded || error"
-    [style.border-radius]="borderRadius"
-  />
+  <div class="loading-image" *ngIf="!isLoaded"></div>
 </div>

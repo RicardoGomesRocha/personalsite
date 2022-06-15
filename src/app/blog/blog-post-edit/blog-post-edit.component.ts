@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Timestamp } from 'firebase/firestore';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { CategoriesService } from 'src/app/categories/categories.service';
 import { BlogPost } from 'src/app/models/blog';
 import { Category } from 'src/app/models/category';
 import { BlogService } from 'src/app/services/blog.service';
 import { RouteService } from 'src/app/services/route.service';
+import { UserService } from 'src/app/users/users.services';
 
 @Component({
   selector: 'app-blog-post-edit',
@@ -54,7 +55,8 @@ export class BlogPostEditComponent {
     private readonly blogService: BlogService,
     private route: ActivatedRoute,
     private routeService: RouteService,
-    private readonly categoriesService: CategoriesService
+    private readonly categoriesService: CategoriesService,
+    private readonly usersService: UserService
   ) {
     this.editMode = route.snapshot.data['mode'] === 'edit' ? true : false;
     if (this.editMode) {
@@ -79,29 +81,36 @@ export class BlogPostEditComponent {
     this.categories = blogPost.categories;
   }
 
-  save() {
+  async save() {
     const blogPost = this.getProjectFromFormField();
     blogPost.id = this.blogPostId;
-    blogPost.createdDate = new Timestamp(new Date().getMilliseconds(), 0);
-    blogPost.modifiedDate = new Timestamp(new Date().getMilliseconds(), 0);
+    if (!this.editMode) {
+      blogPost.createdDate = Timestamp.fromDate(new Date());
+      const user = await firstValueFrom(this.usersService.getCurrentUser());
+      if (user) {
+        blogPost.authorId = user?.uid;
+      }
+    }
+    blogPost.modifiedDate = Timestamp.fromDate(new Date());
     blogPost.categoriesRefs =
       this.categoriesService.getDocumentReferenceFromCategories(
         this.blogPost?.categories
       );
     blogPost.categories = this.categories;
     this.isLoading = true;
-    this.blogService.saveBlogPost(blogPost, this.newImage).subscribe(
-      (value) => {
+
+    this.blogService.saveBlogPost(blogPost, this.newImage).subscribe({
+      next: (value) => {
         if (value.percentage === 100) {
           this.routeService.navigate(['/blogPosts', value.blogPostId]);
         }
         this.loadingPercentage = value.percentage;
       },
-      () => {
+      error: () => {
         this.loadingPercentage = 0;
         this.isLoading = false;
-      }
-    );
+      },
+    });
   }
 
   private getProjectFromFormField(): BlogPost {

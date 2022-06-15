@@ -12,10 +12,6 @@ export class BlogPostComponent {
   @Input()
   post: BlogPost | undefined;
 
-  getBackgroundImage(): string {
-    return `url(${this.post?.image})`;
-  }
-
   $showAdminOptions = this.usersService.hasRoles(['admin']);
 
   constructor(

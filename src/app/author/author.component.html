@@ -1,5 +1,5 @@
 <div class="author" *ngIf="author">
-  <img [src]="author.photoURL" />
+  <img [src]="author.photoURL" referrerpolicy="no-referrer" />
   <div class="text">
     <span class="name">{{ author.displayName }}</span>
     <span class="date" *ngIf="date">{{ date | date }}</span>

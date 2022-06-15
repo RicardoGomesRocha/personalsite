@@ -8,9 +8,9 @@ import {
   BehaviorSubject,
   combineLatest,
   first,
-  flatMap,
   forkJoin,
   map,
+  mergeMap,
   Observable,
   Subscriber,
   take,
@@ -99,9 +99,9 @@ export class BlogService implements SearchableService {
     );
   }
 
-  getBlogPost(id: string) {
+  getBlogPost(id: string): Observable<BlogPost> {
     return this.$blogPosts.pipe(
-      flatMap((blogPosts) => blogPosts),
+      mergeMap((blogPosts) => blogPosts),
       first((blogPost) => blogPost.id === id)
     );
   }
