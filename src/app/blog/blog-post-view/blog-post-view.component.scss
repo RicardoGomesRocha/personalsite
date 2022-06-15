@@ -1,68 +1,91 @@
-.blog-post {
+.blog-post-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+
     margin: 5vw;
-    position: relative;
 
-    .title {
-        margin: 0;
-        font-weight: bolder;
-    }
-
-    app-categories {
-        margin-bottom: 8px;
-    }
-
-    .small-description {
-        text-align: center;
-        font-size: 18px;
-    }
-
-    .dates {
-        .separator {
-            margin-left: 5px;
-            margin-right: 5px;
-        }
-    }
-
-    .image {
-        width: 100%;
-        height: 20vh;
-        border-radius: 20px;
-
-    }
-
-    .small-bar {
-        margin: 20px;
-
-        button {
-            margin: 2px;
-        }
-    }
-
-    .mat-badge-content {
-        background-color: white
-    }
-
-    .description {
-        text-align: justify;
-        font-size: 16px;
-        line-height: 30px;
-    }
-
-    app-comments {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .author-section {
+    .blog-post {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 700px;
+        position: relative;
+        width: 100%;
+        padding: 40px;
+
+        box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+
+        .title {
+            margin: 0;
+            font-weight: bolder;
+        }
+
+        app-categories {
+            margin-bottom: 8px;
+        }
+
+        .small-description {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .dates {
+            .separator {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+
+        .image {
+            width: 100%;
+            height: 20vh;
+            border-radius: 20px;
+
+        }
+
+
+
+        .mat-badge-content {
+            background-color: white
+        }
+
+        .description {
+            text-align: justify;
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        app-comments {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+
+    }
+
+    .extra-info-bar {
+        align-self: flex-start;
+        padding-left: 40px;
+
+        .author-section {
+            display: flex;
+            flex-direction: column;
+
+            .text {
+                margin-bottom: 6px;
+            }
+
+
+        }
+
+        .small-bar {
+            margin-top: 5px;
+
+            button {
+                margin: 5px;
+            }
+        }
     }
 }

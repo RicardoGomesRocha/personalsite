@@ -1,57 +1,60 @@
-<div class="blog-post" *ngIf="blogPost">
-  <h1 class="title">{{ blogPost.title }}</h1>
-  <div class="dates">
-    <h5>
-      <span>Created on: {{ blogPost.createdDate.toDate() | date }}</span>
-      <span class="separator" *ngIf="blogPost.modifiedDate">|</span>
-      <span *ngIf="blogPost.modifiedDate"
-        >Modify on: {{ blogPost?.modifiedDate?.toDate() | date }}</span
+<div class="blog-post-wrapper" *ngIf="blogPost">
+  <div class="blog-post">
+    <h1 class="title">{{ blogPost.title }}</h1>
+    <div class="dates">
+      <h5>
+        <span>Created on: {{ blogPost.createdDate.toDate() | date }}</span>
+        <span class="separator" *ngIf="blogPost.modifiedDate">|</span>
+        <span *ngIf="blogPost.modifiedDate"
+          >Modify on: {{ blogPost?.modifiedDate?.toDate() | date }}</span
+        >
+      </h5>
+    </div>
+    <app-categories
+      *ngIf="blogPost.categories"
+      [categories]="blogPost.categories"
+      [mode]="'view'"
+    ></app-categories>
+
+    <h3 class="small-description">{{ blogPost.description }}</h3>
+
+    <app-image class="image" [src]="blogPost.image"></app-image>
+
+    <app-text-editor [content]="blogPost.body"></app-text-editor>
+    <app-comments
+      [comments]="blogPost.comments"
+      (commentAdded)="addComment($event)"
+      (commentDeleted)="deleteComment($event)"
+    ></app-comments>
+  </div>
+  <div class="extra-info-bar">
+    <div class="author-section">
+      <span class="text">This post was written by:</span>
+      <app-author [authorId]="blogPost.authorId"></app-author>
+    </div>
+    <div class="small-bar">
+      <button
+        mat-mini-fab
+        color="warn"
+        aria-label="Example icon button with a menu icon"
+        [matBadge]="blogPost.likes"
+        matBadgePosition="before"
+        matBadgeColor="warn"
+        (click)="addLike()"
       >
-    </h5>
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a menu icon"
+        (click)="openShareMenu()"
+      >
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" [routerLink]="['edit']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
   </div>
-  <app-categories
-    *ngIf="blogPost.categories"
-    [categories]="blogPost.categories"
-    [mode]="'view'"
-  ></app-categories>
-
-  <h3 class="small-description">{{ blogPost.description }}</h3>
-
-  <app-image class="image" [src]="blogPost.image"></app-image>
-
-  <div class="small-bar">
-    <button
-      mat-mini-fab
-      color="warn"
-      aria-label="Example icon button with a menu icon"
-      [matBadge]="blogPost.likes"
-      matBadgePosition="before"
-      matBadgeColor="warn"
-      (click)="addLike()"
-    >
-      <mat-icon>favorite_border</mat-icon>
-    </button>
-    <button
-      mat-mini-fab
-      color="accent"
-      aria-label="Example icon button with a menu icon"
-      (click)="openShareMenu()"
-    >
-      <mat-icon>share</mat-icon>
-    </button>
-    <button mat-mini-fab color="primary" [routerLink]="['edit']">
-      <mat-icon>edit</mat-icon>
-    </button>
-  </div>
-  <app-text-editor [content]="blogPost.body"></app-text-editor>
-  <div class="author-section">
-    <span>This post was written by:</span>
-    <app-author [authorId]="blogPost.authorId"></app-author>
-  </div>
-
-  <app-comments
-    [comments]="blogPost.comments"
-    (commentAdded)="addComment($event)"
-    (commentDeleted)="deleteComment($event)"
-  ></app-comments>
 </div>
