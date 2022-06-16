@@ -1,8 +1,10 @@
 .page-content {
-    overflow-x: hidden;
     margin-top: 70px;
+    padding: 0.5vw;
 
     &.home-page {
         margin-top: 0px;
+        overflow-x: hidden;
+        padding: 0;
     }
 }
