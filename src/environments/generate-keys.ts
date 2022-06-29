@@ -18,6 +18,7 @@ environment.firebase.measurementId =
   process.env['FIREBASE_MEASUREMENT_ID'] || '';
 
 environment.production = true;
+environment.useEmulators = false;
 
 const fileContent = `export const environment = ${JSON.stringify(environment)}`;
 
