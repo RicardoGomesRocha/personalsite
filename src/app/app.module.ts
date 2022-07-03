@@ -7,7 +7,10 @@ import {
 } from '@angular/fire/compat/auth';
 import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
 import { USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/compat/functions';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import {
+  AngularFireStorageModule,
+  USE_EMULATOR as USE_STORAGE_EMULATOR,
+} from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -144,6 +147,10 @@ export * from 'highlight.js';
     {
       provide: USE_FUNCTIONS_EMULATOR,
       useValue: environment.useEmulators ? ['localhost', 5001] : undefined,
+    },
+    {
+      provide: USE_STORAGE_EMULATOR,
+      useValue: environment.useEmulators ? ['localhost', 5004] : undefined,
     },
   ],
   bootstrap: [AppComponent],
