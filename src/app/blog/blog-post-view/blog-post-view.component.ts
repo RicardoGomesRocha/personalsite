@@ -54,4 +54,8 @@ export class BlogPostViewComponent {
     if (this.blogPost?.id && this.blogPost?.comments)
       this.blogService.setComments(this.blogPost?.id, this.blogPost?.comments);
   }
+
+  goToBlogPage() {
+    this.blogService.goToBlogPage();
+  }
 }

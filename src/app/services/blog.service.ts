@@ -4,6 +4,7 @@ import {
   AngularFirestoreCollection,
   DocumentReference,
 } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import {
   BehaviorSubject,
   combineLatest,
@@ -37,7 +38,8 @@ export class BlogService implements SearchableService {
   constructor(
     private readonly afs: AngularFirestore,
     private readonly categoriesService: CategoriesService,
-    private readonly uploadService: UploadService
+    private readonly uploadService: UploadService,
+    private readonly router: Router
   ) {
     this.blogPostsCollection = afs.collection<BlogPost>('blogPosts');
     this.$blogPosts = new Observable<BlogPost[]>((sub) => {
@@ -155,6 +157,10 @@ export class BlogService implements SearchableService {
 
   upload(file: File, blogPostId: string): Observable<UploadStatus> {
     return this.uploadService.upload(`blogPosts/${blogPostId}`, file, 'image');
+  }
+
+  goToBlogPage() {
+    this.router.navigate(['blog']);
   }
 
   private setBlogPost(blogPost: BlogPost, sub: Subscriber<BlogPostSaveStatus>) {

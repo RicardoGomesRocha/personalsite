@@ -28,6 +28,10 @@
     ></app-comments>
   </div>
   <div class="extra-info-bar">
+    <button class="go-to-blog" mat-button (click)="goToBlogPage()">
+      <mat-icon>arrow_back</mat-icon>Go to blog posts
+    </button>
+
     <div class="author-section">
       <span class="text">This post was written by:</span>
       <app-author [authorId]="blogPost.authorId"></app-author>
