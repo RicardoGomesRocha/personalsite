@@ -1,7 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
-import { PERSISTENCE } from '@angular/fire/compat/auth';
+import {
+  PERSISTENCE,
+  USE_EMULATOR as USE_AUTH_EMULATOR,
+} from '@angular/fire/compat/auth';
 import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
 import { USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/compat/functions';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -128,14 +131,12 @@ export * from 'highlight.js';
   providers: [
     { provide: PERSISTENCE, useValue: 'local' },
     httpInterceptorProviders,
-    // {
-    //   provide: USE_AUTH_EMULATOR,
-    //   useValue: environment.useEmulators ? ['localhost', 9099] : undefined,
-    // },
-    // {
-    //   provide: USE_DATABASE_EMULATOR,
-    //   useValue: environment.useEmulators ? ['localhost', 9000] : undefined,
-    // },
+    {
+      provide: USE_AUTH_EMULATOR,
+      useValue: environment.useEmulators
+        ? ['http://localhost:5003']
+        : undefined,
+    },
     {
       provide: USE_FIRESTORE_EMULATOR,
       useValue: environment.useEmulators ? ['localhost', 5002] : undefined,
