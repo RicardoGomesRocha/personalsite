@@ -16,9 +16,20 @@
     [formGroup]="blogPostForm"
     [controllerName]="'body'"
   ></app-text-editor>
-  <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">
-    <mat-icon>save</mat-icon> {{ editMode ? "Save" : "Create" }}
-  </button>
+  <div class="actions">
+    <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">
+      <mat-icon>save</mat-icon> {{ editMode ? "Save" : "Create" }}
+    </button>
+    <button
+      mat-button
+      color="primary"
+      (click)="discard($event)"
+      *ngIf="!isLoading"
+    >
+      <mat-icon>cancel_presentation</mat-icon> Discard
+    </button>
+  </div>
+
   <mat-progress-spinner
     *ngIf="isLoading"
     mode="determinate"

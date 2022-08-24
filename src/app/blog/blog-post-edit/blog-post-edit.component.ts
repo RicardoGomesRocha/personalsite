@@ -7,6 +7,7 @@ import { CategoriesService } from 'src/app/categories/categories.service';
 import { BlogPost } from 'src/app/models/blog';
 import { Category } from 'src/app/models/category';
 import { BlogService } from 'src/app/services/blog.service';
+import { MessageService } from 'src/app/services/message.service';
 import { RouteService } from 'src/app/services/route.service';
 import { UserService } from 'src/app/users/users.services';
 
@@ -56,7 +57,8 @@ export class BlogPostEditComponent {
     private route: ActivatedRoute,
     private routeService: RouteService,
     private readonly categoriesService: CategoriesService,
-    private readonly usersService: UserService
+    private readonly usersService: UserService,
+    private readonly messageService: MessageService
   ) {
     this.editMode = route.snapshot.data['mode'] === 'edit' ? true : false;
     if (this.editMode) {
@@ -111,6 +113,20 @@ export class BlogPostEditComponent {
         this.isLoading = false;
       },
     });
+  }
+
+  discard(event: any) {
+    event.preventDefault();
+    if (this.blogPostForm.dirty) {
+      this.messageService.showYesNoMessage(
+        'Are you sure that you want to discard all changes?',
+        () => {
+          this.routeService.navigate(['/blogPosts', this.blogPostId]);
+        }
+      );
+    } else {
+      this.routeService.navigate(['/blogPosts', this.blogPostId]);
+    }
   }
 
   private getProjectFromFormField(): BlogPost {

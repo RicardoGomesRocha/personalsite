@@ -3,8 +3,8 @@
     {
       "splitTerminals": [
         {
-          "name": "Powershell",
-          "commands": ["powershell"],
+          "name": "Terminal",
+          "commands": ["npm start"],
           "shouldRunCommands": true
         }
       ]
