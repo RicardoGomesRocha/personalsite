@@ -6,6 +6,7 @@ import { CommentModel } from 'src/app/comments/comment/comment.model';
 import { BlogPost } from 'src/app/models/blog';
 import { BlogService } from 'src/app/services/blog.service';
 import { ShareService } from 'src/app/services/share.service';
+import { UserService } from 'src/app/users/users.services';
 
 @Component({
   selector: 'app-blog-post-view',
@@ -15,15 +16,21 @@ import { ShareService } from 'src/app/services/share.service';
 export class BlogPostViewComponent {
   $blogPost: Observable<BlogPost>;
   blogPost: BlogPost | undefined;
+  $showAdminOptions = this.usersService.hasRoles(['admin']);
+  $isAuthor: Observable<boolean> | undefined;
   constructor(
     private readonly blogService: BlogService,
     private route: ActivatedRoute,
-    private readonly shareService: ShareService
+    private readonly shareService: ShareService,
+    private readonly usersService: UserService
   ) {
     this.$blogPost = this.blogService.getBlogPost(
       route.snapshot.paramMap.get('id') || ''
     );
-    this.$blogPost.subscribe((blogPost) => (this.blogPost = blogPost));
+    this.$blogPost.subscribe((blogPost) => {
+      this.blogPost = blogPost;
+      this.$isAuthor = this.usersService.isCurrentUser(blogPost.authorId);
+    });
   }
 
   openShareMenu() {
