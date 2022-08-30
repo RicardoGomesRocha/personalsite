@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CommentModel } from 'src/app/comments/comment/comment.model';
 import { BlogPost } from 'src/app/models/blog';
 import { BlogService } from 'src/app/services/blog.service';
+import { MessageService } from 'src/app/services/message.service';
 import { ShareService } from 'src/app/services/share.service';
 import { UserService } from 'src/app/users/users.services';
 
@@ -22,7 +23,8 @@ export class BlogPostViewComponent {
     private readonly blogService: BlogService,
     private route: ActivatedRoute,
     private readonly shareService: ShareService,
-    private readonly usersService: UserService
+    private readonly usersService: UserService,
+    private readonly messageService: MessageService
   ) {
     this.$blogPost = this.blogService.getBlogPost(
       route.snapshot.paramMap.get('id') || ''
@@ -64,5 +66,22 @@ export class BlogPostViewComponent {
 
   goToBlogPage() {
     this.blogService.goToBlogPage();
+  }
+
+  deleteBlogPost() {
+    this.messageService.showYesNoMessage(
+      'Are you sure that you want to delete this blog post?',
+      async () => {
+        if (this.blogPost?.id) {
+          try {
+            await this.blogService.deleteBlogPost(this.blogPost?.id);
+          } catch (error) {
+            this.messageService.showErrorMessage(
+              'Ups! Something happen! Please try again later!'
+            );
+          }
+        }
+      }
+    );
   }
 }

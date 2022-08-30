@@ -25,6 +25,19 @@ export class MessageService {
     });
   }
 
+  showErrorMessage(message: string) {
+    this.showPopupMessage({
+      message,
+      actions: [
+        {
+          text: 'ok',
+          color: 'warn',
+          raised: true,
+        },
+      ],
+    });
+  }
+
   showYesNoMessage(
     message: string,
     yesCallback?: () => void,
